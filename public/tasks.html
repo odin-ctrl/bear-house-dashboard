@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgaver | Bear House</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tasks-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tasks-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tasks-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .tasks-header p {
+            color: var(--text-muted);
+        }
+
+        .my-xp {
+            background: linear-gradient(145deg, rgba(255, 107, 53, 0.2), rgba(255, 45, 149, 0.2));
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .my-xp-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Category sections */
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+
+        .category-header .emoji {
+            font-size: 1.5rem;
+        }
+
+        .category-header .name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .category-header .count {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .tasks-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .task-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .task-card:hover:not(.done) {
+            transform: translateY(-2px);
+            border-color: var(--orange);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .task-card.done {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .task-card.done::after {
+            content: '✓ Gjort i dag';
+            position: absolute;
+            right: 20px;
+            font-size: 0.8rem;
+            color: var(--green, #4ecdc4);
+        }
+
+        .task-card {
+            position: relative;
+        }
+
+        .task-emoji {
+            font-size: 2rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .task-info {
+            flex: 1;
+        }
+
+        .task-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .task-xp {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .task-action {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .task-card.done .task-action {
+            display: none;
+        }
+
+        .task-action:hover {
+            transform: scale(1.05);
+        }
+
+        /* Recent completions */
+        .recent-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .recent-header {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .recent-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .recent-item .task-emoji {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .recent-info {
+            flex: 1;
+        }
+
+        .recent-name {
+            font-weight: 500;
+        }
+
+        .recent-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .recent-xp {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        /* Modal - simplified without photos */
+        .task-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .task-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .modal-xp {
+            font-size: 1.2rem;
+            color: var(--orange);
+            margin-bottom: 25px;
+        }
+
+        .modal-trust {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            flex: 2;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--orange), var(--pink));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+        }
+
+        /* Success overlay */
+        .success-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .success-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-emoji {
+            font-size: 6rem;
+            animation: bounceIn 0.5s ease;
+        }
+
+        .success-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        .success-xp {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--orange);
+            margin-top: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .empty-state .emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tasks-container">
+        <a href="/" class="back-link">← Dashboard</a>
+        
+        <div class="tasks-header">
+            <h1>Oppgaver</h1>
+            <p>Gjør ekstra oppgaver, få XP! 🎮</p>
+        </div>
+
+        <div class="my-xp">
+            <div>Din XP i dag</div>
+            <div class="my-xp-value" id="my-xp">0 XP</div>
+        </div>
+
+        <div id="tasks-container">
+            <!-- Categories will be rendered here -->
+        </div>
+
+        <div class="recent-section">
+            <div class="recent-header">📋 Nylig fullført</div>
+            <div class="recent-list" id="recent-list">
+                <!-- Recent completions -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Simplified modal - no photos -->
+    <div class="task-modal" id="task-modal">
+        <div class="modal-content">
+            <div class="modal-emoji" id="modal-emoji">🧹</div>
+            <div class="modal-title" id="modal-title">Oppgave</div>
+            <div class="modal-xp" id="modal-xp">+10 XP</div>
+            
+            <div class="modal-trust">
+                🤝 Vi stoler på deg!<br>
+                <small>Marker som fullført når oppgaven er gjort.</small>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Avbryt</button>
+                <button class="btn-submit" id="btn-submit" onclick="submitTask()">
+                    Fullfør ✓
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success overlay -->
+    <div class="success-overlay" id="success-overlay">
+        <div class="success-emoji">🎉</div>
+        <div class="success-text">OPPGAVE FULLFØRT!</div>
+        <div class="success-xp" id="success-xp">+20 XP</div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('bearhouse_token');
+        if (!token) {
+            window.location.href = '/login.html';
+        }
+
+        let tasks = [];
+        let categories = {};
+        let currentTask = null;
+
+        async function fetchWithAuth(url, options = {}) {
+            const headers = {
+                'x-auth-token': token,
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+            const response = await fetch(url, { ...options, headers });
+            if (response.status === 401) {
+                window.location.href = '/login.html';
+            }
+            return response.json();
+        }
+
+        async function loadTasks() {
+            const data = await fetchWithAuth('/api/tasks');
+            tasks = data.tasks || [];
+            categories = data.categories || {
+                renhold: { name: 'Renhold', emoji: '🧹' },
+                vedlikehold: { name: 'Vedlikehold', emoji: '🔧' },
+                salg: { name: 'Salg', emoji: '⭐' }
+            };
+            
+            renderTasksByCategory();
+            renderRecent(data.recentCompletions || []);
+            
+            // Update my XP
+            const profile = await fetchWithAuth('/api/profile');
+            document.getElementById('my-xp').textContent = (profile.xp?.today || 0) + ' XP';
+        }
+
+        function renderTasksByCategory() {
+            const container = document.getElementById('tasks-container');
+            
+            // Group tasks by category
+            const grouped = {};
+            tasks.forEach(task => {
+                const cat = task.category || 'annet';
+                if (!grouped[cat]) grouped[cat] = [];
+                grouped[cat].push(task);
+            });
+
+            // Render each category
+            let html = '';
+            for (const [catId, catTasks] of Object.entries(grouped)) {
+                const catInfo = categories[catId] || { name: catId, emoji: '📋' };
+                const availableCount = catTasks.filter(t => !t.onCooldown).length;
+                
+                html += `
+                    <div class="category-section">
+                        <div class="category-header">
+                            <span class="emoji">${catInfo.emoji}</span>
+                            <span class="name">${catInfo.name}</span>
+                            <span class="count">${availableCount} av ${catTasks.length} tilgjengelig</span>
+                        </div>
+                        <div class="tasks-grid">
+                            ${catTasks.map(task => `
+                                <div class="task-card ${task.onCooldown ? 'done' : ''}" 
+                                     onclick="${task.onCooldown ? '' : `openTask('${task.id}')`}">
+                                    <div class="task-emoji">${task.emoji}</div>
+                                    <div class="task-info">
+                                        <div class="task-name">${task.name}</div>
+                                        <div class="task-meta">
+                                            <span class="task-xp">+${task.xp} XP</span>
+                                            ${task.minutes > 0 ? `<span>~${task.minutes} min</span>` : ''}
+                                        </div>
+                                    </div>
+                                    ${task.onCooldown ? '' : '<button class="task-action">Gjør</button>'}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html || '<div class="empty-state"><div class="emoji">🎉</div><p>Alle oppgaver er gjort i dag!</p></div>';
+        }
+
+        function renderRecent(completions) {
+            const list = document.getElementById('recent-list');
+            if (completions.length === 0) {
+                list.innerHTML = '<div style="color: var(--text-muted); padding: 20px; text-align: center;">Ingen fullførte oppgaver ennå i dag</div>';
+                return;
+            }
+            
+            list.innerHTML = completions.slice(0, 10).map(c => `
+                <div class="recent-item">
+                    <div class="task-emoji">${c.emoji || '✓'}</div>
+                    <div class="recent-info">
+                        <div class="recent-name">${c.taskName}</div>
+                        <div class="recent-meta">${c.userName} · ${formatTime(c.completedAt)}</div>
+                    </div>
+                    <div class="recent-xp">+${c.xp} XP</div>
+                </div>
+            `).join('');
+        }
+
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function openTask(taskId) {
+            currentTask = tasks.find(t => t.id === taskId);
+            if (!currentTask || currentTask.onCooldown) return;
+            
+            document.getElementById('modal-emoji').textContent = currentTask.emoji;
+            document.getElementById('modal-title').textContent = currentTask.name;
+            document.getElementById('modal-xp').textContent = '+' + currentTask.xp + ' XP';
+            
+            document.getElementById('task-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('task-modal').classList.remove('active');
+            currentTask = null;
+        }
+
+        async function submitTask() {
+            if (!currentTask) return;
+            
+            const btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.textContent = 'Sender...';
+            
+            try {
+                const response = await fetch('/api/tasks/complete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-auth-token': token
+                    },
+                    body: JSON.stringify({ taskId: currentTask.id })
+                });
+                
+                if (response.status === 401) {
+                    alert('Sesjonen din har utløpt. Logger inn på nytt...');
+                    localStorage.removeItem('bearhouse_token');
+                    window.location.href = '/login.html';
+                    return;
+                }
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const earnedXp = result.xp || currentTask.xp;
+                    closeModal();
+                    showSuccess(earnedXp);
+                    loadTasks(); // Reload to update cooldowns
+                } else {
+                    alert('Feil: ' + (result.error || 'Kunne ikke fullføre oppgave'));
+                }
+            } catch (err) {
+                console.error('Submit error:', err);
+                alert('Nettverksfeil. Prøv igjen.');
+            }
+            
+            btn.disabled = false;
+            btn.textContent = 'Fullfør ✓';
+        }
+
+        function showSuccess(xp) {
+            document.getElementById('success-xp').textContent = '+' + xp + ' XP';
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.add('active');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 2000);
+        }
+
+        // Close modal on background click
+        document.getElementById('task-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'task-modal') closeModal();
+        });
+
+        // Init
+        loadTasks();
+    </script>
+</body>
+</html>

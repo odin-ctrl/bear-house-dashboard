@@ -1,0 +1,1836 @@
+[
+  {
+    "userId": 99001,
+    "type": "quest_complete",
+    "data": {
+      "questId": "check-in",
+      "category": "daily",
+      "xp": 5
+    },
+    "timestamp": "2026-02-26T09:27:46.311Z"
+  },
+  {
+    "userId": 99001,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Quest: Sjekk inn",
+      "newTotal": 5,
+      "level": 1
+    },
+    "timestamp": "2026-02-26T09:27:46.303Z"
+  },
+  {
+    "userId": 50044,
+    "type": "quest_complete",
+    "data": {
+      "questId": "check-in",
+      "category": "daily",
+      "xp": 5
+    },
+    "timestamp": "2026-02-26T07:54:35.210Z"
+  },
+  {
+    "userId": 50044,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Quest: Sjekk inn",
+      "newTotal": 5,
+      "level": 1
+    },
+    "timestamp": "2026-02-26T07:54:35.206Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske personaltoalett",
+      "newTotal": 419,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:28:42.535Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 20,
+      "reason": "Oppgave: Rydde lageret",
+      "newTotal": 404,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:22:50.669Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Oppgave: Vanne planter",
+      "newTotal": 384,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:22:10.903Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske bordbein på bordene",
+      "newTotal": 379,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:19:30.815Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske oppå skap/kjøleskap på kjøkken",
+      "newTotal": 364,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:18:50.573Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Oppgave: Vanne planter",
+      "newTotal": 349,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:18:25.598Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 344,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:15:49.324Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 334,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:11:21.781Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 324,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T07:07:18.587Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 314,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T06:55:33.848Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 304,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T06:55:27.400Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 294,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T06:54:41.334Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 284,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T06:43:21.106Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Oppgave: Vanne planter",
+      "newTotal": 274,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T00:37:37.942Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 20,
+      "reason": "Oppgave: Vaske vinduer",
+      "newTotal": 269,
+      "level": 3
+    },
+    "timestamp": "2026-02-26T00:35:14.589Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske personaltoalett",
+      "newTotal": 249,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:26:53.319Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 234,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:26:40.907Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 224,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:10:46.910Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 214,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:08:48.937Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 204,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:04:53.142Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 194,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:03:51.945Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske personalrom",
+      "newTotal": 184,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:02:54.140Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 169,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:02:33.886Z"
+  },
+  {
+    "userId": 0,
+    "type": "quest_complete",
+    "data": {
+      "questId": "check-in",
+      "category": "daily",
+      "xp": 5
+    },
+    "timestamp": "2026-02-26T00:01:43.665Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Quest: Sjekk inn",
+      "newTotal": 159,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:01:43.660Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 154,
+      "level": 2
+    },
+    "timestamp": "2026-02-26T00:01:13.633Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 144,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T23:59:34.976Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Oppgave: Sette på klesvask",
+      "newTotal": 134,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T23:58:33.481Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 20,
+      "reason": "Oppgave: Rydde lageret",
+      "newTotal": 124,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T23:56:46.892Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Oppgave: Vaske personaltoalett",
+      "newTotal": 104,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T23:54:18.798Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 50,
+      "reason": "Oppgave: Få en 5-stjernes Google-anmeldelse",
+      "newTotal": 89,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T23:35:28.028Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 107,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T22:35:58.568Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 114,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T22:35:58.557Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 76,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T22:35:58.546Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 105,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T22:35:58.528Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 136,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T22:35:58.517Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 224 kr (mål: 210 kr)",
+      "newTotal": 114,
+      "level": 2
+    },
+    "timestamp": "2026-02-25T22:35:58.504Z"
+  },
+  {
+    "userId": 2,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 215 kr (mål: 210 kr)",
+      "newTotal": 10,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T22:29:26.408Z"
+  },
+  {
+    "userId": 1,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "💰 Høyt snitt! 215 kr (mål: 210 kr)",
+      "newTotal": 10,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T22:29:26.393Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 8,
+      "reason": "Quest: Tørk bord",
+      "newTotal": 39,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T21:21:02.672Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 8,
+      "reason": "Quest: Fyll på disken",
+      "newTotal": 31,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T21:20:55.332Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 8,
+      "reason": "Quest: Roter varer",
+      "newTotal": 23,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T21:20:54.376Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 15,
+      "reason": "Quest: Åpningsrutiner",
+      "newTotal": 15,
+      "level": 1
+    },
+    "timestamp": "2026-02-25T21:20:51.332Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-01"
+    },
+    "timestamp": "2026-02-01T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-02"
+    },
+    "timestamp": "2026-02-02T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-03"
+    },
+    "timestamp": "2026-02-03T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-04"
+    },
+    "timestamp": "2026-02-04T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-06"
+    },
+    "timestamp": "2026-02-06T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-06"
+    },
+    "timestamp": "2026-02-06T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-06"
+    },
+    "timestamp": "2026-02-06T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-06"
+    },
+    "timestamp": "2026-02-06T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-07"
+    },
+    "timestamp": "2026-02-07T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-07"
+    },
+    "timestamp": "2026-02-07T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-07"
+    },
+    "timestamp": "2026-02-07T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-07"
+    },
+    "timestamp": "2026-02-07T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-07"
+    },
+    "timestamp": "2026-02-07T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-08"
+    },
+    "timestamp": "2026-02-08T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-08"
+    },
+    "timestamp": "2026-02-08T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-08"
+    },
+    "timestamp": "2026-02-08T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-08"
+    },
+    "timestamp": "2026-02-08T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-08"
+    },
+    "timestamp": "2026-02-08T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-09"
+    },
+    "timestamp": "2026-02-09T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Streak-bonus (din dag 5)",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-10"
+    },
+    "timestamp": "2026-02-10T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 48099,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 47723,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 47721,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-14"
+    },
+    "timestamp": "2026-02-14T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49774,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 48099,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 47723,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 47721,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49893,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49892,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49913,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-15"
+    },
+    "timestamp": "2026-02-15T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-18"
+    },
+    "timestamp": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-18"
+    },
+    "timestamp": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-18"
+    },
+    "timestamp": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-18"
+    },
+    "timestamp": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-18"
+    },
+    "timestamp": "2026-02-18T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 47727,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49893,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49892,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49978,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49918,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-21"
+    },
+    "timestamp": "2026-02-21T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 47727,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49974,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49893,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49892,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49913,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49978,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49918,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-22"
+    },
+    "timestamp": "2026-02-22T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 47727,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 49974,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-23"
+    },
+    "timestamp": "2026-02-23T12:00:00.000Z"
+  },
+  {
+    "userId": 49889,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 48263,
+    "type": "xp",
+    "data": {
+      "amount": 2,
+      "reason": "Streak-bonus (din dag 2)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 49881,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 49963,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 48104,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 49886,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 47719,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 50075,
+    "type": "xp",
+    "data": {
+      "amount": 4,
+      "reason": "Streak-bonus (din dag 4)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 47727,
+    "type": "xp",
+    "data": {
+      "amount": 10,
+      "reason": "Jobbet budsjett-dag",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  },
+  {
+    "userId": 49974,
+    "type": "xp",
+    "data": {
+      "amount": 3,
+      "reason": "Streak-bonus (din dag 3)",
+      "date": "2026-02-24"
+    },
+    "timestamp": "2026-02-24T12:00:00.000Z"
+  }
+]

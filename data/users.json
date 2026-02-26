@@ -1,0 +1,579 @@
+[
+  {
+    "id": 0,
+    "username": "martin",
+    "firstName": "Martin",
+    "lastName": "Gaze",
+    "fullName": "Martin Gaze",
+    "password": "2308",
+    "role": "admin",
+    "location": "all",
+    "active": true,
+    "birthDate": "23.8.1986",
+    "hireDate": "2024-01-20"
+  },
+  {
+    "id": 47719,
+    "username": "agnieszka",
+    "firstName": "Agnieszka",
+    "lastName": "Nawrot",
+    "fullName": "Agnieszka Nawrot",
+    "email": "a.nawrot1989@gmail.com",
+    "phone": "+4796807100",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1301",
+    "birthDate": "13.1.1989",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.210Z",
+    "hireDate": "2024-02-01"
+  },
+  {
+    "id": 50114,
+    "username": "akvile",
+    "firstName": "Akvile",
+    "lastName": "Norkute",
+    "fullName": "Akvile Norkute",
+    "email": "akvile@msgeiendom.no",
+    "phone": "+4792531528",
+    "location": "hemsedal",
+    "departments": [
+      16761,
+      16851,
+      16852,
+      16853,
+      16854
+    ],
+    "password": "1210",
+    "birthDate": "12.10.1987",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2026-02-18"
+  },
+  {
+    "id": 49881,
+    "username": "albert",
+    "firstName": "Albert",
+    "lastName": "Morallos Villanueva",
+    "fullName": "Albert Morallos Villanueva",
+    "email": "albert18villanueva@gmail.com",
+    "phone": "+4740971465",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1802",
+    "birthDate": "18.2.1990",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-09-27"
+  },
+  {
+    "id": 48263,
+    "username": "elhana",
+    "firstName": "Elhana",
+    "lastName": "Kifle",
+    "fullName": "Elhana Kifle",
+    "email": "kifleelhana@gmail.com",
+    "phone": "+4748907222",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1706",
+    "birthDate": "17.6.2010",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-05-21"
+  },
+  {
+    "id": 50099,
+    "username": "eline",
+    "firstName": "Eline",
+    "lastName": "Brustad Smith",
+    "fullName": "Eline Brustad Smith",
+    "email": "elliebrustad@gmail.com",
+    "phone": "+4740312343",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "1509",
+    "birthDate": "15.9.2006",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2025-12-26"
+  },
+  {
+    "id": 49893,
+    "username": "ella",
+    "firstName": "Ella",
+    "lastName": "Ryno Petersson",
+    "fullName": "Ella Ryno Petersson",
+    "email": "ellapetersson@live.se",
+    "phone": "+4794450878",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2106",
+    "birthDate": "21.6.1998",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-10-28"
+  },
+  {
+    "id": 49963,
+    "username": "francesrexiejoybonilla",
+    "firstName": "Frances Rexie Joy Bonilla",
+    "lastName": "Cabangon",
+    "fullName": "Frances Rexie Joy Bonilla Cabangon",
+    "email": "cabangon_frances@yahoo.com",
+    "phone": "+4797275255",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "3006",
+    "birthDate": "30.6.1995",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2025-03-23"
+  },
+  {
+    "id": 48104,
+    "username": "geralyn",
+    "firstName": "Geralyn",
+    "lastName": "Esta Bratteng",
+    "fullName": "Geralyn Esta Bratteng",
+    "email": "geralynesta37@gmail.com",
+    "phone": "+4792163355",
+    "location": "nesbyen",
+    "departments": [
+      16761,
+      16851
+    ],
+    "password": "2012",
+    "birthDate": "20.12.1991",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-04-12"
+  },
+  {
+    "id": 50102,
+    "username": "henny",
+    "firstName": "Henny",
+    "lastName": "Evensen Wahl",
+    "fullName": "Henny Evensen Wahl",
+    "email": "hennywahl@icloud.com",
+    "phone": "+4792973002",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2810",
+    "birthDate": "28.10.2011",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2025-12-28"
+  },
+  {
+    "id": 50075,
+    "username": "ilija",
+    "firstName": "Ilija",
+    "lastName": "Boskovic",
+    "fullName": "Ilija Boskovic",
+    "email": "boskovic.ilija.ika@gmail.com",
+    "phone": "+4745344985",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1107",
+    "birthDate": "11.7.2010",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2025-09-18"
+  },
+  {
+    "id": 49886,
+    "username": "iryna",
+    "firstName": "Iryna",
+    "lastName": "Andriienko",
+    "fullName": "Iryna Andriienko",
+    "email": "irina_andrienko@ukr.net",
+    "phone": "+4792517320",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "2008",
+    "birthDate": "20.8.1981",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-11-01"
+  },
+  {
+    "id": 48099,
+    "username": "julie",
+    "firstName": "Julie",
+    "lastName": "Gullingsrud Juvhaugen",
+    "fullName": "Julie Gullingsrud Juvhaugen",
+    "email": "julie.juvhaugen@gmail.com",
+    "phone": "+4748383396",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "2504",
+    "birthDate": "25.4.2008",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2024-05-01"
+  },
+  {
+    "id": 49974,
+    "username": "lihaim",
+    "firstName": "Lihaim",
+    "lastName": "Kifle",
+    "fullName": "Lihaim Kifle",
+    "email": "lihaimkifle08@gmail.com",
+    "phone": "+4794462052",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "0502",
+    "birthDate": "5.2.2008",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2025-05-01"
+  },
+  {
+    "id": 48102,
+    "username": "maneewan",
+    "firstName": "Maneewan",
+    "lastName": "Gaze",
+    "fullName": "Maneewan Gaze",
+    "email": "m_nevrrn@hotmail.com",
+    "phone": "+4748672939",
+    "location": "nesbyen",
+    "departments": [
+      16851
+    ],
+    "password": "1207",
+    "birthDate": "12.7.1984",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.211Z",
+    "hireDate": "2023-07-01"
+  },
+  {
+    "id": 49762,
+    "username": "martin",
+    "firstName": "Martin Stuart",
+    "lastName": "Gaze",
+    "fullName": "Martin Stuart Gaze",
+    "email": "martin@msgeiendom.no",
+    "phone": "+4799301479",
+    "location": "hemsedal",
+    "departments": [
+      16761,
+      16851,
+      16854
+    ],
+    "password": "2308",
+    "birthDate": "23.8.1986",
+    "role": "admin",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-06-17"
+  },
+  {
+    "id": 47721,
+    "username": "martinz",
+    "firstName": "Martin",
+    "lastName": "Zacho Kuhnel",
+    "fullName": "Martin Zacho Kuhnel",
+    "email": "zacho1807@gmail.com",
+    "phone": "+4793620268",
+    "location": "nesbyen",
+    "departments": [
+      16761,
+      16851
+    ],
+    "password": "1807",
+    "birthDate": "18.7.1986",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-01-20"
+  },
+  {
+    "id": 49972,
+    "username": "mats",
+    "firstName": "Mats",
+    "lastName": "Gertsjan Lover",
+    "fullName": "Mats Gertsjan Lover",
+    "email": "matslover10@gmail.com",
+    "phone": "+4792141980",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "0406",
+    "birthDate": "4.6.2008",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z"
+  },
+  {
+    "id": 49788,
+    "username": "oliver",
+    "firstName": "Oliver",
+    "lastName": "Reitze",
+    "fullName": "Oliver Reitze",
+    "email": "reitze.oliver@gmail.com",
+    "phone": "+4794469416",
+    "location": "nesbyen",
+    "departments": [
+      16761,
+      16851
+    ],
+    "password": "2611",
+    "birthDate": "26.11.1990",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-06-28"
+  },
+  {
+    "id": 47723,
+    "username": "oscarcornelius",
+    "firstName": "Oscar Cornelius",
+    "lastName": "Ytteborg",
+    "fullName": "Oscar Cornelius Ytteborg",
+    "email": "oscarcornelis07@gmail.com",
+    "phone": "+4746285537",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "2412",
+    "birthDate": "24.12.2007",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-05-01"
+  },
+  {
+    "id": 47727,
+    "username": "oskartomasz",
+    "firstName": "Oskar Tomasz",
+    "lastName": "Jachym",
+    "fullName": "Oskar Tomasz Jachym",
+    "email": "oskarjachym08@gmail.com",
+    "phone": "+4796702822",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1212",
+    "birthDate": "12.12.2003",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2023-12-03"
+  },
+  {
+    "id": 50101,
+    "username": "pavlína",
+    "firstName": "Pavlína",
+    "lastName": "Loudová",
+    "fullName": "Pavlína Loudová",
+    "email": "loudovapa@gmail.com",
+    "phone": "+420720036299",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2706",
+    "birthDate": "27.6.2001",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2025-12-21"
+  },
+  {
+    "id": 49774,
+    "username": "ranveig",
+    "firstName": "Ranveig",
+    "lastName": "Haugen",
+    "fullName": "Ranveig Haugen",
+    "email": "ranveig@msgeiendom.no",
+    "phone": "+4745283466",
+    "location": "hemsedal",
+    "departments": [
+      16761,
+      16851,
+      16852,
+      16853,
+      16854
+    ],
+    "password": "1304",
+    "birthDate": "13.4.1986",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-07-01"
+  },
+  {
+    "id": 49918,
+    "username": "rebecca",
+    "firstName": "Rebecca",
+    "lastName": "Maria Brix Foster",
+    "fullName": "Rebecca Maria Brix Foster",
+    "email": "fosterrebecca935@gmail.com",
+    "phone": "+4741276205",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2208",
+    "birthDate": "22.8.2008",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-12-19"
+  },
+  {
+    "id": 49889,
+    "username": "sara",
+    "firstName": "Sara",
+    "lastName": "Beugelsdijk",
+    "fullName": "Sara Beugelsdijk",
+    "email": "sarabird17@gmail.com",
+    "phone": "+4792126390",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1707",
+    "birthDate": "17.7.2007",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2025-03-12"
+  },
+  {
+    "id": 49978,
+    "username": "sarah",
+    "firstName": "Sarah",
+    "lastName": "Løkken",
+    "fullName": "Sarah Løkken",
+    "email": "lokkensarah171@gmail.com",
+    "phone": "+47908 21 292",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "1612",
+    "birthDate": "16.12.2007",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2025-04-18"
+  },
+  {
+    "id": 49913,
+    "username": "tilde",
+    "firstName": "Tilde",
+    "lastName": "Plejdrup-Skillestad",
+    "fullName": "Tilde Plejdrup-Skillestad",
+    "email": "tildeplejskillestad@gmail.com",
+    "phone": "+4798060087",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2611",
+    "birthDate": "26.11.2010",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-12-15"
+  },
+  {
+    "id": 50044,
+    "username": "torstein",
+    "firstName": "Torstein",
+    "lastName": "Johnsen",
+    "fullName": "Torstein Johnsen",
+    "email": "torstein@unibak.no",
+    "phone": "+4792292251",
+    "location": "hemsedal",
+    "departments": [
+      16761,
+      16851,
+      16854
+    ],
+    "password": "2605",
+    "birthDate": "26.5.1985",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z"
+  },
+  {
+    "id": 49892,
+    "username": "williamscott",
+    "firstName": "William Scott",
+    "lastName": "Brix Foster",
+    "fullName": "William Scott Brix Foster",
+    "email": "williamscott@live.dk",
+    "phone": "+4797319478",
+    "location": "hemsedal",
+    "departments": [
+      16854
+    ],
+    "password": "2409",
+    "birthDate": "24.9.1999",
+    "role": "employee",
+    "active": true,
+    "syncedAt": "2026-02-24T14:22:00.212Z",
+    "hireDate": "2024-10-28"
+  },
+  {
+    "id": 99001,
+    "username": "michail",
+    "firstName": "Michail",
+    "lastName": "",
+    "fullName": "Michail",
+    "email": "",
+    "phone": "",
+    "location": "nesbyen",
+    "departments": [
+      16761
+    ],
+    "password": "1308",
+    "birthDate": "13.8.1985",
+    "role": "employee",
+    "active": true,
+    "manuallyAdded": true,
+    "syncedAt": "2026-02-24T14:29:50.003Z"
+  }
+]

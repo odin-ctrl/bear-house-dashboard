@@ -1,0 +1,3572 @@
+{
+  "meta": {
+    "lastUpdated": "2026-02-26T17:24:53.181Z",
+    "resetReason": "February XP - excluded production dept"
+  },
+  "users": {
+    "0": {
+      "odatUserId": 0,
+      "username": "martin",
+      "fullName": "Martin Gaze",
+      "location": "all",
+      "totalXp": 419,
+      "level": 3,
+      "xpToNextLevel": 31,
+      "currentStreak": 2,
+      "longestStreak": 2,
+      "lastLoginDate": "2026-02-26",
+      "questsCompleted": 6,
+      "questHistory": [
+        {
+          "questId": "opening-routine",
+          "category": "daily",
+          "xp": 15,
+          "completedAt": "2026-02-25T21:20:51.323Z"
+        },
+        {
+          "questId": "display-rotate",
+          "category": "daily",
+          "xp": 8,
+          "completedAt": "2026-02-25T21:20:54.369Z"
+        },
+        {
+          "questId": "display-refresh",
+          "category": "daily",
+          "xp": 8,
+          "completedAt": "2026-02-25T21:20:55.327Z"
+        },
+        {
+          "questId": "clean-tables",
+          "category": "daily",
+          "xp": 8,
+          "completedAt": "2026-02-25T21:21:02.665Z"
+        },
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-02-26T00:01:43.653Z"
+        }
+      ],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:21:22.770Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 9,
+      "closingRoutines": 0,
+      "cleaningQuests": 1,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 2,
+        "drift": 1,
+        "renhold": 1,
+        "utstyr": 0,
+        "haccp": 1,
+        "salg": 1,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [
+        "check-in"
+      ],
+      "dailyXpToday": 275,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 275,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 419,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:21:22.770Z",
+      "updatedAt": "2026-02-26T16:38:33.192Z"
+    },
+    "1": {
+      "odatUserId": 1,
+      "username": "unknown",
+      "fullName": "Unknown User",
+      "location": "nesbyen",
+      "totalXp": 10,
+      "level": 1,
+      "xpToNextLevel": 90,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T22:29:26.384Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 10,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 10,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 10,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T22:29:26.384Z",
+      "updatedAt": "2026-02-25T22:29:26.395Z",
+      "avgTicketDays": 1
+    },
+    "2": {
+      "odatUserId": 2,
+      "username": "unknown",
+      "fullName": "Unknown User",
+      "location": "nesbyen",
+      "totalXp": 10,
+      "level": 1,
+      "xpToNextLevel": 90,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T22:29:26.399Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 10,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 10,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 10,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T22:29:26.400Z",
+      "updatedAt": "2026-02-25T22:29:26.409Z",
+      "avgTicketDays": 1
+    },
+    "47719": {
+      "odatUserId": 47719,
+      "username": "agnieszka",
+      "fullName": "Agnieszka Nawrot",
+      "location": "nesbyen",
+      "totalXp": 114,
+      "level": 2,
+      "xpToNextLevel": 136,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.600Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 114,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.600Z",
+      "updatedAt": "2026-02-26T09:01:21.550Z",
+      "avgTicketDays": 1
+    },
+    "47721": {
+      "odatUserId": 47721,
+      "fullName": "Martin Zacho Kuhnel",
+      "username": "martin",
+      "location": "nesbyen",
+      "totalXp": 12,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 88,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-26T08:54:33.252Z"
+    },
+    "47723": {
+      "odatUserId": 47723,
+      "fullName": "Oscar Cornelius Ytteborg",
+      "username": "oscar",
+      "location": "nesbyen",
+      "totalXp": 12,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 12,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 88,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "47727": {
+      "odatUserId": 47727,
+      "fullName": "Oskar Tomasz Jachym",
+      "username": "oskar",
+      "location": "nesbyen",
+      "totalXp": 33,
+      "weeklyXpThisWeek": 33,
+      "monthlyXpThisMonth": 33,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 67,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "48099": {
+      "odingaze": 48099,
+      "username": "julie",
+      "fullName": "Julie Gullingsrud Juvhaugen",
+      "location": "nesbyen",
+      "totalXp": 12,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 12,
+      "dailyXpToday": 0,
+      "level": 1,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "xpToNextLevel": 88
+    },
+    "48102": {
+      "odingaze": 48102,
+      "username": "maneewan",
+      "fullName": "Maneewan Gaze",
+      "location": "nesbyen",
+      "totalXp": 0,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "xpToNextLevel": 100
+    },
+    "48104": {
+      "odingaze": 48104,
+      "username": "geralyn",
+      "fullName": "Geralyn Esta Bratteng",
+      "location": "nesbyen",
+      "totalXp": 136,
+      "weeklyXpThisWeek": 36,
+      "monthlyXpThisMonth": 136,
+      "dailyXpToday": 0,
+      "level": 2,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "xpToNextLevel": 114,
+      "updatedAt": "2026-02-26T17:24:53.181Z",
+      "questHistory": [],
+      "avgTicketDays": 1
+    },
+    "48263": {
+      "odatUserId": 48263,
+      "username": "elhana",
+      "fullName": "Elhana Kifle",
+      "location": "nesbyen",
+      "totalXp": 55,
+      "level": 1,
+      "xpToNextLevel": 45,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.618Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 12,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 55,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.618Z",
+      "updatedAt": "2026-02-25T20:25:56.620Z"
+    },
+    "49774": {
+      "odatUserId": 49774,
+      "fullName": "Ranveig Haugen",
+      "username": "ranveig",
+      "location": "nesbyen",
+      "totalXp": 107,
+      "weeklyXpThisWeek": 10,
+      "monthlyXpThisMonth": 10,
+      "dailyXpToday": 10,
+      "level": 2,
+      "xpToNextLevel": 143,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0,
+      "avgTicketDays": 1,
+      "updatedAt": "2026-02-25T22:35:58.569Z",
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1"
+    },
+    "49788": {
+      "odatUserId": 49788,
+      "username": "oliver",
+      "fullName": "Oliver Reitze",
+      "location": "nesbyen",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:28:11.949Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:28:11.949Z",
+      "updatedAt": "2026-02-26T08:54:33.245Z"
+    },
+    "49881": {
+      "odingaze": 49881,
+      "username": "albert",
+      "fullName": "Albert Morallos Villanueva",
+      "location": "nesbyen",
+      "totalXp": 76,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 76,
+      "dailyXpToday": 10,
+      "level": 1,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-22",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "xpToNextLevel": 24,
+      "updatedAt": "2026-02-25T23:59:45.569Z",
+      "questHistory": [],
+      "avgTicketDays": 1
+    },
+    "49886": {
+      "odingaze": 49886,
+      "username": "iryna",
+      "fullName": "Iryna Andriienko",
+      "location": "nesbyen",
+      "totalXp": 114,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 114,
+      "dailyXpToday": 0,
+      "level": 2,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-26T17:24:53.163Z",
+      "questHistory": [],
+      "xpToNextLevel": 136,
+      "avgTicketDays": 1
+    },
+    "49889": {
+      "odatUserId": 49889,
+      "fullName": "Sara Beugelsdijk",
+      "username": "sara",
+      "location": "nesbyen",
+      "totalXp": 118,
+      "weeklyXpThisWeek": 27,
+      "monthlyXpThisMonth": 118,
+      "dailyXpToday": 0,
+      "level": 2,
+      "xpToNextLevel": 132,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "49892": {
+      "odatUserId": 49892,
+      "fullName": "William Scott Brix Foster",
+      "username": "william",
+      "location": "hemsedal",
+      "totalXp": 30,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 70,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-26T17:17:41.924Z"
+    },
+    "49893": {
+      "odatUserId": 49893,
+      "username": "ella",
+      "fullName": "Ella Ryno Petersson",
+      "location": "hemsedal",
+      "totalXp": 30,
+      "level": 1,
+      "xpToNextLevel": 70,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.629Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 20,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 30,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.629Z",
+      "updatedAt": "2026-02-26T17:17:41.906Z"
+    },
+    "49913": {
+      "odatUserId": 49913,
+      "fullName": "Tilde Plejdrup-Skillestad",
+      "username": "tilde",
+      "location": "hemsedal",
+      "totalXp": 20,
+      "weeklyXpThisWeek": 10,
+      "monthlyXpThisMonth": 20,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 80,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "49918": {
+      "odatUserId": 49918,
+      "fullName": "Rebecca Maria Brix Foster",
+      "username": "rebecca",
+      "location": "hemsedal",
+      "totalXp": 12,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 88,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-26T17:17:41.915Z"
+    },
+    "49963": {
+      "odatUserId": 49963,
+      "username": "francesrexiejoybonilla",
+      "fullName": "Frances Rexie Joy Bonilla Cabangon",
+      "location": "nesbyen",
+      "totalXp": 105,
+      "level": 2,
+      "xpToNextLevel": 145,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.636Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 105,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.636Z",
+      "updatedAt": "2026-02-26T17:24:53.172Z",
+      "avgTicketDays": 1
+    },
+    "49972": {
+      "odingaze": 49972,
+      "username": "mats",
+      "fullName": "Mats Gertsjan Lover",
+      "location": "nesbyen",
+      "totalXp": 0,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "xpToNextLevel": 100
+    },
+    "49974": {
+      "odatUserId": 49974,
+      "fullName": "Lihaim Kifle",
+      "username": "lihaim",
+      "location": "nesbyen",
+      "totalXp": 15,
+      "weeklyXpThisWeek": 15,
+      "monthlyXpThisMonth": 15,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 85,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "49978": {
+      "odatUserId": 49978,
+      "fullName": "Sarah Løkken",
+      "username": "sarah",
+      "location": "hemsedal",
+      "totalXp": 20,
+      "weeklyXpThisWeek": 20,
+      "monthlyXpThisMonth": 20,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 80,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "50044": {
+      "odingaze": 50044,
+      "username": "torstein",
+      "fullName": "Torstein Johnsen",
+      "location": "hemsedal",
+      "totalXp": 5,
+      "weeklyXpThisWeek": 5,
+      "monthlyXpThisMonth": 5,
+      "dailyXpToday": 5,
+      "level": 1,
+      "currentStreak": 1,
+      "questsCompleted": 1,
+      "questHistory": [
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-02-26T07:54:35.197Z"
+        }
+      ],
+      "xpToNextLevel": 95,
+      "lastLoginDate": "2026-02-26",
+      "updatedAt": "2026-02-26T08:38:51.359Z",
+      "dailyQuestsToday": [
+        "check-in"
+      ],
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1"
+    },
+    "50075": {
+      "odatUserId": 50075,
+      "fullName": "Ilija Boskovic",
+      "username": "ilija",
+      "location": "nesbyen",
+      "totalXp": 31,
+      "weeklyXpThisWeek": 19,
+      "monthlyXpThisMonth": 31,
+      "dailyXpToday": 0,
+      "level": 1,
+      "xpToNextLevel": 69,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "currentStreak": 0
+    },
+    "50099": {
+      "odatUserId": 50099,
+      "username": "eline",
+      "fullName": "Eline Brustad Smith",
+      "location": "hemsedal",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.623Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.624Z",
+      "updatedAt": "2026-02-26T17:17:41.933Z"
+    },
+    "50101": {
+      "odatUserId": 50101,
+      "username": "pavlína",
+      "fullName": "Pavlína Loudová",
+      "location": "hemsedal",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:44:32.524Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:44:32.524Z",
+      "updatedAt": "2026-02-25T20:44:38.124Z"
+    },
+    "50102": {
+      "odatUserId": 50102,
+      "username": "henny",
+      "fullName": "Henny Evensen Wahl",
+      "location": "hemsedal",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.647Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.647Z",
+      "updatedAt": "2026-02-25T20:25:56.653Z"
+    },
+    "50114": {
+      "odatUserId": 50114,
+      "username": "akvile",
+      "fullName": "Akvile Norkute",
+      "location": "hemsedal",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:25:56.605Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:25:56.605Z",
+      "updatedAt": "2026-02-25T20:25:56.609Z"
+    },
+    "99001": {
+      "odatUserId": 99001,
+      "username": "michail",
+      "fullName": "Michail",
+      "location": "nesbyen",
+      "totalXp": 5,
+      "level": 1,
+      "xpToNextLevel": 95,
+      "currentStreak": 1,
+      "longestStreak": 0,
+      "lastLoginDate": "2026-02-26",
+      "questsCompleted": 1,
+      "questHistory": [
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-02-26T09:27:46.297Z"
+        }
+      ],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-26T09:27:46.288Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 1,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [
+        "check-in"
+      ],
+      "dailyXpToday": 5,
+      "lastDailyReset": "2026-02-26",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 5,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 5,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-26T09:27:46.288Z",
+      "updatedAt": "2026-02-26T09:27:46.656Z"
+    },
+    "undefined": {
+      "odingaze": null,
+      "username": "martin",
+      "fullName": "Martin Gaze",
+      "location": "all",
+      "totalXp": 0,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
+      "dailyXpToday": 0,
+      "level": 1,
+      "currentStreak": 0,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "xpToNextLevel": 100
+    },
+    "NaN": {
+      "odatUserId": null,
+      "username": "unknown",
+      "fullName": "Unknown User",
+      "location": "nesbyen",
+      "totalXp": 0,
+      "level": 1,
+      "xpToNextLevel": 100,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastLoginDate": null,
+      "questsCompleted": 0,
+      "questHistory": [],
+      "achievements": [
+        "first-login"
+      ],
+      "achievementDates": {
+        "first-login": "2026-02-25T20:51:03.137Z"
+      },
+      "fiveStarReviews": 0,
+      "badReviews": 0,
+      "teamWins": 0,
+      "earlyLogins": 0,
+      "closingRoutines": 0,
+      "cleaningQuests": 0,
+      "budgetDays": 0,
+      "recordDays": 0,
+      "mentorSessions": 0,
+      "problemsSolved": 0,
+      "perfectWeeks": 0,
+      "perfectMonths": 0,
+      "haccpStreak": 0,
+      "zeroWasteDays": 0,
+      "categoryStats": {
+        "basis": 0,
+        "drift": 0,
+        "renhold": 0,
+        "utstyr": 0,
+        "haccp": 0,
+        "salg": 0,
+        "service": 0,
+        "admin": 0,
+        "team": 0,
+        "opplæring": 0,
+        "markedsføring": 0,
+        "uteområde": 0,
+        "miljø": 0,
+        "sikkerhet": 0,
+        "produksjon": 0,
+        "innovasjon": 0,
+        "bærekraft": 0,
+        "sesong": 0
+      },
+      "dailyQuestsToday": [],
+      "dailyXpToday": 0,
+      "lastDailyReset": "2026-02-25",
+      "weeklyQuestsThisWeek": [],
+      "weeklyXpThisWeek": 0,
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "monthlyXpThisMonth": 0,
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "createdAt": "2026-02-25T20:51:03.137Z",
+      "updatedAt": "2026-02-25T20:51:03.137Z"
+    }
+  },
+  "quests": {
+    "daily": [
+      {
+        "id": "check-in",
+        "name": "Sjekk inn",
+        "description": "Logg inn på dashbordet",
+        "xp": 5,
+        "icon": "👋",
+        "autoComplete": true,
+        "category": "basis"
+      },
+      {
+        "id": "opening-routine",
+        "name": "Åpningsrutiner",
+        "description": "Fullfør alle åpningsoppgaver",
+        "xp": 15,
+        "icon": "🌅",
+        "category": "drift"
+      },
+      {
+        "id": "closing-routine",
+        "name": "Stengerutiner",
+        "description": "Fullfør alle stengeoppgaver",
+        "xp": 15,
+        "icon": "🌙",
+        "category": "drift"
+      },
+      {
+        "id": "temp-log-morning",
+        "name": "Temperaturlogg morgen",
+        "description": "Loggfør temperatur i kjøl/frys kl 07",
+        "xp": 10,
+        "icon": "🌡️",
+        "category": "haccp"
+      },
+      {
+        "id": "temp-log-afternoon",
+        "name": "Temperaturlogg ettermiddag",
+        "description": "Loggfør temperatur i kjøl/frys kl 14",
+        "xp": 10,
+        "icon": "🌡️",
+        "category": "haccp"
+      },
+      {
+        "id": "display-refresh",
+        "name": "Fyll på disken",
+        "description": "Hold diskene fulle og innbydende",
+        "xp": 8,
+        "icon": "🥐",
+        "category": "salg"
+      },
+      {
+        "id": "display-rotate",
+        "name": "Roter varer",
+        "description": "Flytt eldre varer frem (FIFO)",
+        "xp": 8,
+        "icon": "🔄",
+        "category": "haccp"
+      },
+      {
+        "id": "clean-tables",
+        "name": "Tørk bord",
+        "description": "Tørk av alle bord etter kunder",
+        "xp": 8,
+        "icon": "🧹",
+        "category": "renhold"
+      },
+      {
+        "id": "clean-counter",
+        "name": "Rens disk",
+        "description": "Tørk av betjeningsdisken",
+        "xp": 5,
+        "icon": "✨",
+        "category": "renhold"
+      },
+      {
+        "id": "clean-floor-sweep",
+        "name": "Fei gulvet",
+        "description": "Fei kundeområdet",
+        "xp": 8,
+        "icon": "🧹",
+        "category": "renhold"
+      },
+      {
+        "id": "clean-floor-mop",
+        "name": "Mopp gulvet",
+        "description": "Mopp kundeområdet ved stenging",
+        "xp": 10,
+        "icon": "🧽",
+        "category": "renhold"
+      },
+      {
+        "id": "clean-toilet",
+        "name": "Toalettsjekk",
+        "description": "Sjekk og rydd toalettet 2x daglig",
+        "xp": 10,
+        "icon": "🚽",
+        "category": "renhold"
+      },
+      {
+        "id": "empty-trash",
+        "name": "Tøm søppel",
+        "description": "Tøm alle søppelbøtter",
+        "xp": 8,
+        "icon": "🗑️",
+        "category": "renhold"
+      },
+      {
+        "id": "coffee-machine-clean",
+        "name": "Kaffemaskinen",
+        "description": "Tøm grut, tørk steam-lansen",
+        "xp": 10,
+        "icon": "☕",
+        "category": "utstyr"
+      },
+      {
+        "id": "coffee-grinder-clean",
+        "name": "Kvern-rengjøring",
+        "description": "Børst kaffekvernen",
+        "xp": 8,
+        "icon": "⚙️",
+        "category": "utstyr"
+      },
+      {
+        "id": "mixer-clean",
+        "name": "Mikser-vask",
+        "description": "Vask mikser/røremaskin",
+        "xp": 10,
+        "icon": "🔧",
+        "category": "utstyr"
+      },
+      {
+        "id": "oven-wipe",
+        "name": "Ovn avtørking",
+        "description": "Tørk av ovnsdør og panel",
+        "xp": 8,
+        "icon": "🔥",
+        "category": "utstyr"
+      },
+      {
+        "id": "upsell-5",
+        "name": "Mersalg x5",
+        "description": "Tilby oppgradering til 5 kunder",
+        "xp": 12,
+        "icon": "💰",
+        "category": "salg"
+      },
+      {
+        "id": "smile-service",
+        "name": "Smil-service",
+        "description": "Gi ekstra god service hele dagen",
+        "xp": 10,
+        "icon": "😊",
+        "category": "service"
+      },
+      {
+        "id": "greet-customers",
+        "name": "Hilsen",
+        "description": "Si hei til alle kunder som kommer inn",
+        "xp": 8,
+        "icon": "👋",
+        "category": "service"
+      },
+      {
+        "id": "check-expiry",
+        "name": "Datokontroll",
+        "description": "Sjekk holdbarhetsdatoer i kjøl",
+        "xp": 10,
+        "icon": "📅",
+        "category": "haccp"
+      },
+      {
+        "id": "allergen-check",
+        "name": "Allergenkontroll",
+        "description": "Verifiser allergenmerking på nye varer",
+        "xp": 8,
+        "icon": "⚠️",
+        "category": "haccp"
+      },
+      {
+        "id": "bank-cash",
+        "name": "Kasseoppgjør",
+        "description": "Tell opp og dokumenter kassen",
+        "xp": 12,
+        "icon": "💵",
+        "category": "admin"
+      },
+      {
+        "id": "waste-log",
+        "name": "Svinnlogg",
+        "description": "Loggfør dagens svinn",
+        "xp": 8,
+        "icon": "📝",
+        "category": "admin"
+      }
+    ],
+    "weekly": [
+      {
+        "id": "table-legs",
+        "name": "Bordbein",
+        "description": "Vask alle bordbein grundig",
+        "xp": 20,
+        "icon": "🦵",
+        "category": "renhold"
+      },
+      {
+        "id": "chair-clean",
+        "name": "Stolrengjøring",
+        "description": "Vask alle stoler",
+        "xp": 18,
+        "icon": "🪑",
+        "category": "renhold"
+      },
+      {
+        "id": "oven-windows",
+        "name": "Ovnsvinduer",
+        "description": "Puss ovnsvinduene innvendig",
+        "xp": 25,
+        "icon": "🔥",
+        "category": "utstyr"
+      },
+      {
+        "id": "oven-deep-clean",
+        "name": "Ovn dyprens",
+        "description": "Dyprens ovn innvendig",
+        "xp": 35,
+        "icon": "🧽",
+        "category": "utstyr"
+      },
+      {
+        "id": "laundry",
+        "name": "Klesvask",
+        "description": "Vask alle kluter, håndklær og forkler",
+        "xp": 15,
+        "icon": "👕",
+        "category": "renhold"
+      },
+      {
+        "id": "toilet-deep",
+        "name": "Toalett dyprens",
+        "description": "Dyprens toalettene grundig",
+        "xp": 30,
+        "icon": "🚽",
+        "category": "renhold"
+      },
+      {
+        "id": "plants-water",
+        "name": "Vann plantene",
+        "description": "Vann alle planter",
+        "xp": 10,
+        "icon": "🌿",
+        "category": "miljø"
+      },
+      {
+        "id": "plants-dust",
+        "name": "Støv av planter",
+        "description": "Tørk støv av bladene",
+        "xp": 12,
+        "icon": "🌱",
+        "category": "miljø"
+      },
+      {
+        "id": "windows-inside",
+        "name": "Innvendige vinduer",
+        "description": "Puss innvendige vinduer",
+        "xp": 25,
+        "icon": "🪟",
+        "category": "renhold"
+      },
+      {
+        "id": "mirrors",
+        "name": "Speil",
+        "description": "Puss alle speil",
+        "xp": 12,
+        "icon": "🪞",
+        "category": "renhold"
+      },
+      {
+        "id": "snow-clearing",
+        "name": "Snømåking",
+        "description": "Måk snø ved inngang",
+        "xp": 35,
+        "icon": "❄️",
+        "category": "uteområde",
+        "seasonal": "winter"
+      },
+      {
+        "id": "salt-entrance",
+        "name": "Salt/strø inngang",
+        "description": "Strø ved inngang når glatt",
+        "xp": 15,
+        "icon": "🧂",
+        "category": "uteområde",
+        "seasonal": "winter"
+      },
+      {
+        "id": "outdoor-sweep",
+        "name": "Fei uteområde",
+        "description": "Fei terrasse/inngangsparti",
+        "xp": 20,
+        "icon": "🍂",
+        "category": "uteområde"
+      },
+      {
+        "id": "inventory-check",
+        "name": "Lagersjekk",
+        "description": "Tell og rapporter lagerbeholdning",
+        "xp": 20,
+        "icon": "📦",
+        "category": "admin"
+      },
+      {
+        "id": "order-supplies",
+        "name": "Bestill varer",
+        "description": "Legg inn bestilling hos leverandør",
+        "xp": 15,
+        "icon": "📋",
+        "category": "admin"
+      },
+      {
+        "id": "coffee-backflush",
+        "name": "Backflush kaffe",
+        "description": "Backflush kaffemaskinen med rensemiddel",
+        "xp": 20,
+        "icon": "☕",
+        "category": "utstyr"
+      },
+      {
+        "id": "steam-wand-deep",
+        "name": "Steam-lansen dyprens",
+        "description": "Bløtlegg og rens steam-lansen",
+        "xp": 18,
+        "icon": "💨",
+        "category": "utstyr"
+      },
+      {
+        "id": "grinder-deep-clean",
+        "name": "Kvern demontering",
+        "description": "Demonter og rens kaffekvernen",
+        "xp": 25,
+        "icon": "⚙️",
+        "category": "utstyr"
+      },
+      {
+        "id": "fridge-organize",
+        "name": "Kjøleskap organisering",
+        "description": "Rydd og organiser kjøleskapet",
+        "xp": 22,
+        "icon": "🧊",
+        "category": "renhold"
+      },
+      {
+        "id": "fridge-wipe",
+        "name": "Kjøleskap avtørking",
+        "description": "Tørk av hyller i kjøleskapet",
+        "xp": 18,
+        "icon": "✨",
+        "category": "renhold"
+      },
+      {
+        "id": "freezer-organize",
+        "name": "Fryser organisering",
+        "description": "Rydd og organiser fryseren",
+        "xp": 22,
+        "icon": "🥶",
+        "category": "renhold"
+      },
+      {
+        "id": "storage-organize",
+        "name": "Lager organisering",
+        "description": "Rydd og organiser tørrlager",
+        "xp": 20,
+        "icon": "🗄️",
+        "category": "renhold"
+      },
+      {
+        "id": "bins-clean",
+        "name": "Søppeldunker",
+        "description": "Vask søppeldunkene innvendig",
+        "xp": 22,
+        "icon": "🗑️",
+        "category": "renhold"
+      },
+      {
+        "id": "sink-descale",
+        "name": "Vask avkalking",
+        "description": "Avkalk kraner og vask",
+        "xp": 18,
+        "icon": "🚰",
+        "category": "renhold"
+      },
+      {
+        "id": "drain-clean",
+        "name": "Avløp rens",
+        "description": "Rens alle avløp med enzymrens",
+        "xp": 20,
+        "icon": "🕳️",
+        "category": "renhold"
+      },
+      {
+        "id": "cutting-boards",
+        "name": "Skjærefjøler",
+        "description": "Desinfiser alle skjærefjøler",
+        "xp": 15,
+        "icon": "🔪",
+        "category": "haccp"
+      },
+      {
+        "id": "haccp-review",
+        "name": "HACCP gjennomgang",
+        "description": "Gjennomgå ukens HACCP-logger",
+        "xp": 20,
+        "icon": "📋",
+        "category": "haccp"
+      },
+      {
+        "id": "menu-board-clean",
+        "name": "Menytavle",
+        "description": "Puss/oppdater menytavlen",
+        "xp": 15,
+        "icon": "📝",
+        "category": "salg"
+      },
+      {
+        "id": "price-tags-check",
+        "name": "Prislapper",
+        "description": "Sjekk at alle prislapper er riktige",
+        "xp": 12,
+        "icon": "🏷️",
+        "category": "salg"
+      },
+      {
+        "id": "some-post",
+        "name": "SoMe innlegg",
+        "description": "Legg ut på Instagram/Facebook",
+        "xp": 18,
+        "icon": "📱",
+        "category": "markedsføring"
+      },
+      {
+        "id": "review-respond",
+        "name": "Svar på anmeldelser",
+        "description": "Svar på nye Google-anmeldelser",
+        "xp": 20,
+        "icon": "💬",
+        "category": "service"
+      }
+    ],
+    "monthly": [
+      {
+        "id": "fridge-deep-clean",
+        "name": "Kjøleskap dyprens",
+        "description": "Ta ut alt, vask hele kjøleskapet",
+        "xp": 60,
+        "icon": "🧊",
+        "category": "renhold"
+      },
+      {
+        "id": "freezer-defrost",
+        "name": "Fryser avriming",
+        "description": "Avrim og dyprens fryseren",
+        "xp": 70,
+        "icon": "🥶",
+        "category": "renhold"
+      },
+      {
+        "id": "freezer-filter",
+        "name": "Fryser-filter",
+        "description": "Bytt eller rens fryserfilter",
+        "xp": 40,
+        "icon": "🔧",
+        "category": "utstyr"
+      },
+      {
+        "id": "cabinet-organize",
+        "name": "Skaporganisering",
+        "description": "Rydd og organiser alle skap",
+        "xp": 50,
+        "icon": "🗄️",
+        "category": "renhold"
+      },
+      {
+        "id": "deep-clean-floor",
+        "name": "Gulv maskinvask",
+        "description": "Dyprens gulvet med maskin",
+        "xp": 70,
+        "icon": "🧽",
+        "category": "renhold"
+      },
+      {
+        "id": "walls-clean",
+        "name": "Veggvask",
+        "description": "Vask vegger bak utstyr",
+        "xp": 50,
+        "icon": "🧱",
+        "category": "renhold"
+      },
+      {
+        "id": "ceiling-clean",
+        "name": "Tak og ventiler",
+        "description": "Støvsug tak og ventilasjonsrister",
+        "xp": 45,
+        "icon": "🔝",
+        "category": "renhold"
+      },
+      {
+        "id": "light-fixtures",
+        "name": "Lysarmatur",
+        "description": "Rens alle lysarmaturer",
+        "xp": 40,
+        "icon": "💡",
+        "category": "renhold"
+      },
+      {
+        "id": "extractor-hood",
+        "name": "Avtrekksvifte",
+        "description": "Rens avtrekksvifte og filter",
+        "xp": 55,
+        "icon": "🌀",
+        "category": "utstyr"
+      },
+      {
+        "id": "behind-equipment",
+        "name": "Bak utstyr",
+        "description": "Flytt utstyr og vask bak",
+        "xp": 65,
+        "icon": "🔙",
+        "category": "renhold"
+      },
+      {
+        "id": "under-equipment",
+        "name": "Under utstyr",
+        "description": "Vask under alt tungt utstyr",
+        "xp": 60,
+        "icon": "⬇️",
+        "category": "renhold"
+      },
+      {
+        "id": "coffee-descale",
+        "name": "Avkalk kaffemaskin",
+        "description": "Kjør avkalkingsprogram på kaffemaskinen",
+        "xp": 45,
+        "icon": "☕",
+        "category": "utstyr"
+      },
+      {
+        "id": "oven-calibrate",
+        "name": "Ovn kalibrering",
+        "description": "Sjekk at ovnstemperatur er riktig",
+        "xp": 35,
+        "icon": "🌡️",
+        "category": "utstyr"
+      },
+      {
+        "id": "mixer-maintenance",
+        "name": "Mikser vedlikehold",
+        "description": "Smør og sjekk mikser/røremaskin",
+        "xp": 40,
+        "icon": "🔧",
+        "category": "utstyr"
+      },
+      {
+        "id": "dishwasher-clean",
+        "name": "Oppvaskmaskin",
+        "description": "Dyprens oppvaskmaskinen",
+        "xp": 45,
+        "icon": "🍽️",
+        "category": "utstyr"
+      },
+      {
+        "id": "water-filter",
+        "name": "Vannfilter",
+        "description": "Bytt vannfilter på kaffemaskin",
+        "xp": 30,
+        "icon": "💧",
+        "category": "utstyr"
+      },
+      {
+        "id": "pest-inspection",
+        "name": "Skadedyrinspeksjon",
+        "description": "Sjekk for tegn på skadedyr",
+        "xp": 35,
+        "icon": "🐜",
+        "category": "haccp"
+      },
+      {
+        "id": "fire-extinguisher",
+        "name": "Brannslukker",
+        "description": "Sjekk brannslukkere og merking",
+        "xp": 25,
+        "icon": "🧯",
+        "category": "sikkerhet"
+      },
+      {
+        "id": "first-aid-kit",
+        "name": "Førstehjelpsskrin",
+        "description": "Sjekk og fyll på førstehjelpsutstyr",
+        "xp": 20,
+        "icon": "🩹",
+        "category": "sikkerhet"
+      },
+      {
+        "id": "emergency-exits",
+        "name": "Nødutganger",
+        "description": "Sjekk at nødutganger er frie",
+        "xp": 15,
+        "icon": "🚪",
+        "category": "sikkerhet"
+      },
+      {
+        "id": "menu-training",
+        "name": "Menytrening",
+        "description": "Øv på hele menyen med teamet",
+        "xp": 35,
+        "icon": "📋",
+        "category": "opplæring"
+      },
+      {
+        "id": "equipment-check",
+        "name": "Utstyrssjekk",
+        "description": "Gå gjennom alt utstyr, noter feil",
+        "xp": 45,
+        "icon": "🔧",
+        "category": "utstyr"
+      },
+      {
+        "id": "supplier-review",
+        "name": "Leverandørgjennomgang",
+        "description": "Evaluer leverandører og priser",
+        "xp": 40,
+        "icon": "🤝",
+        "category": "admin"
+      },
+      {
+        "id": "waste-analysis",
+        "name": "Svinnanalyse",
+        "description": "Analyser månedens svinn, finn tiltak",
+        "xp": 45,
+        "icon": "📊",
+        "category": "admin"
+      },
+      {
+        "id": "sales-report",
+        "name": "Salgsrapport",
+        "description": "Lag månedlig salgsrapport",
+        "xp": 40,
+        "icon": "📈",
+        "category": "admin"
+      },
+      {
+        "id": "team-meeting",
+        "name": "Personalmøte",
+        "description": "Hold månedlig personalmøte",
+        "xp": 35,
+        "icon": "👥",
+        "category": "team"
+      },
+      {
+        "id": "windows-outside",
+        "name": "Utvendige vinduer",
+        "description": "Puss alle utvendige vinduer",
+        "xp": 50,
+        "icon": "🪟",
+        "category": "renhold"
+      },
+      {
+        "id": "signage-clean",
+        "name": "Skilt og fasade",
+        "description": "Rens skilt og fasade",
+        "xp": 35,
+        "icon": "🏪",
+        "category": "uteområde"
+      },
+      {
+        "id": "outdoor-furniture",
+        "name": "Utemøbler",
+        "description": "Vask utemøbler (sesong)",
+        "xp": 40,
+        "icon": "🪑",
+        "category": "uteområde",
+        "seasonal": "spring-summer"
+      }
+    ],
+    "quarterly": [
+      {
+        "id": "vent-system-clean",
+        "name": "Ventilasjonssystem",
+        "description": "Profesjonell rens av ventilasjonsanlegg",
+        "xp": 100,
+        "icon": "🌀",
+        "category": "utstyr"
+      },
+      {
+        "id": "grease-trap",
+        "name": "Fettutskiller",
+        "description": "Tøm og rens fettutskiller",
+        "xp": 80,
+        "icon": "🛢️",
+        "category": "renhold"
+      },
+      {
+        "id": "floor-strip-wax",
+        "name": "Gulvbehandling",
+        "description": "Strip og voks gulvet",
+        "xp": 90,
+        "icon": "✨",
+        "category": "renhold"
+      },
+      {
+        "id": "equipment-service",
+        "name": "Utstyrsservice",
+        "description": "Bestill profesjonell service på utstyr",
+        "xp": 60,
+        "icon": "🔧",
+        "category": "utstyr"
+      },
+      {
+        "id": "deep-carpet-clean",
+        "name": "Tepperens",
+        "description": "Profesjonell tepperens (hvis aktuelt)",
+        "xp": 70,
+        "icon": "🧽",
+        "category": "renhold"
+      },
+      {
+        "id": "pest-professional",
+        "name": "Skadedyrkontroll",
+        "description": "Profesjonell skadedyrbehandling",
+        "xp": 50,
+        "icon": "🐜",
+        "category": "haccp"
+      },
+      {
+        "id": "haccp-audit",
+        "name": "HACCP revisjon",
+        "description": "Full HACCP-revisjon og oppdatering",
+        "xp": 80,
+        "icon": "📋",
+        "category": "haccp"
+      },
+      {
+        "id": "menu-review",
+        "name": "Menygjennomgang",
+        "description": "Evaluer og oppdater menyen",
+        "xp": 70,
+        "icon": "📝",
+        "category": "salg"
+      },
+      {
+        "id": "pricing-review",
+        "name": "Prisgjennomgang",
+        "description": "Evaluer priser vs. kostnader",
+        "xp": 65,
+        "icon": "💰",
+        "category": "admin"
+      },
+      {
+        "id": "staff-evaluation",
+        "name": "Medarbeidersamtaler",
+        "description": "Hold medarbeidersamtaler",
+        "xp": 75,
+        "icon": "👥",
+        "category": "team"
+      }
+    ],
+    "special": [
+      {
+        "id": "review-5star",
+        "name": "5-stjernes anmeldelse!",
+        "description": "En kunde ga 5 stjerner",
+        "xp": 50,
+        "icon": "⭐",
+        "autoTrack": "reviews"
+      },
+      {
+        "id": "review-4star",
+        "name": "4-stjernes anmeldelse",
+        "description": "En kunde ga 4 stjerner",
+        "xp": -15,
+        "icon": "😐",
+        "autoTrack": "reviews"
+      },
+      {
+        "id": "review-3star",
+        "name": "3-stjernes anmeldelse",
+        "description": "En kunde ga 3 stjerner",
+        "xp": -40,
+        "icon": "😕",
+        "autoTrack": "reviews"
+      },
+      {
+        "id": "review-bad",
+        "name": "Dårlig anmeldelse",
+        "description": "En kunde ga 1-2 stjerner",
+        "xp": -80,
+        "icon": "😱",
+        "autoTrack": "reviews"
+      },
+      {
+        "id": "new-record-day",
+        "name": "NY DAGREKORD!",
+        "description": "Slo dagsrekorden!",
+        "xp": 100,
+        "icon": "🏆",
+        "autoTrack": "sales"
+      },
+      {
+        "id": "new-record-hour",
+        "name": "NY TIMEREKORD!",
+        "description": "Slo timerekorden!",
+        "xp": 75,
+        "icon": "⏱️",
+        "autoTrack": "sales"
+      },
+      {
+        "id": "budget-hit",
+        "name": "Budsjett nådd!",
+        "description": "Nådde dagens budsjett",
+        "xp": 25,
+        "icon": "🎯",
+        "autoTrack": "sales"
+      },
+      {
+        "id": "budget-120",
+        "name": "120% av budsjett!",
+        "description": "Nådde 120% av budsjettet",
+        "xp": 50,
+        "icon": "🚀",
+        "autoTrack": "sales"
+      },
+      {
+        "id": "streak-7",
+        "name": "7-dagers streak!",
+        "description": "Logget inn 7 dager på rad",
+        "xp": 75,
+        "icon": "🔥",
+        "autoTrack": "streak"
+      },
+      {
+        "id": "streak-14",
+        "name": "14-dagers streak!",
+        "description": "Logget inn 14 dager på rad",
+        "xp": 125,
+        "icon": "🔥🔥",
+        "autoTrack": "streak"
+      },
+      {
+        "id": "streak-30",
+        "name": "30-dagers streak!",
+        "description": "Logget inn 30 dager på rad",
+        "xp": 200,
+        "icon": "💎",
+        "autoTrack": "streak"
+      },
+      {
+        "id": "streak-60",
+        "name": "60-dagers streak!",
+        "description": "Logget inn 60 dager på rad",
+        "xp": 350,
+        "icon": "💎💎",
+        "autoTrack": "streak"
+      },
+      {
+        "id": "team-win",
+        "name": "Team-seier!",
+        "description": "Ditt team vant ukeskonkurransen!",
+        "xp": 50,
+        "icon": "🏅",
+        "autoTrack": "team"
+      },
+      {
+        "id": "team-win-month",
+        "name": "Månedens team!",
+        "description": "Ditt team vant månedskonkurransen!",
+        "xp": 100,
+        "icon": "🏆",
+        "autoTrack": "team"
+      },
+      {
+        "id": "mentor",
+        "name": "Mentor",
+        "description": "Lærte opp en ny kollega",
+        "xp": 40,
+        "icon": "🎓",
+        "category": "team"
+      },
+      {
+        "id": "problem-solver",
+        "name": "Problemløser",
+        "description": "Løste en vanskelig kundesituasjon",
+        "xp": 30,
+        "icon": "🧠",
+        "category": "service"
+      },
+      {
+        "id": "overtime-hero",
+        "name": "Overtidshelt",
+        "description": "Tok ekstra vakt på kort varsel",
+        "xp": 45,
+        "icon": "💪",
+        "category": "team"
+      },
+      {
+        "id": "idea-implemented",
+        "name": "God idé!",
+        "description": "Foreslo en forbedring som ble innført",
+        "xp": 60,
+        "icon": "💡",
+        "category": "innovasjon"
+      },
+      {
+        "id": "zero-waste-day",
+        "name": "Null svinn!",
+        "description": "En dag uten matsvinn",
+        "xp": 40,
+        "icon": "♻️",
+        "category": "bærekraft"
+      },
+      {
+        "id": "customer-compliment",
+        "name": "Skryt fra kunde",
+        "description": "En kunde roste deg spesifikt",
+        "xp": 35,
+        "icon": "🌟",
+        "category": "service"
+      },
+      {
+        "id": "perfect-cash",
+        "name": "Perfekt kasse",
+        "description": "Kasseoppgjør uten avvik",
+        "xp": 20,
+        "icon": "💵",
+        "category": "admin"
+      },
+      {
+        "id": "allergy-save",
+        "name": "Allergi-helt",
+        "description": "Fanget opp allergi før servering",
+        "xp": 50,
+        "icon": "⚠️",
+        "category": "haccp"
+      },
+      {
+        "id": "upsell-master",
+        "name": "Mersalg-mester",
+        "description": "Solgte oppgradering til 10+ kunder",
+        "xp": 35,
+        "icon": "💰",
+        "category": "salg"
+      },
+      {
+        "id": "recipe-perfect",
+        "name": "Perfekt oppskrift",
+        "description": "Lagde en batch helt perfekt",
+        "xp": 25,
+        "icon": "👨‍🍳",
+        "category": "produksjon"
+      },
+      {
+        "id": "inventory-spot-on",
+        "name": "Varetelling spot-on",
+        "description": "Varetelling stemte 100%",
+        "xp": 30,
+        "icon": "📦",
+        "category": "admin"
+      },
+      {
+        "id": "early-bird",
+        "name": "Tidlig fugl",
+        "description": "På jobb før kl 06:30",
+        "xp": 20,
+        "icon": "🐦",
+        "category": "team"
+      },
+      {
+        "id": "late-saver",
+        "name": "Kveldshelt",
+        "description": "Stengte alene uten problemer",
+        "xp": 25,
+        "icon": "🦉",
+        "category": "team"
+      },
+      {
+        "id": "cross-trained",
+        "name": "Allrounder",
+        "description": "Mestrer både disk og kjøkken",
+        "xp": 75,
+        "icon": "🎯",
+        "category": "opplæring"
+      }
+    ],
+    "seasonal": [
+      {
+        "id": "xmas-decor",
+        "name": "Julepynt opp",
+        "description": "Sett opp juledekorasjoner",
+        "xp": 40,
+        "icon": "🎄",
+        "season": "december",
+        "category": "sesong"
+      },
+      {
+        "id": "xmas-decor-down",
+        "name": "Julepynt ned",
+        "description": "Ta ned juledekorasjoner",
+        "xp": 30,
+        "icon": "📦",
+        "season": "january",
+        "category": "sesong"
+      },
+      {
+        "id": "easter-decor",
+        "name": "Påskepynt",
+        "description": "Sett opp påskedekorasjoner",
+        "xp": 35,
+        "icon": "🐣",
+        "season": "march-april",
+        "category": "sesong"
+      },
+      {
+        "id": "summer-prep",
+        "name": "Sommerklargjøring",
+        "description": "Klargjør uteservering",
+        "xp": 50,
+        "icon": "☀️",
+        "season": "may",
+        "category": "sesong"
+      },
+      {
+        "id": "winter-prep",
+        "name": "Vinterklargjøring",
+        "description": "Klargjør for vintersesong",
+        "xp": 45,
+        "icon": "❄️",
+        "season": "october",
+        "category": "sesong"
+      },
+      {
+        "id": "valentines-special",
+        "name": "Valentines-kampanje",
+        "description": "Kjør valentines-kampanje",
+        "xp": 40,
+        "icon": "💝",
+        "season": "february",
+        "category": "markedsføring"
+      },
+      {
+        "id": "national-day",
+        "name": "17. mai forberedelser",
+        "description": "Forbered 17. mai-tilbud",
+        "xp": 50,
+        "icon": "🇳🇴",
+        "season": "may",
+        "category": "sesong"
+      },
+      {
+        "id": "ski-season-start",
+        "name": "Skisesong-start",
+        "description": "Klargjør for vintersesong i Hallingdal",
+        "xp": 60,
+        "icon": "⛷️",
+        "season": "november-december",
+        "category": "sesong"
+      },
+      {
+        "id": "ski-week-prep",
+        "name": "Vinterferie-prep",
+        "description": "Forbered ekstra bemanning og varer for vinterferie",
+        "xp": 55,
+        "icon": "🎿",
+        "season": "february",
+        "category": "sesong"
+      },
+      {
+        "id": "autumn-menu",
+        "name": "Høstmeny",
+        "description": "Lansér sesongbasert høstmeny",
+        "xp": 45,
+        "icon": "🍂",
+        "season": "september",
+        "category": "salg"
+      }
+    ]
+  },
+  "achievements": [
+    {
+      "id": "first-login",
+      "name": "Velkommen!",
+      "description": "Logget inn for første gang",
+      "icon": "🎉",
+      "condition": "firstLogin"
+    },
+    {
+      "id": "quest-10",
+      "name": "Quest Novice",
+      "description": "Fullført 10 quests",
+      "icon": "📜",
+      "condition": {
+        "questsCompleted": 10
+      }
+    },
+    {
+      "id": "quest-25",
+      "name": "Quest Apprentice",
+      "description": "Fullført 25 quests",
+      "icon": "📋",
+      "condition": {
+        "questsCompleted": 25
+      }
+    },
+    {
+      "id": "quest-50",
+      "name": "Quest Master",
+      "description": "Fullført 50 quests",
+      "icon": "📚",
+      "condition": {
+        "questsCompleted": 50
+      }
+    },
+    {
+      "id": "quest-100",
+      "name": "Quest Legend",
+      "description": "Fullført 100 quests",
+      "icon": "🏛️",
+      "condition": {
+        "questsCompleted": 100
+      }
+    },
+    {
+      "id": "quest-250",
+      "name": "Quest Grandmaster",
+      "description": "Fullført 250 quests",
+      "icon": "👑",
+      "condition": {
+        "questsCompleted": 250
+      }
+    },
+    {
+      "id": "streak-7",
+      "name": "Streak Warrior",
+      "description": "7-dagers streak",
+      "icon": "🔥",
+      "condition": {
+        "streak": 7
+      }
+    },
+    {
+      "id": "streak-14",
+      "name": "Streak Fighter",
+      "description": "14-dagers streak",
+      "icon": "🔥🔥",
+      "condition": {
+        "streak": 14
+      }
+    },
+    {
+      "id": "streak-30",
+      "name": "Streak Champion",
+      "description": "30-dagers streak",
+      "icon": "💎",
+      "condition": {
+        "streak": 30
+      }
+    },
+    {
+      "id": "streak-60",
+      "name": "Streak Legend",
+      "description": "60-dagers streak",
+      "icon": "💎💎",
+      "condition": {
+        "streak": 60
+      }
+    },
+    {
+      "id": "streak-100",
+      "name": "Streak Immortal",
+      "description": "100-dagers streak",
+      "icon": "🌟",
+      "condition": {
+        "streak": 100
+      }
+    },
+    {
+      "id": "level-5",
+      "name": "Rising Star",
+      "description": "Nådde level 5",
+      "icon": "⭐",
+      "condition": {
+        "level": 5
+      },
+      "reward": "Gratis lunsj"
+    },
+    {
+      "id": "level-10",
+      "name": "Barista Pro",
+      "description": "Nådde level 10",
+      "icon": "☕",
+      "condition": {
+        "level": 10
+      },
+      "reward": "Velge musikk 1 time"
+    },
+    {
+      "id": "level-15",
+      "name": "Kafé Ninja",
+      "description": "Nådde level 15",
+      "icon": "🥷",
+      "condition": {
+        "level": 15
+      },
+      "reward": "Gå 15 min tidlig"
+    },
+    {
+      "id": "level-20",
+      "name": "Bear House Elite",
+      "description": "Nådde level 20",
+      "icon": "🐻",
+      "condition": {
+        "level": 20
+      },
+      "reward": "Førstevalg på vakter"
+    },
+    {
+      "id": "level-25",
+      "name": "Legendary Baker",
+      "description": "Nådde level 25",
+      "icon": "👨‍🍳",
+      "condition": {
+        "level": 25
+      },
+      "reward": "500 kr bonus"
+    },
+    {
+      "id": "level-30",
+      "name": "Bear House Boss",
+      "description": "Nådde level 30",
+      "icon": "👑",
+      "condition": {
+        "level": 30
+      },
+      "reward": "VIP-status + 1000 kr"
+    },
+    {
+      "id": "review-5",
+      "name": "Review Hunter",
+      "description": "Fikk 5 fem-stjerners anmeldelser",
+      "icon": "🌟",
+      "condition": {
+        "fiveStarReviews": 5
+      }
+    },
+    {
+      "id": "review-10",
+      "name": "Review Champion",
+      "description": "Fikk 10 fem-stjerners anmeldelser",
+      "icon": "⭐",
+      "condition": {
+        "fiveStarReviews": 10
+      }
+    },
+    {
+      "id": "review-25",
+      "name": "Review Legend",
+      "description": "Fikk 25 fem-stjerners anmeldelser",
+      "icon": "✨",
+      "condition": {
+        "fiveStarReviews": 25
+      }
+    },
+    {
+      "id": "team-player",
+      "name": "Team Player",
+      "description": "Vant 3 team-konkurranser",
+      "icon": "🤝",
+      "condition": {
+        "teamWins": 3
+      }
+    },
+    {
+      "id": "team-champion",
+      "name": "Team Champion",
+      "description": "Vant 10 team-konkurranser",
+      "icon": "🏆",
+      "condition": {
+        "teamWins": 10
+      }
+    },
+    {
+      "id": "early-bird",
+      "name": "Early Bird",
+      "description": "Logget inn før kl 07:00 ti ganger",
+      "icon": "🐦",
+      "condition": {
+        "earlyLogins": 10
+      }
+    },
+    {
+      "id": "night-owl",
+      "name": "Night Owl",
+      "description": "Fullførte stengerutiner 20 ganger",
+      "icon": "🦉",
+      "condition": {
+        "closingRoutines": 20
+      }
+    },
+    {
+      "id": "clean-freak",
+      "name": "Clean Freak",
+      "description": "Fullførte 30 rengjøringsoppgaver",
+      "icon": "✨",
+      "condition": {
+        "cleaningQuests": 30
+      }
+    },
+    {
+      "id": "cleaning-champion",
+      "name": "Cleaning Champion",
+      "description": "Fullførte 100 rengjøringsoppgaver",
+      "icon": "🧹",
+      "condition": {
+        "cleaningQuests": 100
+      }
+    },
+    {
+      "id": "sales-star",
+      "name": "Sales Star",
+      "description": "Bidro til 10 budsjett-dager",
+      "icon": "💰",
+      "condition": {
+        "budgetDays": 10
+      }
+    },
+    {
+      "id": "sales-legend",
+      "name": "Sales Legend",
+      "description": "Bidro til 50 budsjett-dager",
+      "icon": "💎",
+      "condition": {
+        "budgetDays": 50
+      }
+    },
+    {
+      "id": "record-breaker",
+      "name": "Record Breaker",
+      "description": "Var med på 3 rekorder",
+      "icon": "🏆",
+      "condition": {
+        "recordDays": 3
+      }
+    },
+    {
+      "id": "record-hunter",
+      "name": "Record Hunter",
+      "description": "Var med på 10 rekorder",
+      "icon": "🎯",
+      "condition": {
+        "recordDays": 10
+      }
+    },
+    {
+      "id": "mentor-badge",
+      "name": "Mentor Badge",
+      "description": "Lærte opp 3 nye kollegaer",
+      "icon": "🎓",
+      "condition": {
+        "mentorSessions": 3
+      }
+    },
+    {
+      "id": "problem-solver",
+      "name": "Problem Solver",
+      "description": "Løste 5 vanskelige situasjoner",
+      "icon": "🧠",
+      "condition": {
+        "problemsSolved": 5
+      }
+    },
+    {
+      "id": "perfect-week",
+      "name": "Perfect Week",
+      "description": "Fullførte alle daglige quests i en uke",
+      "icon": "🌟",
+      "condition": {
+        "perfectWeeks": 1
+      }
+    },
+    {
+      "id": "perfect-month",
+      "name": "Perfect Month",
+      "description": "Fullførte alle quests i en måned",
+      "icon": "🏅",
+      "condition": {
+        "perfectMonths": 1
+      }
+    },
+    {
+      "id": "haccp-hero",
+      "name": "HACCP Hero",
+      "description": "100% HACCP-compliance i 30 dager",
+      "icon": "🛡️",
+      "condition": {
+        "haccpStreak": 30
+      }
+    },
+    {
+      "id": "zero-waste-hero",
+      "name": "Zero Waste Hero",
+      "description": "5 dager uten svinn",
+      "icon": "♻️",
+      "condition": {
+        "zeroWasteDays": 5
+      }
+    },
+    {
+      "id": "allrounder",
+      "name": "Allrounder",
+      "description": "Fullført quests i alle kategorier",
+      "icon": "🎯",
+      "condition": {
+        "categoriesCompleted": "all"
+      }
+    },
+    {
+      "id": "speedrunner",
+      "name": "Speedrunner",
+      "description": "Fullførte 5 quests på én dag",
+      "icon": "⚡",
+      "condition": {
+        "questsInOneDay": 5
+      }
+    },
+    {
+      "id": "overachiever",
+      "name": "Overachiever",
+      "description": "Tjente 500 XP på én dag",
+      "icon": "🚀",
+      "condition": {
+        "xpInOneDay": 500
+      }
+    }
+  ],
+  "levels": {
+    "xpPerLevel": [
+      0,
+      100,
+      250,
+      450,
+      700,
+      1000,
+      1400,
+      1900,
+      2500,
+      3200,
+      4000,
+      5000,
+      6200,
+      7600,
+      9200,
+      11000,
+      13000,
+      15500,
+      18500,
+      22000,
+      26000,
+      31000,
+      37000,
+      44000,
+      52000,
+      62000,
+      74000,
+      88000,
+      105000,
+      125000
+    ],
+    "titles": [
+      "Nybegynner",
+      "Lærling",
+      "Kafé-elev",
+      "Barista Trainee",
+      "Junior Barista",
+      "Barista",
+      "Dyktig Barista",
+      "Senior Barista",
+      "Kafé-talent",
+      "Kafé-stjerne",
+      "Barista Pro",
+      "Ekspert Barista",
+      "Kafé Ninja",
+      "Mester Barista",
+      "Kafé Legende",
+      "Bear House Elite",
+      "Bear House Veteran",
+      "Bear House Mester",
+      "Legendary Baker",
+      "Kafé Guru",
+      "Bear House Champion",
+      "Legendary Barista",
+      "Bear House Hero",
+      "Bear House Legend",
+      "Bear House Icon",
+      "Bear House Boss",
+      "Grand Master",
+      "Supreme Barista",
+      "Ultimate Legend",
+      "GOAT 🐐"
+    ],
+    "rewards": {
+      "5": {
+        "type": "perk",
+        "name": "Gratis lunsj",
+        "description": "Velg en gratis lunsj fra menyen"
+      },
+      "10": {
+        "type": "perk",
+        "name": "Velge musikk",
+        "description": "Du bestemmer musikken i 1 time"
+      },
+      "15": {
+        "type": "perk",
+        "name": "Gå 15 min tidlig",
+        "description": "Avslutt vakten 15 minutter før"
+      },
+      "20": {
+        "type": "perk",
+        "name": "Velge vakt",
+        "description": "Førstevalg på vakter én uke"
+      },
+      "25": {
+        "type": "bonus",
+        "name": "500 kr bonus",
+        "description": "Kontantbonus på 500 kr!"
+      },
+      "30": {
+        "type": "title",
+        "name": "Bear House Boss 👑",
+        "description": "Permanent VIP-status + 1000 kr bonus"
+      }
+    }
+  },
+  "categories": {
+    "basis": {
+      "name": "Basis",
+      "icon": "📍",
+      "color": "#888888"
+    },
+    "drift": {
+      "name": "Drift",
+      "icon": "⚙️",
+      "color": "#3498db"
+    },
+    "renhold": {
+      "name": "Renhold",
+      "icon": "🧹",
+      "color": "#2ecc71"
+    },
+    "utstyr": {
+      "name": "Utstyr",
+      "icon": "🔧",
+      "color": "#9b59b6"
+    },
+    "haccp": {
+      "name": "HACCP/Mattrygghet",
+      "icon": "🛡️",
+      "color": "#e74c3c"
+    },
+    "salg": {
+      "name": "Salg",
+      "icon": "💰",
+      "color": "#f1c40f"
+    },
+    "service": {
+      "name": "Kundeservice",
+      "icon": "😊",
+      "color": "#e91e63"
+    },
+    "admin": {
+      "name": "Admin",
+      "icon": "📋",
+      "color": "#607d8b"
+    },
+    "team": {
+      "name": "Team",
+      "icon": "👥",
+      "color": "#00bcd4"
+    },
+    "opplæring": {
+      "name": "Opplæring",
+      "icon": "🎓",
+      "color": "#ff9800"
+    },
+    "markedsføring": {
+      "name": "Markedsføring",
+      "icon": "📱",
+      "color": "#673ab7"
+    },
+    "uteområde": {
+      "name": "Uteområde",
+      "icon": "🌳",
+      "color": "#4caf50"
+    },
+    "miljø": {
+      "name": "Miljø",
+      "icon": "🌿",
+      "color": "#8bc34a"
+    },
+    "sikkerhet": {
+      "name": "Sikkerhet",
+      "icon": "🧯",
+      "color": "#f44336"
+    },
+    "produksjon": {
+      "name": "Produksjon",
+      "icon": "🥐",
+      "color": "#795548"
+    },
+    "innovasjon": {
+      "name": "Innovasjon",
+      "icon": "💡",
+      "color": "#ffeb3b"
+    },
+    "bærekraft": {
+      "name": "Bærekraft",
+      "icon": "♻️",
+      "color": "#009688"
+    },
+    "sesong": {
+      "name": "Sesong",
+      "icon": "📅",
+      "color": "#ff5722"
+    }
+  },
+  "teamChallenges": {
+    "currentWeek": null,
+    "history": []
+  },
+  "leaderboard": {
+    "daily": [
+      {
+        "userId": 0,
+        "username": "martin",
+        "fullName": "Martin Gaze",
+        "location": "all",
+        "totalXp": 419,
+        "level": 3,
+        "dailyXp": 275,
+        "weeklyXp": 275,
+        "monthlyXp": 419,
+        "streak": 2,
+        "questsCompleted": 6
+      },
+      {
+        "userId": 49774,
+        "username": "ranveig",
+        "fullName": "Ranveig Haugen",
+        "location": "nesbyen",
+        "totalXp": 107,
+        "level": 2,
+        "dailyXp": 10,
+        "weeklyXp": 10,
+        "monthlyXp": 10,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49881,
+        "username": "albert",
+        "fullName": "Albert Morallos Villanueva",
+        "location": "nesbyen",
+        "totalXp": 76,
+        "level": 1,
+        "dailyXp": 10,
+        "weeklyXp": 0,
+        "monthlyXp": 76,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 50044,
+        "username": "torstein",
+        "fullName": "Torstein Johnsen",
+        "location": "hemsedal",
+        "totalXp": 5,
+        "level": 1,
+        "dailyXp": 5,
+        "weeklyXp": 5,
+        "monthlyXp": 5,
+        "streak": 1,
+        "questsCompleted": 1
+      },
+      {
+        "userId": 99001,
+        "username": "michail",
+        "fullName": "Michail",
+        "location": "nesbyen",
+        "totalXp": 5,
+        "level": 1,
+        "dailyXp": 5,
+        "weeklyXp": 5,
+        "monthlyXp": 5,
+        "streak": 1,
+        "questsCompleted": 1
+      },
+      {
+        "userId": 47719,
+        "username": "agnieszka",
+        "fullName": "Agnieszka Nawrot",
+        "location": "nesbyen",
+        "totalXp": 114,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 114,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47721,
+        "username": "martin",
+        "fullName": "Martin Zacho Kuhnel",
+        "location": "nesbyen",
+        "totalXp": 12,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 0,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47723,
+        "username": "oscar",
+        "fullName": "Oscar Cornelius Ytteborg",
+        "location": "nesbyen",
+        "totalXp": 12,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 12,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47727,
+        "username": "oskar",
+        "fullName": "Oskar Tomasz Jachym",
+        "location": "nesbyen",
+        "totalXp": 33,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 33,
+        "monthlyXp": 33,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 48099,
+        "username": "julie",
+        "fullName": "Julie Gullingsrud Juvhaugen",
+        "location": "nesbyen",
+        "totalXp": 12,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 12,
+        "streak": 0,
+        "questsCompleted": 0
+      }
+    ],
+    "weekly": [
+      {
+        "userId": 0,
+        "username": "martin",
+        "fullName": "Martin Gaze",
+        "location": "all",
+        "totalXp": 419,
+        "level": 3,
+        "dailyXp": 275,
+        "weeklyXp": 275,
+        "monthlyXp": 419,
+        "streak": 2,
+        "questsCompleted": 6
+      },
+      {
+        "userId": 48104,
+        "username": "geralyn",
+        "fullName": "Geralyn Esta Bratteng",
+        "location": "nesbyen",
+        "totalXp": 136,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 36,
+        "monthlyXp": 136,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47727,
+        "username": "oskar",
+        "fullName": "Oskar Tomasz Jachym",
+        "location": "nesbyen",
+        "totalXp": 33,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 33,
+        "monthlyXp": 33,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49889,
+        "username": "sara",
+        "fullName": "Sara Beugelsdijk",
+        "location": "nesbyen",
+        "totalXp": 118,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 27,
+        "monthlyXp": 118,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49893,
+        "username": "ella",
+        "fullName": "Ella Ryno Petersson",
+        "location": "hemsedal",
+        "totalXp": 30,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 20,
+        "monthlyXp": 30,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49978,
+        "username": "sarah",
+        "fullName": "Sarah Løkken",
+        "location": "hemsedal",
+        "totalXp": 20,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 20,
+        "monthlyXp": 20,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 50075,
+        "username": "ilija",
+        "fullName": "Ilija Boskovic",
+        "location": "nesbyen",
+        "totalXp": 31,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 19,
+        "monthlyXp": 31,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49974,
+        "username": "lihaim",
+        "fullName": "Lihaim Kifle",
+        "location": "nesbyen",
+        "totalXp": 15,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 15,
+        "monthlyXp": 15,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 48263,
+        "username": "elhana",
+        "fullName": "Elhana Kifle",
+        "location": "nesbyen",
+        "totalXp": 55,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 12,
+        "monthlyXp": 55,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49774,
+        "username": "ranveig",
+        "fullName": "Ranveig Haugen",
+        "location": "nesbyen",
+        "totalXp": 107,
+        "level": 2,
+        "dailyXp": 10,
+        "weeklyXp": 10,
+        "monthlyXp": 10,
+        "streak": 0,
+        "questsCompleted": 0
+      }
+    ],
+    "monthly": [
+      {
+        "userId": 0,
+        "username": "martin",
+        "fullName": "Martin Gaze",
+        "location": "all",
+        "totalXp": 419,
+        "level": 3,
+        "dailyXp": 275,
+        "weeklyXp": 275,
+        "monthlyXp": 419,
+        "streak": 2,
+        "questsCompleted": 6
+      },
+      {
+        "userId": 48104,
+        "username": "geralyn",
+        "fullName": "Geralyn Esta Bratteng",
+        "location": "nesbyen",
+        "totalXp": 136,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 36,
+        "monthlyXp": 136,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49889,
+        "username": "sara",
+        "fullName": "Sara Beugelsdijk",
+        "location": "nesbyen",
+        "totalXp": 118,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 27,
+        "monthlyXp": 118,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47719,
+        "username": "agnieszka",
+        "fullName": "Agnieszka Nawrot",
+        "location": "nesbyen",
+        "totalXp": 114,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 114,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49886,
+        "username": "iryna",
+        "fullName": "Iryna Andriienko",
+        "location": "nesbyen",
+        "totalXp": 114,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 114,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49963,
+        "username": "francesrexiejoybonilla",
+        "fullName": "Frances Rexie Joy Bonilla Cabangon",
+        "location": "nesbyen",
+        "totalXp": 105,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 105,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49881,
+        "username": "albert",
+        "fullName": "Albert Morallos Villanueva",
+        "location": "nesbyen",
+        "totalXp": 76,
+        "level": 1,
+        "dailyXp": 10,
+        "weeklyXp": 0,
+        "monthlyXp": 76,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 48263,
+        "username": "elhana",
+        "fullName": "Elhana Kifle",
+        "location": "nesbyen",
+        "totalXp": 55,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 12,
+        "monthlyXp": 55,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47727,
+        "username": "oskar",
+        "fullName": "Oskar Tomasz Jachym",
+        "location": "nesbyen",
+        "totalXp": 33,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 33,
+        "monthlyXp": 33,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 50075,
+        "username": "ilija",
+        "fullName": "Ilija Boskovic",
+        "location": "nesbyen",
+        "totalXp": 31,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 19,
+        "monthlyXp": 31,
+        "streak": 0,
+        "questsCompleted": 0
+      }
+    ],
+    "allTime": [
+      {
+        "userId": 0,
+        "username": "martin",
+        "fullName": "Martin Gaze",
+        "location": "all",
+        "totalXp": 419,
+        "level": 3,
+        "dailyXp": 275,
+        "weeklyXp": 275,
+        "monthlyXp": 419,
+        "streak": 2,
+        "questsCompleted": 6
+      },
+      {
+        "userId": 48104,
+        "username": "geralyn",
+        "fullName": "Geralyn Esta Bratteng",
+        "location": "nesbyen",
+        "totalXp": 136,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 36,
+        "monthlyXp": 136,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49889,
+        "username": "sara",
+        "fullName": "Sara Beugelsdijk",
+        "location": "nesbyen",
+        "totalXp": 118,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 27,
+        "monthlyXp": 118,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47719,
+        "username": "agnieszka",
+        "fullName": "Agnieszka Nawrot",
+        "location": "nesbyen",
+        "totalXp": 114,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 114,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49886,
+        "username": "iryna",
+        "fullName": "Iryna Andriienko",
+        "location": "nesbyen",
+        "totalXp": 114,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 114,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49774,
+        "username": "ranveig",
+        "fullName": "Ranveig Haugen",
+        "location": "nesbyen",
+        "totalXp": 107,
+        "level": 2,
+        "dailyXp": 10,
+        "weeklyXp": 10,
+        "monthlyXp": 10,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49963,
+        "username": "francesrexiejoybonilla",
+        "fullName": "Frances Rexie Joy Bonilla Cabangon",
+        "location": "nesbyen",
+        "totalXp": 105,
+        "level": 2,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 105,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49881,
+        "username": "albert",
+        "fullName": "Albert Morallos Villanueva",
+        "location": "nesbyen",
+        "totalXp": 76,
+        "level": 1,
+        "dailyXp": 10,
+        "weeklyXp": 0,
+        "monthlyXp": 76,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 48263,
+        "username": "elhana",
+        "fullName": "Elhana Kifle",
+        "location": "nesbyen",
+        "totalXp": 55,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 12,
+        "monthlyXp": 55,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 47727,
+        "username": "oskar",
+        "fullName": "Oskar Tomasz Jachym",
+        "location": "nesbyen",
+        "totalXp": 33,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 33,
+        "monthlyXp": 33,
+        "streak": 0,
+        "questsCompleted": 0
+      }
+    ]
+  }
+}

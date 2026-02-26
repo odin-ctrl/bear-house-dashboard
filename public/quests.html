@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Quest Board - Bear House</title>
+    <link rel="icon" href="bearhousekaffekopp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a25;
+            --neon-orange: #ff6b35;
+            --neon-pink: #ff2d95;
+            --neon-purple: #9d4edd;
+            --neon-blue: #00d4ff;
+            --neon-green: #39ff14;
+            --neon-yellow: #fff700;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.15;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(157, 78, 221, 0.2) 100%);
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--neon-purple);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo { height: 40px; }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 2px solid var(--neon-purple);
+        }
+
+        .user-avatar {
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .user-info { text-align: left; }
+        .user-name { font-weight: 600; font-size: 0.85rem; }
+        .user-level { font-size: 0.7rem; color: var(--neon-purple); }
+
+        .header-stats {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-pill {
+            background: var(--bg-card);
+            padding: 8px 15px;
+            border-radius: 25px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-pill .icon { font-size: 1.2rem; }
+        .stat-pill .value { font-weight: 700; color: var(--neon-green); }
+        .stat-pill .label { font-size: 0.75rem; color: var(--text-secondary); }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .quests-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Tabs */
+        .quest-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .tab-btn {
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 2px solid #333;
+            border-radius: 25px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--neon-purple);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border-color: transparent;
+            color: white;
+        }
+
+        .tab-btn .count {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+
+        /* Quest Section */
+        .quest-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #222;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .section-badge {
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .section-progress {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            border-radius: 3px;
+            transition: width 0.5s;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: var(--bg-dark);
+            border-radius: 10px;
+        }
+
+        .category-btn {
+            padding: 5px 12px;
+            background: transparent;
+            border: 1px solid #444;
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            border-color: var(--neon-purple);
+            color: var(--text-primary);
+            background: rgba(157, 78, 221, 0.1);
+        }
+
+        /* Quest Grid */
+        .quests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .quest-card {
+            background: var(--bg-dark);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .quest-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.2);
+        }
+
+        .quest-card.completed {
+            opacity: 0.5;
+            border-color: var(--neon-green);
+        }
+
+        .quest-card.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 8px; right: 8px;
+            background: var(--neon-green);
+            color: var(--bg-dark);
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .quest-icon { font-size: 1.8rem; min-width: 40px; text-align: center; }
+
+        .quest-info { flex: 1; min-width: 0; }
+        .quest-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 2px; }
+        .quest-description { font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .quest-category { font-size: 0.65rem; color: var(--neon-purple); margin-top: 3px; }
+
+        .quest-xp {
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--bg-dark);
+            white-space: nowrap;
+        }
+
+        .quest-xp.negative { background: linear-gradient(135deg, #ff4444, #ff6666); }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #222;
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Streak */
+        .streak-display { text-align: center; padding: 15px; }
+        .streak-flame { font-size: 3rem; animation: pulse 1.5s ease infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .streak-count {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .streak-label { color: var(--text-secondary); font-size: 0.85rem; }
+        .streak-bonus {
+            margin-top: 8px;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Team Battle */
+        .team-battle { display: flex; align-items: center; justify-content: space-between; padding: 10px; }
+        .team { text-align: center; flex: 1; }
+        .team-emoji { font-size: 2rem; margin-bottom: 5px; }
+        .team-name { font-weight: 600; font-size: 0.8rem; margin-bottom: 3px; }
+        .team-xp { font-size: 1.1rem; font-weight: 800; }
+        .team.winning .team-xp { color: var(--neon-green); }
+        .vs-divider { font-size: 1.2rem; font-weight: 900; color: var(--neon-pink); padding: 0 10px; }
+
+        /* Leaderboard */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg-dark);
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .leaderboard-item.gold { border-left: 3px solid var(--gold); }
+        .leaderboard-item.silver { border-left: 3px solid var(--silver); }
+        .leaderboard-item.bronze { border-left: 3px solid var(--bronze); }
+
+        .rank { font-size: 1.2rem; min-width: 30px; text-align: center; }
+        .rank-1 { color: var(--gold); }
+        .rank-2 { color: var(--silver); }
+        .rank-3 { color: var(--bronze); }
+
+        .leader-info { flex: 1; }
+        .leader-name { font-weight: 600; font-size: 0.85rem; }
+        .leader-level { font-size: 0.7rem; color: var(--text-secondary); }
+        .leader-xp { font-weight: 700; color: var(--neon-green); font-size: 0.85rem; }
+
+        /* Achievements */
+        .achievements-mini {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .achievement-icon {
+            background: var(--bg-dark);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .achievement-icon:hover { transform: scale(1.1); }
+        .achievement-icon.locked { opacity: 0.3; filter: grayscale(1); }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-green);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
+            min-width: 280px;
+        }
+
+        .toast.level-up { border-color: var(--gold); background: linear-gradient(135deg, var(--bg-card), rgba(255, 215, 0, 0.1)); }
+        .toast.error { border-color: #ff4444; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .toast-icon { font-size: 1.5rem; }
+        .toast-content h4 { font-weight: 700; margin-bottom: 2px; font-size: 0.9rem; }
+        .toast-content p { font-size: 0.8rem; color: var(--text-secondary); }
+
+        .back-btn {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-purple);
+            color: var(--text-primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--neon-purple);
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 1100px) {
+            .main-content { grid-template-columns: 1fr; }
+            .sidebar { display: grid; grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .header { flex-wrap: wrap; gap: 10px; }
+            .sidebar { grid-template-columns: 1fr; }
+            .quests-grid { grid-template-columns: 1fr; }
+            .quest-tabs { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-particles" id="particles"></div>
+
+    <header class="header">
+        <div class="header-left">
+            <button class="back-btn" onclick="window.location.href='/'">← Tilbake</button>
+            <img src="logo.png" alt="Bear House" class="logo">
+            <h1>🎮 Quest Board</h1>
+        </div>
+        
+        <div class="header-stats">
+            <div class="stat-pill">
+                <span class="icon">⭐</span>
+                <span class="value" id="total-xp">0</span>
+                <span class="label">XP</span>
+            </div>
+            <div class="stat-pill">
+                <span class="icon">🎯</span>
+                <span class="value" id="level">1</span>
+                <span class="label">Level</span>
+            </div>
+            <div class="stat-pill">
+                <span class="icon">🔥</span>
+                <span class="value" id="streak">0</span>
+                <span class="label">Streak</span>
+            </div>
+        </div>
+        
+        <div class="user-profile">
+            <div class="user-avatar" id="user-avatar">?</div>
+            <div class="user-info">
+                <div class="user-name" id="user-name">Laster...</div>
+                <div class="user-level" id="user-title">Nybegynner</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="quests-container">
+            <div class="quest-tabs" id="quest-tabs">
+                <button class="tab-btn active" data-tab="daily">☀️ Daglig <span class="count" id="daily-count">0</span></button>
+                <button class="tab-btn" data-tab="weekly">📅 Ukentlig <span class="count" id="weekly-count">0</span></button>
+                <button class="tab-btn" data-tab="monthly">🗓️ Månedlig <span class="count" id="monthly-count">0</span></button>
+                <button class="tab-btn" data-tab="quarterly">📊 Kvartal <span class="count" id="quarterly-count">0</span></button>
+                <button class="tab-btn" data-tab="seasonal">🎄 Sesong <span class="count" id="seasonal-count">0</span></button>
+                <button class="tab-btn" data-tab="special">⭐ Spesial <span class="count" id="special-count">0</span></button>
+            </div>
+
+            <div class="category-filter" id="category-filter">
+                <button class="category-btn active" data-category="all">Alle</button>
+            </div>
+
+            <section class="quest-section">
+                <div class="section-header">
+                    <div class="section-title" id="section-title">
+                        <span>☀️</span>
+                        <span>Daglige Oppgaver</span>
+                    </div>
+                    <div class="section-progress" id="section-progress">0/0</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="quests-grid" id="quests-grid"></div>
+            </section>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-title">🔥 Streak</div>
+                <div class="streak-display">
+                    <div class="streak-flame" id="streak-flame">🔥</div>
+                    <div class="streak-count" id="streak-count">0</div>
+                    <div class="streak-label">dager på rad</div>
+                    <div class="streak-bonus" id="streak-bonus" style="display: none;">2x XP aktiv!</div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-title">⚔️ Ukens Kamp</div>
+                <div class="team-battle">
+                    <div class="team" id="team-nesbyen">
+                        <div class="team-emoji">🐻</div>
+                        <div class="team-name">Nesbyen</div>
+                        <div class="team-xp">0 XP</div>
+                    </div>
+                    <div class="vs-divider">VS</div>
+                    <div class="team" id="team-hemsedal">
+                        <div class="team-emoji">⛷️</div>
+                        <div class="team-name">Hemsedal</div>
+                        <div class="team-xp">0 XP</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-title">🏆 Topp 5</div>
+                <div id="leaderboard"></div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="sidebar-title">🏅 Achievements (<span id="ach-count">0</span>/<span id="ach-total">0</span>)</div>
+                <div class="achievements-mini" id="achievements"></div>
+            </div>
+        </aside>
+    </main>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        let authToken = localStorage.getItem('bearhouse_token');
+        let currentUser = null;
+        let profile = null;
+        let allQuests = {};
+        let currentTab = 'daily';
+        let currentCategory = 'all';
+
+        async function api(endpoint, options = {}) {
+            const headers = { 'Content-Type': 'application/json', ...options.headers };
+            if (authToken) headers['X-Auth-Token'] = authToken;
+            const response = await fetch(endpoint, { ...options, headers });
+            if (response.status === 401) { window.location.href = '/login.html'; return null; }
+            return response.json();
+        }
+
+        async function init() {
+            if (!authToken) { window.location.href = '/login.html'; return; }
+            createParticles();
+            
+            const meData = await api('/api/me');
+            if (!meData) return;
+            
+            currentUser = meData.user;
+            profile = meData.gamification;
+            
+            updateHeader();
+            setupTabs();
+            await Promise.all([loadQuests(), loadLeaderboard(), loadTeams(), loadAchievements()]);
+        }
+
+        function updateHeader() {
+            if (!currentUser || !profile) return;
+            document.getElementById('user-name').textContent = currentUser.fullName;
+            document.getElementById('user-avatar').textContent = currentUser.fullName.charAt(0);
+            document.getElementById('user-title').textContent = profile.level.title;
+            document.getElementById('level').textContent = profile.level.current;
+            document.getElementById('total-xp').textContent = profile.level.totalXp.toLocaleString();
+            document.getElementById('streak').textContent = profile.streak.current;
+            document.getElementById('streak-count').textContent = profile.streak.current;
+            
+            if (profile.streak.current >= 7) {
+                document.getElementById('streak-bonus').style.display = 'inline-block';
+                document.getElementById('streak-flame').textContent = '🔥💎';
+            }
+        }
+
+        function setupTabs() {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentTab = btn.dataset.tab;
+                    currentCategory = 'all';
+                    renderQuests();
+                });
+            });
+        }
+
+        async function loadQuests() {
+            allQuests = await api('/api/quests');
+            if (!allQuests) return;
+            
+            document.getElementById('daily-count').textContent = allQuests.daily?.length || 0;
+            document.getElementById('weekly-count').textContent = allQuests.weekly?.length || 0;
+            document.getElementById('monthly-count').textContent = allQuests.monthly?.length || 0;
+            document.getElementById('quarterly-count').textContent = allQuests.quarterly?.length || 0;
+            document.getElementById('seasonal-count').textContent = allQuests.seasonal?.length || 0;
+            document.getElementById('special-count').textContent = allQuests.special?.length || 0;
+            
+            renderQuests();
+        }
+
+        function renderQuests() {
+            const quests = allQuests[currentTab] || [];
+            const container = document.getElementById('quests-grid');
+            const categoryFilter = document.getElementById('category-filter');
+            
+            // Get unique categories
+            const categories = [...new Set(quests.map(q => q.category).filter(Boolean))];
+            categoryFilter.innerHTML = '<button class="category-btn active" data-category="all">Alle</button>' +
+                categories.map(c => `<button class="category-btn" data-category="${c}">${getCategoryName(c)}</button>`).join('');
+            
+            categoryFilter.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryFilter.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
+                    renderQuests();
+                });
+            });
+
+            // Filter by category
+            let filtered = currentCategory === 'all' ? quests : quests.filter(q => q.category === currentCategory);
+            
+            // Update section header
+            const titles = {
+                daily: ['☀️', 'Daglige Oppgaver', 'Nullstilles ved midnatt'],
+                weekly: ['📅', 'Ukentlige Oppgaver', 'Nullstilles mandag'],
+                monthly: ['🗓️', 'Månedlige Oppgaver', 'Nullstilles 1. i mnd'],
+                quarterly: ['📊', 'Kvartalsvise Oppgaver', 'Nullstilles hvert kvartal'],
+                seasonal: ['🎄', 'Sesongoppgaver', 'Aktive denne måneden'],
+                special: ['⭐', 'Spesielle Oppgaver', 'Bonus XP']
+            };
+            
+            const [icon, title] = titles[currentTab] || ['📋', 'Oppgaver'];
+            document.getElementById('section-title').innerHTML = `<span>${icon}</span><span>${title}</span>`;
+            
+            const completed = filtered.filter(q => q.completed).length;
+            document.getElementById('section-progress').textContent = `${completed}/${filtered.length} fullført`;
+            document.getElementById('progress-fill').style.width = filtered.length > 0 ? `${(completed / filtered.length) * 100}%` : '0%';
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); padding: 30px; text-align: center;">Ingen oppgaver i denne kategorien</p>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(quest => `
+                <div class="quest-card ${quest.completed ? 'completed' : ''}" 
+                     data-quest-id="${quest.id}" 
+                     data-category="${currentTab}"
+                     onclick="completeQuest('${quest.id}', '${currentTab}')">
+                    <div class="quest-icon">${quest.icon}</div>
+                    <div class="quest-info">
+                        <div class="quest-name">${quest.name}</div>
+                        <div class="quest-description">${quest.description}</div>
+                        ${quest.category ? `<div class="quest-category">${getCategoryName(quest.category)}</div>` : ''}
+                    </div>
+                    <div class="quest-xp ${quest.xp < 0 ? 'negative' : ''}">${quest.xp > 0 ? '+' : ''}${quest.xp} XP</div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryName(cat) {
+            const names = {
+                basis: '📍 Basis', drift: '⚙️ Drift', renhold: '🧹 Renhold', utstyr: '🔧 Utstyr',
+                haccp: '🛡️ HACCP', salg: '💰 Salg', service: '😊 Service', admin: '📋 Admin',
+                team: '👥 Team', opplæring: '🎓 Opplæring', markedsføring: '📱 Marketing',
+                uteområde: '🌳 Ute', miljø: '🌿 Miljø', sikkerhet: '🧯 Sikkerhet',
+                produksjon: '🥐 Produksjon', innovasjon: '💡 Innovasjon', bærekraft: '♻️ Bærekraft', sesong: '📅 Sesong'
+            };
+            return names[cat] || cat;
+        }
+
+        async function completeQuest(questId, category) {
+            const card = document.querySelector(`[data-quest-id="${questId}"]`);
+            if (card?.classList.contains('completed')) {
+                showToast('info', 'Allerede fullført', 'Du har gjort denne oppgaven');
+                return;
+            }
+            
+            const result = await api(`/api/quests/${questId}/complete`, {
+                method: 'POST',
+                body: JSON.stringify({ category })
+            });
+            
+            if (result.error) {
+                showToast('error', 'Feil', result.error);
+                return;
+            }
+            
+            card?.classList.add('completed');
+            showToast('xp-gain', `+${result.xpEarned} XP!`, result.quest);
+            
+            if (result.leveledUp) {
+                setTimeout(() => showToast('level-up', `🎉 Level ${result.newLevel}!`, result.reward?.name || 'Gratulerer!'), 500);
+            }
+            
+            const meData = await api('/api/me');
+            if (meData) { profile = meData.gamification; updateHeader(); }
+            loadQuests();
+            loadLeaderboard();
+        }
+
+        async function loadLeaderboard() {
+            const lb = await api('/api/leaderboard/weekly');
+            if (!lb) return;
+            
+            const container = document.getElementById('leaderboard');
+            const medals = ['🥇', '🥈', '🥉', '4', '5'];
+            const classes = ['gold', 'silver', 'bronze', '', ''];
+            
+            container.innerHTML = lb.length === 0 
+                ? '<p style="color: var(--text-secondary); padding: 10px;">Ingen data ennå</p>'
+                : lb.slice(0, 5).map((e, i) => `
+                    <div class="leaderboard-item ${classes[i]}">
+                        <div class="rank rank-${i + 1}">${medals[i]}</div>
+                        <div class="leader-info">
+                            <div class="leader-name">${e.fullName.split(' ')[0]}</div>
+                            <div class="leader-level">Level ${e.level}</div>
+                        </div>
+                        <div class="leader-xp">${e.weeklyXp.toLocaleString()}</div>
+                    </div>
+                `).join('');
+        }
+
+        async function loadTeams() {
+            const teams = await api('/api/teams');
+            if (!teams) return;
+            
+            document.querySelector('#team-nesbyen .team-xp').textContent = `${teams.teams.nesbyen.weeklyXp.toLocaleString()} XP`;
+            document.querySelector('#team-hemsedal .team-xp').textContent = `${teams.teams.hemsedal.weeklyXp.toLocaleString()} XP`;
+            document.getElementById('team-nesbyen').classList.toggle('winning', teams.leader === 'nesbyen');
+            document.getElementById('team-hemsedal').classList.toggle('winning', teams.leader === 'hemsedal');
+        }
+
+        async function loadAchievements() {
+            const ach = await api('/api/achievements');
+            if (!ach) return;
+            
+            const unlocked = ach.filter(a => a.unlocked).length;
+            document.getElementById('ach-count').textContent = unlocked;
+            document.getElementById('ach-total').textContent = ach.length;
+            
+            document.getElementById('achievements').innerHTML = ach.slice(0, 10).map(a => `
+                <div class="achievement-icon ${a.unlocked ? '' : 'locked'}" title="${a.name}: ${a.description}">
+                    ${a.icon}
+                </div>
+            `).join('');
+        }
+
+        function showToast(type, title, message) {
+            const container = document.getElementById('toast-container');
+            const icons = { 'xp-gain': '✨', 'level-up': '🎉', 'error': '❌', 'info': 'ℹ️' };
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-icon">${icons[type] || '📢'}</div><div class="toast-content"><h4>${title}</h4><p>${message}</p></div>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const emojis = ['🥐', '☕', '🍞', '🧁', '🍰', '🐻', '⭐', '✨', '🔥'];
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.animationDuration = `${15 + Math.random() * 20}s`;
+                p.style.animationDelay = `${Math.random() * 20}s`;
+                container.appendChild(p);
+            }
+        }
+
+        init();
+        setInterval(() => { loadLeaderboard(); loadTeams(); }, 30000);
+    </script>
+</body>
+</html>

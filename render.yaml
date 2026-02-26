@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: bear-house-dashboard
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: bear-house-data
+      mountPath: /data
+      sizeGB: 1

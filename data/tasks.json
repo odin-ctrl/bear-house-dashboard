@@ -1,0 +1,588 @@
+{
+  "tasks": [
+    {
+      "id": "klesvask",
+      "name": "Sette på klesvask",
+      "emoji": "👕",
+      "xp": 10,
+      "minutes": 10,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "personaltoalett",
+      "name": "Vaske personaltoalett",
+      "emoji": "🚽",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "personalrom",
+      "name": "Vaske personalrom",
+      "emoji": "🧹",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "lager",
+      "name": "Rydde lageret",
+      "emoji": "📦",
+      "xp": 20,
+      "minutes": 30,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "heveskap",
+      "name": "Vaske heveskap",
+      "emoji": "🗄️",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "ovnsglass",
+      "name": "Vaske glasset på ovnene",
+      "emoji": "🔥",
+      "xp": 15,
+      "minutes": 15,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "gulv-skrubb",
+      "name": "Skrubbe gulvet i kundeområdet",
+      "emoji": "🧽",
+      "xp": 25,
+      "minutes": 30,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "bordbein",
+      "name": "Vaske bordbein på bordene",
+      "emoji": "🪑",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "smoreomrade",
+      "name": "Ta ut hyller og vaske smøreområdet",
+      "emoji": "🧈",
+      "xp": 20,
+      "minutes": 25,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "skap-topp",
+      "name": "Vaske oppå skap/kjøleskap på kjøkken",
+      "emoji": "⬆️",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "vinduer",
+      "name": "Vaske vinduer",
+      "emoji": "🪟",
+      "xp": 20,
+      "minutes": 25,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "kundetoalett",
+      "name": "Vaske kundetoalett",
+      "emoji": "🚻",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "planter",
+      "name": "Vanne planter",
+      "emoji": "🌱",
+      "xp": 5,
+      "minutes": 10,
+      "category": "vedlikehold",
+      "requiresPhoto": false
+    },
+    {
+      "id": "stov-vegger",
+      "name": "Tørke støv av vegger/lamper",
+      "emoji": "💡",
+      "xp": 15,
+      "minutes": 20,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "bytte-paere",
+      "name": "Skifte pære",
+      "emoji": "💡",
+      "xp": 10,
+      "minutes": 10,
+      "category": "vedlikehold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "kjoleskap-vask",
+      "name": "Ta ut varer og vaske hyller i kjøleskap",
+      "emoji": "❄️",
+      "xp": 25,
+      "minutes": 30,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "fryser-vask",
+      "name": "Ta ut varer og vaske hyller i fryser",
+      "emoji": "🧊",
+      "xp": 25,
+      "minutes": 30,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "trapp-kjeller",
+      "name": "Vaske trappen til kjelleren",
+      "emoji": "🪜",
+      "xp": 15,
+      "minutes": 15,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "under-skap",
+      "name": "Vaske under skap/hyller på kjøkken",
+      "emoji": "⬇️",
+      "xp": 20,
+      "minutes": 25,
+      "category": "renhold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "kompressor-stov",
+      "name": "Støvsuge støv på kompressor",
+      "emoji": "🌀",
+      "xp": 15,
+      "minutes": 15,
+      "category": "vedlikehold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "prisskilt",
+      "name": "Fikse nye prisskilt",
+      "emoji": "🏷️",
+      "xp": 15,
+      "minutes": 20,
+      "category": "vedlikehold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "salgshyller",
+      "name": "Rydde i salgshyller",
+      "emoji": "🛒",
+      "xp": 15,
+      "minutes": 20,
+      "category": "vedlikehold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "disk",
+      "name": "Rydde disken",
+      "emoji": "🧹",
+      "xp": 10,
+      "minutes": 15,
+      "category": "vedlikehold",
+      "requiresPhoto": true
+    },
+    {
+      "id": "google-review",
+      "name": "Få en 5-stjernes Google-anmeldelse",
+      "emoji": "⭐",
+      "xp": 50,
+      "minutes": 0,
+      "category": "salg",
+      "requiresPhoto": false,
+      "autoTracked": true
+    }
+  ],
+  "categories": {
+    "renhold": {
+      "name": "Renhold",
+      "emoji": "🧹",
+      "color": "#4ecdc4"
+    },
+    "vedlikehold": {
+      "name": "Vedlikehold",
+      "emoji": "🔧",
+      "color": "#f7b731"
+    },
+    "salg": {
+      "name": "Salg",
+      "emoji": "⭐",
+      "color": "#ff6b6b"
+    }
+  },
+  "completions": [
+    {
+      "taskId": "google-review",
+      "taskName": "Få en 5-stjernes Google-anmeldelse",
+      "emoji": "⭐",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 50,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-25T23:35:28.023Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "personaltoalett",
+      "taskName": "Vaske personaltoalett",
+      "emoji": "🚽",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": "/task-photos/personaltoalett_0_1772063658788_before.jpg",
+      "photoAfter": "/task-photos/personaltoalett_0_1772063658788_after.jpg",
+      "completedAt": "2026-02-25T23:54:18.790Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "lager",
+      "taskName": "Rydde lageret",
+      "emoji": "📦",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 20,
+      "photoBefore": "/task-photos/lager_0_1772063806888_before.jpg",
+      "photoAfter": "/task-photos/lager_0_1772063806888_after.jpg",
+      "completedAt": "2026-02-25T23:56:46.889Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772063913476_before.jpg",
+      "photoAfter": "/task-photos/klesvask_0_1772063913476_after.jpg",
+      "completedAt": "2026-02-25T23:58:33.477Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772063974972_before.jpg",
+      "photoAfter": "/task-photos/klesvask_0_1772063974972_after.jpg",
+      "completedAt": "2026-02-25T23:59:34.972Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772064073628_before.jpg",
+      "photoAfter": "/task-photos/klesvask_0_1772064073628_after.jpg",
+      "completedAt": "2026-02-26T00:01:13.629Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772064153880_before.jpg",
+      "photoAfter": "/task-photos/klesvask_0_1772064153880_after.jpg",
+      "completedAt": "2026-02-26T00:02:33.882Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "personalrom",
+      "taskName": "Vaske personalrom",
+      "emoji": "🧹",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": "/task-photos/personalrom_0_1772064174136_before.jpg",
+      "photoAfter": "/task-photos/personalrom_0_1772064174136_after.jpg",
+      "completedAt": "2026-02-26T00:02:54.137Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772064231941_before.jpg",
+      "photoAfter": "/task-photos/klesvask_0_1772064231941_after.jpg",
+      "completedAt": "2026-02-26T00:03:51.942Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:04:53.137Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:08:48.933Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:10:46.906Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:26:40.903Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "personaltoalett",
+      "taskName": "Vaske personaltoalett",
+      "emoji": "🚽",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:26:53.313Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "vinduer",
+      "taskName": "Vaske vinduer",
+      "emoji": "🪟",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 20,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:35:14.582Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "planter",
+      "taskName": "Vanne planter",
+      "emoji": "🌱",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 5,
+      "photoBefore": "/task-photos/planter_0_1772066257901_before.jpg",
+      "photoAfter": null,
+      "completedAt": "2026-02-26T00:37:37.938Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T06:43:21.100Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T06:54:41.329Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T06:55:27.397Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": "/task-photos/klesvask_0_1772088933839_before.jpg",
+      "photoAfter": null,
+      "completedAt": "2026-02-26T06:55:33.845Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:07:18.583Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:11:21.778Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "klesvask",
+      "taskName": "Sette på klesvask",
+      "emoji": "👕",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 10,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:15:49.319Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "planter",
+      "taskName": "Vanne planter",
+      "emoji": "🌱",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 5,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:18:25.595Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "skap-topp",
+      "taskName": "Vaske oppå skap/kjøleskap på kjøkken",
+      "emoji": "⬆️",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:18:50.568Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "bordbein",
+      "taskName": "Vaske bordbein på bordene",
+      "emoji": "🪑",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:19:30.812Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "planter",
+      "taskName": "Vanne planter",
+      "emoji": "🌱",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 5,
+      "photoBefore": "/task-photos/planter_0_1772090530892_before.jpg",
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:22:10.898Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "lager",
+      "taskName": "Rydde lageret",
+      "emoji": "📦",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 20,
+      "photoBefore": null,
+      "photoAfter": null,
+      "completedAt": "2026-02-26T07:22:50.666Z",
+      "location": "nesbyen"
+    },
+    {
+      "taskId": "personaltoalett",
+      "taskName": "Vaske personaltoalett",
+      "emoji": "🚽",
+      "userId": 0,
+      "userName": "Martin Gaze",
+      "xp": 15,
+      "photoBefore": "/task-photos/personaltoalett_0_1772090922520_before.jpg",
+      "photoAfter": "/task-photos/personaltoalett_0_1772090922520_after.jpg",
+      "completedAt": "2026-02-26T07:28:42.531Z",
+      "location": "nesbyen"
+    }
+  ]
+}

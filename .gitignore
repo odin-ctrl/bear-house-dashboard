@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.log
+data/sessions.json
+data/login-log.json
+public/task-photos/*
+!public/task-photos/.gitkeep
+.DS_Store

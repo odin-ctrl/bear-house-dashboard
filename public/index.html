@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear House ☕ Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/bearhousekaffekopp.png" type="image/png">
+</head>
+<body>
+    <script>
+        const token = localStorage.getItem('bearhouse_token');
+        if (!token) window.location.href = '/login.html';
+    </script>
+
+    <!-- Animated Background -->
+    <div class="bg-glow"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="/bearhousekaffekopp.png" alt="Bear House" class="logo-icon">
+                <img src="/bearhouseblaskrift.png" alt="Bear House" class="logo-text">
+            </div>
+            <div class="location-toggle">
+                <button class="location-btn active" data-location="nesbyen">
+                    <span class="loc-emoji">🏔️</span>
+                    <span class="loc-name">Nesbyen</span>
+                </button>
+                <button class="location-btn" data-location="hemsedal">
+                    <span class="loc-emoji">⛷️</span>
+                    <span class="loc-name">Hemsedal</span>
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="user-greeting" id="user-greeting">Hei! 👋</div>
+                <div class="clock" id="clock"></div>
+            </div>
+        </header>
+
+        <!-- Hero Stats -->
+        <section class="hero-stats">
+            <div class="hero-main">
+                <div class="hero-progress-ring">
+                    <svg class="progress-ring" viewBox="0 0 200 200">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffc857"/>
+                                <stop offset="100%" style="stop-color:#ff6b35"/>
+                            </linearGradient>
+                        </defs>
+                        <circle class="progress-ring-bg" cx="100" cy="100" r="90"/>
+                        <circle class="progress-ring-fill" id="progress-ring" cx="100" cy="100" r="90"/>
+                    </svg>
+                    <div class="hero-center">
+                        <span class="hero-percent" id="hero-percent">0%</span>
+                        <span class="hero-label">av mål</span>
+                    </div>
+                </div>
+                <div class="hero-numbers">
+                    <div class="hero-current">
+                        <span class="hero-amount" id="current-sales">0</span>
+                    </div>
+                    <div class="hero-target">
+                        Dagens mål: <strong id="budget-target">0</strong>
+                    </div>
+                    <div class="hero-remaining" id="hero-remaining">
+                        <span id="remaining-amount" class="remaining-highlight">0 kr</span>
+                        <span class="remaining-label">igjen til mål</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-streak" id="hero-streak">
+                <span class="streak-fire">🔥</span>
+                <span class="streak-number" id="streak-count">0</span>
+                <div class="streak-info">
+                    <span class="streak-label">DAGER</span>
+                    <span class="streak-sub">over budsjett</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- XP/Level Bar - Gamification -->
+        <a href="/tasks.html" class="xp-bar-container" style="text-decoration: none; color: inherit;">
+            <div class="xp-level">
+                <div class="level-badge" id="level-badge">1</div>
+                <div class="level-info">
+                    <span class="level-title">Level <span id="level-num">1</span></span>
+                    <span class="level-name" id="level-name">Nybegynner</span>
+                </div>
+            </div>
+            <div class="xp-progress">
+                <div class="xp-bar">
+                    <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+                </div>
+                <div class="xp-text"><span id="xp-current">0</span> / <span id="xp-next">100</span> XP</div>
+            </div>
+            <div class="xp-next-reward">
+                🧹 <strong>Gjør oppgaver →</strong>
+            </div>
+        </a>
+
+        <!-- Quick Stats -->
+        <div class="quick-stats">
+            <div class="quick-stat">
+                <div class="quick-icon">⏰</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="hourly-current">0 kr</span>
+                    <span class="quick-label">Siste 60 min</span>
+                </div>
+                <div class="quick-trend up" id="hourly-trend">↗</div>
+            </div>
+            <div class="quick-stat clickable" id="yoy-stat" onclick="showYoYBreakdown(event)" title="Klikk for å se detaljer">
+                <div class="quick-icon">📈</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="yoy-diff">+0 kr</span>
+                    <span class="quick-label" id="yoy-label">vs. i fjor</span>
+                </div>
+                <div class="quick-trend" id="yoy-trend">↗</div>
+            </div>
+            <div class="quick-stat">
+                <div class="quick-icon">🛒</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="transactions-today">0</span>
+                    <span class="quick-label">Kunder i dag</span>
+                </div>
+                <div class="quick-trend up">↗</div>
+            </div>
+            <div class="quick-stat clickable" id="avg-ticket-stat" onclick="showAvgTicketInfo()">
+                <div class="quick-icon">💰</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="avg-ticket">0 kr</span>
+                    <span class="quick-label">Snitt <span id="avg-ticket-goal-label"></span></span>
+                </div>
+                <div class="quick-trend up" id="avg-ticket-trend">↗</div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <main class="main-grid">
+            <!-- Week Overview -->
+            <section class="card card-wide week-card">
+                <div class="card-header">
+                    <h2>📊 Weekly Vibes</h2>
+                    <div class="week-legend">
+                        <span class="legend-item"><span class="legend-dot budget-dot"></span> Budsjett</span>
+                        <span class="legend-item"><span class="legend-dot sales-dot"></span> 2026 (faktisk)</span>
+                    </div>
+                </div>
+                <div class="week-bars" id="week-bars">
+                    <div class="week-loading">Loading chart... ✨</div>
+                </div>
+            </section>
+
+            <!-- Competition -->
+            <section class="card competition-card">
+                <div class="card-header">
+                    <h2>⚔️ Dagens kamp</h2>
+                    <span class="card-badge" id="competition-badge">🏆</span>
+                </div>
+                <div class="competition-visual">
+                    <div class="comp-side nesbyen-side">
+                        <span class="comp-emoji">🏔️</span>
+                        <span class="comp-location">Nesbyen</span>
+                        <span class="comp-percent" id="nesbyen-value">0%</span>
+                        <div class="comp-bar-v">
+                            <div class="comp-fill-v nesbyen-fill" id="nesbyen-score"></div>
+                        </div>
+                    </div>
+                    <div class="comp-vs">VS</div>
+                    <div class="comp-side hemsedal-side">
+                        <span class="comp-emoji">⛷️</span>
+                        <span class="comp-location">Hemsedal</span>
+                        <span class="comp-percent" id="hemsedal-value">0%</span>
+                        <div class="comp-bar-v">
+                            <div class="comp-fill-v hemsedal-fill" id="hemsedal-score"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Records -->
+            <section class="card records-card">
+                <div class="card-header">
+                    <h2>🏆 Hall of Fame</h2>
+                </div>
+                <div class="records-list">
+                    <div class="record-item gold clickable" onclick="showRecordStaff('bestDay', event)" title="Klikk for å se hvem som jobbet">
+                        <span class="record-medal">🥇</span>
+                        <div class="record-info">
+                            <span class="record-value" id="record-day">127 140 kr</span>
+                            <span class="record-type">Beste dag noensinne</span>
+                        </div>
+                        <span class="record-date" id="record-day-date">Ons påsken 2025</span>
+                    </div>
+                    <div class="record-item silver clickable" onclick="showRecordStaff('bestWeek', event)" title="Klikk for å se hvem som jobbet">
+                        <span class="record-medal">🥈</span>
+                        <div class="record-info">
+                            <span class="record-value" id="record-week">627 371 kr</span>
+                            <span class="record-type">Beste uke</span>
+                        </div>
+                        <span class="record-date" id="record-week-date">Påskeuka 2025</span>
+                    </div>
+                    <div class="record-item bronze clickable" onclick="showRecordStaff('bestHour', event)" title="Klikk for å se hvem som jobbet">
+                        <span class="record-medal">🥉</span>
+                        <div class="record-info">
+                            <span class="record-value" id="record-hour">20 621 kr</span>
+                            <span class="record-type">Beste time</span>
+                        </div>
+                        <span class="record-date" id="record-hour-date">kl 12:00 påsken</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard -->
+            <section class="card bestsellers-card">
+                <div class="card-header">
+                    <h2>🏅 XP Leaderboard</h2>
+                    <span class="card-subtitle">Denne uken</span>
+                </div>
+                <div class="bestsellers-list" id="leaderboard-list">
+                    <div class="bestseller-item">
+                        <span class="bestseller-rank gold">🥇</span>
+                        <span class="bestseller-name">Laster...</span>
+                        <span class="bestseller-count">0 XP</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Staff -->
+            <section class="card staff-card">
+                <div class="card-header">
+                    <h2>💪 Dream Team</h2>
+                </div>
+                <div class="staff-list" id="staff-list">
+                    <div class="staff-member">
+                        <div class="staff-avatar-img">👩‍🍳</div>
+                        <span class="staff-name">Laster...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages -->
+            <section class="card messages-card">
+                <div class="card-header">
+                    <h2>📢 Beskjeder</h2>
+                </div>
+                <div class="messages-list" id="messages-list">
+                    <div class="message-item">
+                        La oss knuse det i dag! 💪🔥
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weather -->
+            <section class="card weather-card">
+                <div class="weather-visual">
+                    <span class="weather-icon" id="weather-icon">☀️</span>
+                    <span class="weather-temp" id="weather-temp">-5°</span>
+                </div>
+                <div class="weather-info">
+                    <span class="weather-desc" id="weather-desc">Sol & kulde</span>
+                    <span class="weather-tip" id="weather-tip">☕ Perfekt dag for varm sjokolade!</span>
+                </div>
+            </section>
+
+            <!-- Fun Fact -->
+            <section class="card funfact-card">
+                <div class="funfact-emoji">💡</div>
+                <div class="funfact-text" id="funfact-text">
+                    Visste du at vi solgte <strong>2.340 kanelboller</strong> i januar? Det er nok til å stable dem 35 meter høyt! 🏔️
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <img src="/bearhousekaffekopp.png" class="footer-logo" alt="">
+            <span>Bear House Dashboard v3.0 🎮</span>
+            <button class="logout-btn" onclick="logout()">Logg ut 👋</button>
+        </footer>
+
+        <!-- Celebration Overlay -->
+        <div class="celebration-overlay" id="celebration-overlay">
+            <div class="celebration-content">
+                <h1 class="celebration-title">🎉 NY REKORD! 🎉</h1>
+                <div class="celebration-value" id="celebration-value">127 140 kr</div>
+                <div class="celebration-type" id="celebration-type">Dagrekord knust!</div>
+            </div>
+        </div>
+
+        <!-- XP Breakdown Modal -->
+        <div class="modal-overlay" id="xp-modal" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeXpModal()">✕</button>
+                <div class="modal-header">
+                    <div class="modal-avatar">👤</div>
+                    <div class="modal-user-info">
+                        <h2 id="modal-name">Navn</h2>
+                        <div class="modal-stats">
+                            <span class="modal-level">Level <span id="modal-level">1</span></span>
+                            <span class="modal-xp"><span id="modal-total-xp">0</span> XP totalt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h3>📊 XP denne uken: <span id="modal-weekly-xp">0</span> XP</h3>
+                    <div class="xp-breakdown-list" id="xp-breakdown-list">
+                        <div class="xp-loading">Laster...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Record Staff Modal -->
+        <div class="modal-overlay" id="record-modal" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeRecordModal()">✕</button>
+                <div class="modal-header">
+                    <div class="modal-avatar" id="record-modal-icon">🏆</div>
+                    <div class="modal-user-info">
+                        <h2 id="record-modal-title">Beste dag</h2>
+                        <div class="modal-stats">
+                            <span class="modal-xp" id="record-modal-amount">127 140 kr</span>
+                            <span class="modal-level" id="record-modal-date">Ons påsken 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h3>👥 Hvem jobbet:</h3>
+                    <div class="staff-grid" id="record-staff-list">
+                        <div class="xp-loading">Laster...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- YoY Breakdown Modal -->
+        <div class="modal-overlay" id="yoy-modal" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeYoYModal()">✕</button>
+                <div class="modal-header">
+                    <div class="modal-avatar">📈</div>
+                    <div class="modal-user-info">
+                        <h2>Week-to-Date</h2>
+                        <div class="modal-stats">
+                            <span class="modal-xp" id="yoy-modal-diff">+0 kr</span>
+                            <span class="modal-level" id="yoy-modal-pct">0%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="yoy-comparison">
+                        <div class="yoy-column">
+                            <h3>📅 Denne uken (uke <span id="yoy-this-week">0</span>)</h3>
+                            <div class="yoy-total" id="yoy-this-total">0 kr</div>
+                            <div class="yoy-days" id="yoy-this-days"></div>
+                        </div>
+                        <div class="yoy-vs">VS</div>
+                        <div class="yoy-column">
+                            <h3>📆 <span id="yoy-last-label">I fjor</span></h3>
+                            <div class="yoy-total" id="yoy-last-total">0 kr</div>
+                            <div class="yoy-days" id="yoy-last-days"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let authToken = localStorage.getItem('bearhouse_token');
+        let currentUser = null;
+        let currentLocation = 'nesbyen';
+        let profile = null;
+
+        // API helper
+        async function api(endpoint, options = {}) {
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+            
+            if (authToken) {
+                headers['X-Auth-Token'] = authToken;
+            }
+            
+            const response = await fetch(endpoint, {
+                ...options,
+                headers
+            });
+            
+            if (response.status === 401) {
+                window.location.href = '/login.html';
+                return null;
+            }
+            
+            return response.json();
+        }
+
+        // Initialize
+        async function init() {
+            if (!authToken) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            createParticles();
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            // Setup location toggle
+            document.querySelectorAll('.location-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.location-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentLocation = btn.dataset.location;
+                    currentRecordsData = null; // Reset records cache
+                    loadDashboardData();
+                });
+            });
+            
+            try {
+                // Get user profile
+                const meData = await api('/api/me');
+                if (!meData) return;
+                
+                currentUser = meData.user;
+                profile = meData.gamification;
+                currentLocation = meData.location || 'nesbyen';
+                
+                // Update greeting
+                document.getElementById('user-greeting').textContent = `Hei ${currentUser.fullName.split(' ')[0]}! 👋`;
+                
+                // Set active location
+                document.querySelectorAll('.location-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.location === currentLocation);
+                });
+                
+                updateGamificationUI();
+                await loadDashboardData();
+                await loadLeaderboard();
+                
+            } catch (error) {
+                console.error('Init error:', error);
+            }
+        }
+
+        // Update gamification UI
+        function updateGamificationUI() {
+            if (!profile) return;
+            
+            // Level badge
+            document.getElementById('level-badge').textContent = profile.level.current;
+            document.getElementById('level-num').textContent = profile.level.current;
+            document.getElementById('level-name').textContent = profile.level.title;
+            
+            // XP bar
+            document.getElementById('xp-fill').style.width = `${profile.level.progress}%`;
+            document.getElementById('xp-current').textContent = profile.level.totalXp.toLocaleString();
+            document.getElementById('xp-next').textContent = (profile.level.totalXp + profile.level.xpToNextLevel).toLocaleString();
+            
+            // Personal streak (login streak) - will be overwritten by budget streak
+            document.getElementById('streak-count').textContent = profile.streak.current;
+            if (profile.streak.current >= 7) {
+                document.getElementById('hero-streak').classList.add('streak-bonus-active');
+            }
+        }
+        
+        // Update budget streak UI
+        function updateBudgetStreakUI(streakData) {
+            if (streakData && streakData.currentStreak !== undefined) {
+                document.getElementById('streak-count').textContent = streakData.currentStreak;
+                
+                const heroStreak = document.getElementById('hero-streak');
+                if (streakData.currentStreak >= 3) {
+                    heroStreak.classList.add('streak-hot');
+                }
+                if (streakData.currentStreak >= 7) {
+                    heroStreak.classList.add('streak-bonus-active');
+                }
+            }
+        }
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Get sales data
+                const salesData = await api(`/api/data/${currentLocation}`);
+                if (salesData) {
+                    updateSalesUI(salesData);
+                }
+                
+                // Get staff
+                const staffData = await api(`/api/staff/${currentLocation}`);
+                if (staffData) {
+                    updateStaffUI(staffData);
+                }
+                
+                // Get messages
+                const messages = await api('/api/messages');
+                if (messages) {
+                    updateMessagesUI(messages);
+                }
+                
+                // Get team battle
+                const teams = await api('/api/teams');
+                if (teams) {
+                    updateTeamsUI(teams);
+                }
+                
+                // Get records
+                const records = await api(`/api/records/${currentLocation}`);
+                if (records && records.records) {
+                    updateRecordsUI(records.records);
+                }
+                
+                // Get budget streak
+                const streak = await api(`/api/streak/${currentLocation}`);
+                if (streak) {
+                    updateBudgetStreakUI(streak);
+                }
+                
+                // Get weekly chart data
+                const weekly = await api(`/api/weekly/${currentLocation}`);
+                if (weekly && weekly.week) {
+                    updateWeeklyChart(weekly.week);
+                }
+                
+                // Get Year-over-Year week-to-date comparison
+                const yoy = await api(`/api/yoy-wtd/${currentLocation}`);
+                if (yoy) {
+                    updateYoYUI(yoy);
+                }
+                
+            } catch (error) {
+                console.error('Load data error:', error);
+            }
+        }
+        
+        // Store YoY data for modal
+        let currentYoYData = null;
+
+        // Update Year-over-Year comparison UI
+        function updateYoYUI(data) {
+            currentYoYData = data; // Store for modal
+            
+            const diffEl = document.getElementById('yoy-diff');
+            const labelEl = document.getElementById('yoy-label');
+            const trendEl = document.getElementById('yoy-trend');
+            
+            const diff = data.diff || 0;
+            const isPositive = diff >= 0;
+            
+            // Format difference
+            const diffStr = (isPositive ? '+' : '') + diff.toLocaleString() + ' kr';
+            diffEl.textContent = diffStr;
+            
+            // Update trend indicator
+            trendEl.textContent = isPositive ? '↗' : '↘';
+            trendEl.className = 'quick-trend ' + (isPositive ? 'up' : 'down');
+            
+            // Update label - Make years super clear!
+            const currentYear = new Date().getFullYear();
+            let label = `2026 vs 2025 (uke ${data.comparisonWeek})`;
+            if (data.isEasterComparison) {
+                label = '2026 vs påsken 2025';
+            }
+            labelEl.textContent = label;
+            
+            // Update color
+            diffEl.style.color = isPositive ? 'var(--neon-green)' : 'var(--neon-pink)';
+        }
+
+        // Show YoY breakdown modal
+        function showYoYBreakdown(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            const modal = document.getElementById('yoy-modal');
+            modal.style.display = 'flex';
+            
+            if (!currentYoYData) {
+                return;
+            }
+            
+            const data = currentYoYData;
+            const days = ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn'];
+            
+            // Update header
+            const diff = data.diff || 0;
+            const isPositive = diff >= 0;
+            document.getElementById('yoy-modal-diff').textContent = (isPositive ? '+' : '') + diff.toLocaleString() + ' kr';
+            document.getElementById('yoy-modal-diff').style.color = isPositive ? 'var(--neon-green)' : 'var(--neon-pink)';
+            document.getElementById('yoy-modal-pct').textContent = (isPositive ? '+' : '') + data.diffPct + '%';
+            
+            // Update week numbers
+            document.getElementById('yoy-this-week').textContent = data.currentWeek;
+            document.getElementById('yoy-last-label').textContent = data.isEasterComparison 
+                ? 'Påskeuka ' + data.comparisonYear 
+                : 'Uke ' + data.comparisonWeek + ' ' + data.comparisonYear;
+            
+            // Update totals
+            document.getElementById('yoy-this-total').textContent = data.thisYear.toLocaleString() + ' kr';
+            document.getElementById('yoy-last-total').textContent = data.lastYear.toLocaleString() + ' kr';
+            
+            // Build day-by-day breakdown
+            const thisDaysEl = document.getElementById('yoy-this-days');
+            const lastDaysEl = document.getElementById('yoy-last-days');
+            
+            thisDaysEl.innerHTML = '';
+            lastDaysEl.innerHTML = '';
+            
+            (data.breakdown || []).forEach((day, i) => {
+                const dayName = days[i];
+                const thisWon = day.thisYear.sales >= day.lastYear.sales;
+                
+                thisDaysEl.innerHTML += `
+                    <div class="yoy-day ${thisWon ? 'winner' : 'loser'}">
+                        <span class="yoy-day-name">${dayName}</span>
+                        <span class="yoy-day-amount">${day.thisYear.sales.toLocaleString()} kr</span>
+                    </div>
+                `;
+                
+                lastDaysEl.innerHTML += `
+                    <div class="yoy-day ${!thisWon ? 'winner' : 'loser'}">
+                        <span class="yoy-day-name">${dayName}</span>
+                        <span class="yoy-day-amount">${day.lastYear.sales.toLocaleString()} kr</span>
+                    </div>
+                `;
+            });
+        }
+
+        // Close YoY modal
+        function closeYoYModal() {
+            document.getElementById('yoy-modal').style.display = 'none';
+        }
+        
+        // Show avg ticket info toast
+        function showAvgTicketInfo() {
+            const stat = document.getElementById('avg-ticket-stat');
+            const goal = parseInt(stat.dataset.goal) || 0;
+            const actual = parseInt(stat.dataset.actual) || 0;
+            const met = stat.dataset.met === 'true';
+            
+            if (goal === 0) {
+                showToast('💰 Snittsalg per kunde: ' + actual + ' kr', 'info');
+                return;
+            }
+            
+            const diff = actual - goal;
+            const pct = Math.round((actual / goal) * 100);
+            
+            if (met) {
+                showToast(`🎯 MÅL NÅDD! ${actual} kr snitt (mål: ${goal} kr) — +10 XP!`, 'success');
+            } else if (diff >= -10) {
+                showToast(`💪 Nesten! ${actual} kr (mål: ${goal} kr) — ${Math.abs(diff)} kr igjen!`, 'warning');
+            } else {
+                showToast(`💰 Snitt: ${actual} kr (mål: ${goal} kr) — ${pct}% av mål`, 'info');
+            }
+        }
+        
+        // Update weekly chart with cool bars
+        // Cache last weekly data to avoid unnecessary re-renders
+        let lastWeeklyDataHash = '';
+        
+        function updateWeeklyChart(weekData) {
+            const container = document.getElementById('week-bars');
+            if (!container) return;
+            
+            if (!weekData || weekData.length === 0) {
+                container.innerHTML = '<div class="week-empty">Loading... 📊</div>';
+                return;
+            }
+            
+            // Check if data actually changed
+            const dataHash = JSON.stringify(weekData.map(d => ({ s: d.sales, b: d.budget })));
+            if (dataHash === lastWeeklyDataHash) return; // No change, skip re-render
+            lastWeeklyDataHash = dataHash;
+            
+            const maxVal = Math.max(...weekData.map(d => Math.max(d.sales || 0, d.budget || 0)), 1);
+            
+            container.innerHTML = weekData.map(d => {
+                const budgetPct = Math.min(100, Math.round(((d.budget || 0) / maxVal) * 100));
+                const salesPct = Math.min(100, Math.round(((d.sales || 0) / maxVal) * 100));
+                const hit = d.sales >= d.budget && d.sales > 0;
+                const statusClass = d.isFuture ? 'future' : (hit ? 'hit' : (d.sales > 0 ? 'miss' : ''));
+                
+                return `
+                    <div class="week-bar-day ${d.isToday ? 'today' : ''} ${statusClass}">
+                        <div class="week-bar-container">
+                            <div class="week-bar budget" style="height: ${budgetPct}%">
+                                <span class="week-bar-val">${(d.budget/1000).toFixed(0)}k</span>
+                            </div>
+                            <div class="week-bar sales ${statusClass}" style="height: ${salesPct}%">
+                                ${d.sales > 0 ? `<span class="week-bar-val">${(d.sales/1000).toFixed(0)}k</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="week-bar-label">
+                            <span class="day-abbr">${d.day}</span>
+                            ${hit ? '<span class="day-hit">🔥</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Update records UI
+        function updateRecordsUI(records) {
+            if (records.bestDay) {
+                document.getElementById('record-day').textContent = records.bestDay.amount.toLocaleString() + ' kr';
+                document.getElementById('record-day-date').textContent = records.bestDay.description.split('(')[0].trim();
+            }
+            if (records.bestWeek) {
+                document.getElementById('record-week').textContent = records.bestWeek.amount.toLocaleString() + ' kr';
+                document.getElementById('record-week-date').textContent = records.bestWeek.description;
+            }
+            if (records.bestHour) {
+                document.getElementById('record-hour').textContent = records.bestHour.amount.toLocaleString() + ' kr';
+                const hourDesc = records.bestHour.staff ? 
+                    `${records.bestHour.staff.length} ansatte` : 
+                    records.bestHour.description.split('(')[0].trim();
+                document.getElementById('record-hour-date').textContent = hourDesc;
+            }
+        }
+
+        // Update sales UI
+        function updateSalesUI(data) {
+            const { sales, budget, hourly } = data;
+            const percent = budget > 0 ? Math.round((sales / budget) * 100) : 0;
+            const remaining = Math.max(0, budget - sales);
+            const overBudget = sales > budget;
+            
+            // Hero section
+            document.getElementById('current-sales').textContent = sales.toLocaleString();
+            document.getElementById('budget-target').textContent = budget.toLocaleString();
+            document.getElementById('hero-percent').textContent = percent + '%';
+            
+            // Update remaining text based on whether we're over budget
+            const remainingEl = document.getElementById('hero-remaining');
+            if (overBudget) {
+                const surplus = sales - budget;
+                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">+' + surplus.toLocaleString() + '</span><span class="remaining-label">🎉 over budsjett!</span>';
+                remainingEl.style.borderColor = 'rgba(57, 255, 20, 0.4)';
+                remainingEl.style.background = 'rgba(57, 255, 20, 0.15)';
+            } else {
+                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">' + remaining.toLocaleString() + '</span><span class="remaining-label">igjen til mål</span>';
+                remainingEl.style.borderColor = '';
+                remainingEl.style.background = '';
+            }
+            
+            // Progress ring (cap visual at 100% but show actual percent in text)
+            const ring = document.getElementById('progress-ring');
+            const circumference = 2 * Math.PI * 90;
+            const visualPercent = Math.min(100, percent);
+            const offset = circumference - (visualPercent / 100) * circumference;
+            ring.style.strokeDasharray = circumference;
+            ring.style.strokeDashoffset = offset;
+            
+            // Change color based on progress
+            if (percent >= 100) {
+                ring.style.stroke = '#39ff14'; // Neon green
+            } else if (percent >= 75) {
+                ring.style.stroke = '#ffc857'; // Gold
+            } else if (percent >= 50) {
+                ring.style.stroke = '#ff6b35'; // Orange
+            } else {
+                ring.style.stroke = '#ff2d95'; // Pink
+            }
+            
+            // Hourly
+            document.getElementById('hourly-current').textContent = hourly.toLocaleString() + ' kr';
+            
+            // Transactions and avg ticket from API
+            const transactions = data.transactions || Math.round(sales / 85);
+            const avgTicket = data.avgTicket || 85;
+            const avgTicketGoal = data.avgTicketGoal || 0;
+            const avgTicketMet = data.avgTicketMet || false;
+            
+            document.getElementById('transactions-today').textContent = transactions;
+            
+            // Avg ticket with goal indicator
+            const avgTicketEl = document.getElementById('avg-ticket');
+            avgTicketEl.textContent = avgTicket + ' kr';
+            
+            // Update avg ticket stat styling based on goal
+            const avgTicketStat = avgTicketEl.closest('.quick-stat');
+            const goalLabelEl = document.getElementById('avg-ticket-goal-label');
+            
+            // Store goal in data attribute for modal
+            avgTicketStat.dataset.goal = avgTicketGoal;
+            avgTicketStat.dataset.actual = avgTicket;
+            avgTicketStat.dataset.met = avgTicketMet;
+            
+            if (avgTicketGoal > 0) {
+                goalLabelEl.textContent = `(mål: ${avgTicketGoal} kr)`;
+                const avgTicketTrend = document.getElementById('avg-ticket-trend');
+                if (avgTicketMet) {
+                    avgTicketStat.classList.add('goal-met');
+                    avgTicketTrend.textContent = '🎯';
+                    avgTicketTrend.classList.add('up');
+                } else {
+                    avgTicketStat.classList.remove('goal-met');
+                    const pctOfGoal = Math.round((avgTicket / avgTicketGoal) * 100);
+                    avgTicketTrend.textContent = pctOfGoal + '%';
+                    avgTicketTrend.classList.toggle('up', pctOfGoal >= 90);
+                }
+            }
+            
+            // Week bars (simulated for now)
+            updateWeekBars(budget);
+        }
+
+        // Update week bars
+        function updateWeekBars(todayBudget) {
+            const days = ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn'];
+            const today = new Date().getDay();
+            const todayIndex = today === 0 ? 6 : today - 1;
+            
+            const container = document.getElementById('week-bars');
+            container.innerHTML = days.map((day, i) => {
+                const isToday = i === todayIndex;
+                const isPast = i < todayIndex;
+                const percent = isPast ? 70 + Math.random() * 40 : (isToday ? Math.random() * 80 : 0);
+                const color = percent >= 100 ? 'var(--neon-green)' : 
+                              percent >= 75 ? 'var(--gold)' : 
+                              percent >= 50 ? 'var(--orange)' : 'var(--pink)';
+                
+                return `
+                    <div class="day-bar ${isToday ? 'today' : ''} ${isPast ? 'past' : ''}">
+                        <div class="bar-fill" style="height: ${Math.min(100, percent)}%; background: ${color}"></div>
+                        <span class="bar-day">${day}</span>
+                        ${isToday ? '<span class="bar-today-marker">📍</span>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update staff UI
+        function updateStaffUI(staff) {
+            const container = document.getElementById('staff-list');
+            
+            if (!staff || staff.length === 0) {
+                container.innerHTML = '<div class="staff-member"><span class="staff-name">Ingen på vakt</span></div>';
+                return;
+            }
+            
+            const avatars = ['👩‍🍳', '👨‍🍳', '🧑‍🍳', '👩‍💼', '🧑‍💼'];
+            
+            container.innerHTML = staff.map((s, i) => `
+                <div class="staff-member">
+                    <div class="staff-avatar-img">${avatars[i % avatars.length]}</div>
+                    <span class="staff-name">${s.name}</span>
+                    <span class="staff-level">Lv${s.level || 1} ${s.streak > 0 ? '🔥' : ''}</span>
+                    <span class="staff-shift">${s.shift}</span>
+                </div>
+            `).join('');
+        }
+
+        // Update messages UI
+        function updateMessagesUI(messages) {
+            const container = document.getElementById('messages-list');
+            
+            if (!messages || messages.length === 0) {
+                container.innerHTML = '<div class="message-item">La oss knuse det i dag! 💪🔥</div>';
+                return;
+            }
+            
+            container.innerHTML = messages.slice(0, 3).map(m => `
+                <div class="message-item">
+                    <span class="message-author">${m.author || 'Admin'}:</span>
+                    ${m.text}
+                </div>
+            `).join('');
+        }
+
+        // Update teams UI
+        function updateTeamsUI(data) {
+            const { teams, leader } = data;
+            
+            // Calculate percentages (normalized to 100 for the leading team)
+            const maxXp = Math.max(teams.nesbyen.weeklyXp, teams.hemsedal.weeklyXp, 1);
+            const nesbyenPct = Math.round((teams.nesbyen.weeklyXp / maxXp) * 100);
+            const hemsedalPct = Math.round((teams.hemsedal.weeklyXp / maxXp) * 100);
+            
+            document.getElementById('nesbyen-value').textContent = teams.nesbyen.weeklyXp.toLocaleString() + ' XP';
+            document.getElementById('hemsedal-value').textContent = teams.hemsedal.weeklyXp.toLocaleString() + ' XP';
+            
+            document.getElementById('nesbyen-score').style.height = nesbyenPct + '%';
+            document.getElementById('hemsedal-score').style.height = hemsedalPct + '%';
+            
+            // Highlight winner
+            document.querySelector('.nesbyen-side').classList.toggle('winning', leader === 'nesbyen');
+            document.querySelector('.hemsedal-side').classList.toggle('winning', leader === 'hemsedal');
+        }
+
+        // Load leaderboard
+        async function loadLeaderboard() {
+            try {
+                const leaderboard = await api('/api/leaderboard/weekly');
+                if (!leaderboard) return;
+                
+                const container = document.getElementById('leaderboard-list');
+                const medals = ['🥇', '🥈', '🥉'];
+                const classes = ['gold', 'silver', 'bronze'];
+                
+                container.innerHTML = leaderboard.slice(0, 5).map((entry, i) => `
+                    <div class="bestseller-item" onclick="showXpBreakdown(${entry.userId}, '${entry.fullName}')" title="Klikk for å se XP-detaljer">
+                        <span class="bestseller-rank ${classes[i] || ''}">${medals[i] || (i + 1)}</span>
+                        <span class="bestseller-name">${entry.fullName.split(' ')[0]}</span>
+                        <span class="bestseller-count">${entry.weeklyXp.toLocaleString()} XP</span>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Leaderboard error:', error);
+            }
+        }
+
+        // Show XP breakdown modal
+        async function showXpBreakdown(userId, fullName) {
+            const modal = document.getElementById('xp-modal');
+            const listContainer = document.getElementById('xp-breakdown-list');
+            
+            // Show modal with loading state
+            modal.style.display = 'flex';
+            document.getElementById('modal-name').textContent = fullName;
+            listContainer.innerHTML = '<div class="xp-loading">Laster XP-historikk...</div>';
+            
+            try {
+                const data = await api(`/api/user/${userId}/xp-breakdown`);
+                
+                if (!data) {
+                    listContainer.innerHTML = '<div class="xp-empty">Kunne ikke laste data</div>';
+                    return;
+                }
+                
+                // Update header
+                document.getElementById('modal-level').textContent = data.level || 1;
+                document.getElementById('modal-total-xp').textContent = (data.totalXp || 0).toLocaleString();
+                document.getElementById('modal-weekly-xp').textContent = (data.weeklyXp || 0).toLocaleString();
+                
+                // Build XP events list
+                const events = data.xpEvents || [];
+                
+                if (events.length === 0) {
+                    listContainer.innerHTML = '<div class="xp-empty">Ingen XP-hendelser ennå 🤷</div>';
+                    return;
+                }
+                
+                listContainer.innerHTML = events.map(e => {
+                    const date = new Date(e.date);
+                    const dateStr = date.toLocaleDateString('no-NO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+                    return `
+                        <div class="xp-event">
+                            <div class="xp-event-info">
+                                <span class="xp-event-reason">${e.reason}</span>
+                                <span class="xp-event-date">${dateStr}</span>
+                            </div>
+                            <span class="xp-event-amount">${e.amount}</span>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                console.error('XP breakdown error:', error);
+                listContainer.innerHTML = '<div class="xp-empty">Feil ved lasting av data</div>';
+            }
+        }
+
+        // Close XP modal
+        function closeXpModal() {
+            document.getElementById('xp-modal').style.display = 'none';
+        }
+        
+        // Close modal on background click
+        document.addEventListener('click', (e) => {
+            const xpModal = document.getElementById('xp-modal');
+            const recordModal = document.getElementById('record-modal');
+            const yoyModal = document.getElementById('yoy-modal');
+            if (e.target === xpModal) closeXpModal();
+            if (e.target === recordModal) closeRecordModal();
+            if (e.target === yoyModal) closeYoYModal();
+        });
+
+        // Store current records data
+        let currentRecordsData = null;
+
+        // Show record staff modal
+        async function showRecordStaff(recordType, event) {
+            // Prevent navigation
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            const modal = document.getElementById('record-modal');
+            const staffList = document.getElementById('record-staff-list');
+            
+            modal.style.display = 'flex';
+            staffList.innerHTML = '<div class="xp-loading">Laster...</div>';
+            
+            // Fetch records if not cached
+            if (!currentRecordsData) {
+                try {
+                    const response = await api(`/api/records/${currentLocation}`);
+                    currentRecordsData = response.records || response;
+                } catch (e) {
+                    console.error('Records fetch error:', e);
+                    staffList.innerHTML = '<div class="xp-empty">Kunne ikke laste data</div>';
+                    return;
+                }
+            }
+            
+            const record = currentRecordsData[recordType];
+            if (!record) {
+                staffList.innerHTML = '<div class="xp-empty">Ingen data for ' + recordType + '</div>';
+                return;
+            }
+            
+            // Update modal header
+            const titles = {
+                bestDay: '🥇 Beste dag noensinne',
+                bestWeek: '🥈 Beste uke',
+                bestHour: '🥉 Beste time'
+            };
+            const icons = { bestDay: '🥇', bestWeek: '🥈', bestHour: '🥉' };
+            
+            document.getElementById('record-modal-icon').textContent = icons[recordType];
+            document.getElementById('record-modal-title').textContent = titles[recordType];
+            document.getElementById('record-modal-amount').textContent = record.amount.toLocaleString() + ' kr';
+            document.getElementById('record-modal-date').textContent = record.description;
+            
+            // Show staff
+            const staff = record.staff || [];
+            if (staff.length === 0) {
+                staffList.innerHTML = '<div class="xp-empty">Ingen ansatte registrert</div>';
+                return;
+            }
+            
+            staffList.innerHTML = staff.map(name => `
+                <div class="staff-badge">
+                    <span class="staff-badge-icon">👤</span>
+                    <span class="staff-badge-name">${name}</span>
+                </div>
+            `).join('');
+        }
+
+        // Close record modal
+        function closeRecordModal() {
+            document.getElementById('record-modal').style.display = 'none';
+        }
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('clock').textContent = time;
+        }
+
+        // Logout
+        function logout() {
+            api('/api/logout', { method: 'POST' });
+            localStorage.removeItem('bearhouse_token');
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const emojis = ['☕', '🥐', '🍩', '🧁', '✨', '💫', '⭐', '🔥'];
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                if (Math.random() > 0.6) {
+                    particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    particle.style.fontSize = '1.5rem';
+                    particle.style.width = 'auto';
+                    particle.style.height = 'auto';
+                    particle.style.background = 'none';
+                }
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Start
+        init();
+
+        // Auto-refresh sales data every 30 seconds (live updates!)
+        setInterval(() => {
+            loadDashboardData();
+        }, 30000);
+        
+        // Leaderboard refresh every 2 minutes
+        setInterval(() => {
+            loadLeaderboard();
+        }, 120000);
+        
+        console.log('🔄 Live updates aktiv - oppdaterer hvert 30. sekund');
+    </script>
+</body>
+</html>

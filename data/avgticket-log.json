@@ -1,0 +1,58 @@
+[
+  {
+    "date": "2026-02-24",
+    "runAt": "2026-02-25T22:35:51.757Z",
+    "results": [
+      {
+        "location": "nesbyen",
+        "goalMet": false,
+        "avgTicket": 153,
+        "goal": 210
+      },
+      {
+        "location": "hemsedal",
+        "goalMet": false,
+        "avgTicket": 182,
+        "goal": 225
+      }
+    ]
+  },
+  {
+    "date": "2026-02-15",
+    "runAt": "2026-02-25T22:35:58.758Z",
+    "results": [
+      {
+        "location": "nesbyen",
+        "goalMet": true,
+        "avgTicket": 224,
+        "goal": 210,
+        "employees": 6,
+        "xpGiven": 60
+      },
+      {
+        "location": "hemsedal",
+        "goalMet": false,
+        "avgTicket": 199,
+        "goal": 225
+      }
+    ]
+  },
+  {
+    "date": "2026-02-25",
+    "runAt": "2026-02-26T05:00:02.076Z",
+    "results": [
+      {
+        "location": "nesbyen",
+        "goalMet": false,
+        "avgTicket": 191,
+        "goal": 210
+      },
+      {
+        "location": "hemsedal",
+        "goalMet": false,
+        "avgTicket": 178,
+        "goal": 225
+      }
+    ]
+  }
+]

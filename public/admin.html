@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👑 Admin Panel - Bear House</title>
+    <link rel="icon" href="bearhousekaffekopp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --neon-orange: #ff6b35;
+            --neon-pink: #ff2d95;
+            --neon-purple: #9d4edd;
+            --neon-green: #39ff14;
+            --neon-blue: #00d4ff;
+            --gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 2px solid var(--neon-purple);
+        }
+
+        .header h1 {
+            background: linear-gradient(135deg, var(--gold), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            background: var(--bg-dark);
+            border: 2px solid var(--neon-purple);
+            border-radius: 25px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--neon-purple);
+            transform: translateY(-2px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 25px;
+            border: 2px solid var(--neon-purple);
+        }
+
+        .card h2 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .user-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .user-item:hover {
+            transform: translateX(5px);
+            border-left: 4px solid var(--neon-purple);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-details h4 {
+            font-size: 0.95rem;
+        }
+
+        .user-details span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .user-stats {
+            text-align: right;
+        }
+
+        .user-level {
+            font-weight: 700;
+            color: var(--neon-purple);
+        }
+
+        .user-xp {
+            font-size: 0.85rem;
+            color: var(--neon-green);
+        }
+
+        .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-left: 8px;
+        }
+
+        .btn-xp {
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            color: var(--bg-dark);
+        }
+
+        .btn-review {
+            background: linear-gradient(135deg, var(--gold), var(--neon-orange));
+            color: var(--bg-dark);
+        }
+
+        .btn-xp:hover, .btn-review:hover {
+            transform: scale(1.05);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--neon-purple);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.4);
+        }
+
+        /* Activity log */
+        .activity-log {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            padding: 10px;
+            background: var(--bg-dark);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .activity-item .type {
+            color: var(--neon-purple);
+            font-weight: 600;
+        }
+
+        .activity-item .time {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--bg-dark);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 2px solid var(--neon-purple);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            float: right;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Review stars */
+        .stars-select {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .star-btn {
+            padding: 15px 20px;
+            background: var(--bg-dark);
+            border: 2px solid #333;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .star-btn:hover, .star-btn.selected {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--neon-green);
+            border-radius: 15px;
+            padding: 15px 25px;
+            display: none;
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        .toast.show { display: block; }
+        .toast.error { border-color: #ff4444; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>👑 Admin Panel</h1>
+        <div class="nav-links">
+            <a href="/" class="nav-link">📊 Dashboard</a>
+            <a href="/quests.html" class="nav-link">🎮 Quests</a>
+            <button class="nav-link" onclick="syncPlanday()">🔄 Sync Planday</button>
+            <button class="nav-link" onclick="logout()">🚪 Logg ut</button>
+        </div>
+    </header>
+
+    <div class="grid">
+        <!-- Stats Overview -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2>📈 Statistikk</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="total-users">0</div>
+                    <div class="stat-label">Ansatte</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="total-xp">0</div>
+                    <div class="stat-label">Total XP delt ut</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="total-quests">0</div>
+                    <div class="stat-label">Quests fullført</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users List -->
+        <div class="card">
+            <h2>👥 Ansatte</h2>
+            <div class="user-list" id="user-list">
+                <div class="loading">Laster...</div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+            <h2>⚡ Hurtighandlinger</h2>
+            
+            <div class="form-group">
+                <label>Gi XP til ansatt</label>
+                <select id="xp-user-select">
+                    <option value="">Velg ansatt...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Antall XP</label>
+                <input type="number" id="xp-amount" placeholder="50" value="50">
+            </div>
+            <div class="form-group">
+                <label>Årsak</label>
+                <input type="text" id="xp-reason" placeholder="Godt arbeid!">
+            </div>
+            <button class="submit-btn" onclick="giveXP()">🎁 Gi XP</button>
+
+            <hr style="margin: 25px 0; border-color: #333;">
+
+            <h3 style="margin-bottom: 15px;">⭐ Registrer Google-anmeldelse</h3>
+            <div class="form-group">
+                <label>Hvem fikk anmeldelsen?</label>
+                <select id="review-user-select">
+                    <option value="">Velg ansatt...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Antall stjerner</label>
+                <div class="stars-select" id="stars-select">
+                    <button class="star-btn" data-stars="5">⭐⭐⭐⭐⭐</button>
+                    <button class="star-btn" data-stars="4">⭐⭐⭐⭐</button>
+                    <button class="star-btn" data-stars="3">⭐⭐⭐</button>
+                    <button class="star-btn" data-stars="2">⭐⭐</button>
+                    <button class="star-btn" data-stars="1">⭐</button>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="recordReview()">📝 Registrer</button>
+        </div>
+
+        <!-- Messages -->
+        <div class="card">
+            <h2>📢 Send beskjed</h2>
+            <div class="form-group">
+                <label>Beskjed til alle</label>
+                <textarea id="message-text" rows="3" placeholder="La oss knuse det i dag! 💪"></textarea>
+            </div>
+            <button class="submit-btn" onclick="sendMessage()">📨 Send</button>
+
+            <h3 style="margin: 20px 0 15px;">Siste beskjeder</h3>
+            <div class="activity-log" id="messages-list">
+                <div class="activity-item">Laster...</div>
+            </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="card">
+            <h2>📋 Aktivitetslogg</h2>
+            <div class="activity-log" id="activity-log">
+                <div class="activity-item">Laster...</div>
+            </div>
+        </div>
+
+        <!-- Login Log -->
+        <div class="card">
+            <h2>🔐 Innloggingslogg</h2>
+            <div class="activity-log" id="login-log">
+                <div class="activity-item">Laster...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let authToken = localStorage.getItem('bearhouse_token');
+        let users = [];
+        let selectedStars = 5;
+
+        // API helper
+        async function api(endpoint, options = {}) {
+            const headers = {
+                'Content-Type': 'application/json',
+                'X-Auth-Token': authToken,
+                ...options.headers
+            };
+            
+            const response = await fetch(endpoint, { ...options, headers });
+            
+            if (response.status === 401 || response.status === 403) {
+                window.location.href = '/login.html';
+                return null;
+            }
+            
+            return response.json();
+        }
+
+        // Show toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => toast.className = 'toast', 3000);
+        }
+
+        // Initialize
+        async function init() {
+            if (!authToken) {
+                window.location.href = '/login.html';
+                return;
+            }
+
+            // Check if admin
+            const me = await api('/api/me');
+            if (!me || me.user.role !== 'admin') {
+                alert('Kun for admin!');
+                window.location.href = '/';
+                return;
+            }
+
+            await loadUsers();
+            await loadActivity();
+            await loadLoginLog();
+            await loadMessages();
+            updateStats();
+            setupStarButtons();
+        }
+
+        // Load users
+        async function loadUsers() {
+            const data = await api('/api/admin/users');
+            if (!data) return;
+
+            users = data;
+            
+            // Update user list
+            const container = document.getElementById('user-list');
+            container.innerHTML = users
+                .filter(u => u.role !== 'admin')
+                .map(u => `
+                    <div class="user-item">
+                        <div class="user-info">
+                            <div class="user-avatar">${u.fullName?.charAt(0) || '?'}</div>
+                            <div class="user-details">
+                                <h4>${u.fullName}</h4>
+                                <span>${u.location} • ${u.username}</span>
+                            </div>
+                        </div>
+                        <div class="user-stats">
+                            <div class="user-level">Level ?</div>
+                            <div class="user-xp">? XP</div>
+                        </div>
+                    </div>
+                `).join('');
+
+            // Update selects
+            const options = '<option value="">Velg ansatt...</option>' + 
+                users.filter(u => u.role !== 'admin')
+                    .map(u => `<option value="${u.id}">${u.fullName}</option>`)
+                    .join('');
+            
+            document.getElementById('xp-user-select').innerHTML = options;
+            document.getElementById('review-user-select').innerHTML = options;
+        }
+
+        // Load activity
+        async function loadActivity() {
+            const data = await api('/api/activity?limit=20');
+            if (!data) return;
+
+            const container = document.getElementById('activity-log');
+            
+            if (data.length === 0) {
+                container.innerHTML = '<div class="activity-item">Ingen aktivitet ennå</div>';
+                return;
+            }
+
+            container.innerHTML = data.map(a => {
+                const time = new Date(a.timestamp).toLocaleString('no-NO');
+                const types = {
+                    'xp': '💰 XP',
+                    'quest_complete': '✅ Quest',
+                    'achievement_unlock': '🏆 Achievement',
+                    'streak_lost': '💔 Streak tapt'
+                };
+                return `
+                    <div class="activity-item">
+                        <span class="type">${types[a.type] || a.type}</span>
+                        <span>${JSON.stringify(a.data).slice(0, 50)}</span>
+                        <span class="time">${time}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Load login log
+        async function loadLoginLog() {
+            const data = await api('/api/admin/login-log');
+            if (!data) return;
+
+            const container = document.getElementById('login-log');
+            
+            container.innerHTML = data.slice(0, 15).map(l => {
+                const time = new Date(l.timestamp).toLocaleString('no-NO');
+                return `
+                    <div class="activity-item">
+                        <span>${l.fullName}</span>
+                        <span>${l.location}</span>
+                        <span class="time">${time}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Load messages
+        async function loadMessages() {
+            const data = await api('/api/messages');
+            if (!data) return;
+
+            const container = document.getElementById('messages-list');
+            
+            container.innerHTML = data.map(m => {
+                const time = new Date(m.timestamp).toLocaleString('no-NO');
+                return `
+                    <div class="activity-item">
+                        <span>${m.text}</span>
+                        <span class="time">${time}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update stats
+        async function updateStats() {
+            const gamData = await api('/api/gamification/data');
+            if (!gamData) return;
+
+            document.getElementById('total-users').textContent = users.filter(u => u.role !== 'admin').length;
+            
+            let totalXp = 0;
+            let totalQuests = 0;
+            
+            for (const [id, stats] of Object.entries(gamData.users || {})) {
+                totalXp += stats.totalXp || 0;
+                totalQuests += stats.questsCompleted || 0;
+            }
+            
+            document.getElementById('total-xp').textContent = totalXp.toLocaleString();
+            document.getElementById('total-quests').textContent = totalQuests;
+        }
+
+        // Setup star buttons
+        function setupStarButtons() {
+            document.querySelectorAll('.star-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedStars = parseInt(btn.dataset.stars);
+                });
+            });
+            document.querySelector('.star-btn[data-stars="5"]').classList.add('selected');
+        }
+
+        // Give XP
+        async function giveXP() {
+            const userId = document.getElementById('xp-user-select').value;
+            const amount = parseInt(document.getElementById('xp-amount').value);
+            const reason = document.getElementById('xp-reason').value || 'Admin bonus';
+
+            if (!userId || !amount) {
+                showToast('Velg ansatt og angi XP-mengde', true);
+                return;
+            }
+
+            const result = await api('/api/admin/give-xp', {
+                method: 'POST',
+                body: JSON.stringify({ userId: parseInt(userId), amount, reason })
+            });
+
+            if (result.error) {
+                showToast(result.error, true);
+            } else {
+                showToast(`✨ Ga ${amount} XP! Nytt level: ${result.level}`);
+                loadActivity();
+            }
+        }
+
+        // Record review
+        async function recordReview() {
+            const userId = document.getElementById('review-user-select').value;
+
+            if (!userId) {
+                showToast('Velg ansatt', true);
+                return;
+            }
+
+            const result = await api('/api/review', {
+                method: 'POST',
+                body: JSON.stringify({ userId: parseInt(userId), stars: selectedStars })
+            });
+
+            if (result.error) {
+                showToast(result.error, true);
+            } else {
+                const xpText = result.xp >= 0 ? `+${result.xp}` : result.xp;
+                showToast(`${selectedStars}⭐ registrert! ${xpText} XP`);
+                loadActivity();
+            }
+        }
+
+        // Send message
+        async function sendMessage() {
+            const text = document.getElementById('message-text').value;
+
+            if (!text) {
+                showToast('Skriv en beskjed', true);
+                return;
+            }
+
+            const result = await api('/api/messages', {
+                method: 'POST',
+                body: JSON.stringify({ text })
+            });
+
+            if (result.error) {
+                showToast(result.error, true);
+            } else {
+                showToast('📨 Beskjed sendt!');
+                document.getElementById('message-text').value = '';
+                loadMessages();
+            }
+        }
+
+        // Sync Planday
+        async function syncPlanday() {
+            showToast('🔄 Synkroniserer med Planday...');
+            
+            const result = await api('/api/admin/sync-planday', { method: 'POST' });
+
+            if (result.error) {
+                showToast(result.error, true);
+            } else {
+                showToast(`✅ Synkronisert! ${result.added} nye, ${result.updated} oppdatert`);
+                loadUsers();
+            }
+        }
+
+        // Logout
+        function logout() {
+            api('/api/logout', { method: 'POST' });
+            localStorage.removeItem('bearhouse_token');
+            window.location.href = '/login.html';
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
