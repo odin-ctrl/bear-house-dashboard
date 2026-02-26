@@ -1,57 +1,63 @@
 {
-  "nesbyen": {
-    "currentStreak": 4,
-    "lastHitDate": "2026-02-25",
-    "streakParticipants": {},
-    "history": [
-      {
-        "date": "2026-02-13",
-        "sales": 82200,
-        "budget": 80000,
-        "streak": 1
-      },
-      {
-        "date": "2026-02-14",
-        "sales": 126327,
-        "budget": 110000,
-        "streak": 2
-      },
-      {
-        "date": "2026-02-18",
-        "sales": 59657,
-        "budget": 55000,
-        "streak": 1
-      },
-      {
-        "date": "2026-02-22",
-        "sales": 61439,
-        "budget": 50000,
-        "streak": 1
-      },
-      {
-        "date": "2026-02-23",
-        "sales": 30597,
-        "budget": 25000,
-        "streak": 2
-      },
-      {
-        "date": "2026-02-24",
-        "sales": 26712,
-        "budget": 25000,
-        "streak": 3
-      },
-      {
-        "date": "2026-02-25",
-        "sales": 31566,
-        "budget": 25000,
-        "streak": 4
-      }
-    ]
-  },
-  "hemsedal": {
-    "currentStreak": 0,
-    "lastHitDate": null,
-    "streakParticipants": [],
-    "history": []
-  }
+    "nesbyen": {
+        "currentStreak": 5,
+        "lastHitDate": "2026-02-26",
+        "streakParticipants": {},
+        "history": [
+            {
+                "date": "2026-02-13",
+                "sales": 82200,
+                "budget": 80000,
+                "streak": 1
+            },
+            {
+                "date": "2026-02-14",
+                "sales": 126327,
+                "budget": 110000,
+                "streak": 2
+            },
+            {
+                "date": "2026-02-18",
+                "sales": 59657,
+                "budget": 55000,
+                "streak": 1
+            },
+            {
+                "date": "2026-02-22",
+                "sales": 61439,
+                "budget": 50000,
+                "streak": 1
+            },
+            {
+                "date": "2026-02-23",
+                "sales": 30597,
+                "budget": 25000,
+                "streak": 2
+            },
+            {
+                "date": "2026-02-24",
+                "sales": 26712,
+                "budget": 25000,
+                "streak": 3
+            },
+            {
+                "date": "2026-02-25",
+                "sales": 31566,
+                "budget": 25000,
+                "streak": 4
+            },
+            {
+                "date": "2026-02-26",
+                "sales": 33489,
+                "budget": 30000,
+                "streak": 5
+            }
+        ]
+    },
+    "hemsedal": {
+        "currentStreak": 0,
+        "lastHitDate": null,
+        "streakParticipants": [],
+        "history": []
+    }
 }
