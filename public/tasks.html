@@ -5,115 +5,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oppgaver | Bear House</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        .tasks-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark, #0a0a0f);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
+        .tasks-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        /* Header */
         .tasks-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
         .tasks-header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin: 0 0 5px 0;
+            font-weight: 700;
         }
 
         .tasks-header p {
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+            font-size: 0.95rem;
         }
 
+        /* XP Display */
         .my-xp {
-            background: linear-gradient(145deg, rgba(255, 107, 53, 0.2), rgba(255, 45, 149, 0.2));
-            border-radius: 15px;
+            background: linear-gradient(145deg, rgba(255, 107, 53, 0.15), rgba(255, 45, 149, 0.1));
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-radius: 20px;
             padding: 20px;
             text-align: center;
             margin-bottom: 30px;
+        }
+
+        .my-xp-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 5px;
         }
 
         .my-xp-value {
             font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--orange), var(--pink));
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35, #ff2d95);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Category sections */
-        .category-section {
+        /* Category Grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             margin-bottom: 30px;
         }
 
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 15px;
+        .category-tile {
+            background: linear-gradient(145deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .category-header .emoji {
-            font-size: 1.5rem;
+        .category-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, var(--cat-color, rgba(255,107,53,0.1)), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .category-header .name {
-            font-size: 1.2rem;
+        .category-tile:hover::before {
+            opacity: 1;
+        }
+
+        .category-tile:hover {
+            transform: translateY(-5px);
+            border-color: var(--cat-border, rgba(255, 107, 53, 0.3));
+            box-shadow: 0 10px 40px var(--cat-shadow, rgba(255, 107, 53, 0.15));
+        }
+
+        .category-tile.renhold {
+            --cat-color: rgba(78, 205, 196, 0.15);
+            --cat-border: rgba(78, 205, 196, 0.4);
+            --cat-shadow: rgba(78, 205, 196, 0.2);
+        }
+
+        .category-tile.vedlikehold {
+            --cat-color: rgba(255, 200, 87, 0.15);
+            --cat-border: rgba(255, 200, 87, 0.4);
+            --cat-shadow: rgba(255, 200, 87, 0.2);
+        }
+
+        .category-tile.salg {
+            --cat-color: rgba(255, 107, 53, 0.15);
+            --cat-border: rgba(255, 107, 53, 0.4);
+            --cat-shadow: rgba(255, 107, 53, 0.2);
+        }
+
+        .category-tile.some {
+            --cat-color: rgba(157, 78, 221, 0.15);
+            --cat-border: rgba(157, 78, 221, 0.4);
+            --cat-shadow: rgba(157, 78, 221, 0.2);
+        }
+
+        .category-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-count {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-count .available {
+            color: #4ecdc4;
             font-weight: 600;
         }
 
-        .category-header .count {
-            color: var(--text-muted);
+        /* Tasks View (hidden by default) */
+        .tasks-view {
+            display: none;
+        }
+
+        .tasks-view.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tasks-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+
+        .tasks-back:hover {
+            color: white;
+        }
+
+        .tasks-category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tasks-category-emoji {
+            font-size: 2.5rem;
+        }
+
+        .tasks-category-info h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .tasks-category-info p {
+            margin: 5px 0 0 0;
+            color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
 
-        .tasks-grid {
-            display: grid;
+        /* Task Cards */
+        .task-list {
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
         .task-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 16px 20px;
+            background: rgba(30, 30, 40, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 18px;
             display: flex;
             align-items: center;
             gap: 15px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
         .task-card:hover:not(.done) {
-            transform: translateY(-2px);
-            border-color: var(--orange);
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+            background: rgba(40, 40, 55, 0.8);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
         }
 
         .task-card.done {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
-            background: rgba(0, 0, 0, 0.2);
         }
 
-        .task-card.done::after {
-            content: '✓ Gjort i dag';
-            position: absolute;
-            right: 20px;
-            font-size: 0.8rem;
-            color: var(--green, #4ecdc4);
-        }
-
-        .task-card {
-            position: relative;
+        .task-card.done .task-status {
+            display: flex;
         }
 
         .task-emoji {
-            font-size: 2rem;
-            min-width: 50px;
+            font-size: 1.8rem;
+            min-width: 45px;
             text-align: center;
         }
 
@@ -123,54 +271,201 @@
 
         .task-name {
             font-weight: 600;
+            font-size: 1rem;
             margin-bottom: 4px;
         }
 
         .task-meta {
             display: flex;
-            gap: 15px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            gap: 12px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
         }
 
         .task-xp {
-            color: var(--orange);
+            color: #ff6b35;
             font-weight: 600;
         }
 
-        .task-action {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--orange), var(--pink));
-            border: none;
-            border-radius: 20px;
-            color: white;
+        .task-status {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: rgba(78, 205, 196, 0.2);
+            border-radius: 50%;
+            color: #4ecdc4;
+            font-size: 0.9rem;
+        }
+
+        .task-arrow {
+            color: rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+        }
+
+        .task-card:hover:not(.done) .task-arrow {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Modal */
+        .task-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .task-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, #1a1a24, #12121a);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 35px 25px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .modal-xp {
+            font-size: 1.1rem;
+            color: #ff6b35;
             font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .modal-trust {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .modal-trust strong {
+            color: #4ecdc4;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: rgba(255,255,255,0.7);
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .task-card.done .task-action {
+        .btn-cancel:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .btn-submit {
+            flex: 2;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff6b35, #ff2d95);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Success Overlay */
+        .success-overlay {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        .task-action:hover {
-            transform: scale(1.05);
+        .success-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
         }
 
-        /* Recent completions */
+        .success-emoji {
+            font-size: 5rem;
+            animation: bounceIn 0.5s ease;
+        }
+
+        .success-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 15px;
+            color: white;
+        }
+
+        .success-xp {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-top: 10px;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Recent Activity */
         .recent-section {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.08);
         }
 
         .recent-header {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: rgba(255,255,255,0.7);
         }
 
         .recent-list {
@@ -184,14 +479,12 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            border: 1px solid var(--border);
+            background: rgba(30, 30, 40, 0.4);
+            border-radius: 12px;
         }
 
-        .recent-item .task-emoji {
-            font-size: 1.5rem;
-            min-width: 40px;
+        .recent-emoji {
+            font-size: 1.3rem;
         }
 
         .recent-info {
@@ -199,209 +492,78 @@
         }
 
         .recent-name {
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
         .recent-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
         }
 
         .recent-xp {
-            color: var(--orange);
+            color: #ff6b35;
             font-weight: 600;
-        }
-
-        /* Modal - simplified without photos */
-        .task-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .task-modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 30px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .modal-emoji {
-            font-size: 4rem;
-            margin-bottom: 15px;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .modal-xp {
-            font-size: 1.2rem;
-            color: var(--orange);
-            margin-bottom: 25px;
-        }
-
-        .modal-trust {
-            background: rgba(78, 205, 196, 0.1);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 25px;
             font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-cancel {
-            flex: 1;
-            padding: 15px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn-submit {
-            flex: 2;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--orange), var(--pink));
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-submit:hover {
-            transform: scale(1.02);
-        }
-
-        /* Success overlay */
-        .success-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .success-overlay.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .success-emoji {
-            font-size: 6rem;
-            animation: bounceIn 0.5s ease;
-        }
-
-        .success-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
-        .success-xp {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--orange);
-            margin-top: 10px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        /* Back link */
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        .back-link:hover {
-            color: var(--text);
         }
 
         /* Empty state */
         .empty-state {
             text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
+            padding: 40px 20px;
+            color: rgba(255,255,255,0.5);
         }
 
         .empty-state .emoji {
             font-size: 3rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
     <div class="tasks-container">
-        <a href="/" class="back-link">← Dashboard</a>
-        
         <div class="tasks-header">
+            <a href="/" class="back-link">← Dashboard</a>
             <h1>Oppgaver</h1>
-            <p>Gjør ekstra oppgaver, få XP! 🎮</p>
+            <p>Velg en kategori og tjen XP! 🎮</p>
         </div>
 
         <div class="my-xp">
-            <div>Din XP i dag</div>
+            <div class="my-xp-label">Din XP i dag</div>
             <div class="my-xp-value" id="my-xp">0 XP</div>
         </div>
 
-        <div id="tasks-container">
-            <!-- Categories will be rendered here -->
+        <!-- Category Grid View -->
+        <div id="categories-view">
+            <div class="categories-grid" id="categories-grid">
+                <!-- Categories will be rendered here -->
+            </div>
+
+            <div class="recent-section">
+                <div class="recent-header">📋 Nylig fullført</div>
+                <div class="recent-list" id="recent-list">
+                    <!-- Recent completions -->
+                </div>
+            </div>
         </div>
 
-        <div class="recent-section">
-            <div class="recent-header">📋 Nylig fullført</div>
-            <div class="recent-list" id="recent-list">
-                <!-- Recent completions -->
+        <!-- Tasks View (shown when category is clicked) -->
+        <div class="tasks-view" id="tasks-view">
+            <div class="tasks-back" onclick="showCategories()">← Tilbake til kategorier</div>
+            <div class="tasks-category-header">
+                <div class="tasks-category-emoji" id="tasks-cat-emoji">🧹</div>
+                <div class="tasks-category-info">
+                    <h2 id="tasks-cat-name">Kategori</h2>
+                    <p id="tasks-cat-desc">Beskrivelse</p>
+                </div>
+            </div>
+            <div class="task-list" id="task-list">
+                <!-- Tasks will be rendered here -->
             </div>
         </div>
     </div>
 
-    <!-- Simplified modal - no photos -->
+    <!-- Task Modal -->
     <div class="task-modal" id="task-modal">
         <div class="modal-content">
             <div class="modal-emoji" id="modal-emoji">🧹</div>
@@ -409,20 +571,18 @@
             <div class="modal-xp" id="modal-xp">+10 XP</div>
             
             <div class="modal-trust">
-                🤝 Vi stoler på deg!<br>
-                <small>Marker som fullført når oppgaven er gjort.</small>
+                <strong>🤝 Vi stoler på deg!</strong><br>
+                Marker som fullført når oppgaven er gjort.
             </div>
 
             <div class="modal-actions">
                 <button class="btn-cancel" onclick="closeModal()">Avbryt</button>
-                <button class="btn-submit" id="btn-submit" onclick="submitTask()">
-                    Fullfør ✓
-                </button>
+                <button class="btn-submit" id="btn-submit" onclick="submitTask()">Fullfør ✓</button>
             </div>
         </div>
     </div>
 
-    <!-- Success overlay -->
+    <!-- Success Overlay -->
     <div class="success-overlay" id="success-overlay">
         <div class="success-emoji">🎉</div>
         <div class="success-text">OPPGAVE FULLFØRT!</div>
@@ -436,8 +596,14 @@
         }
 
         let tasks = [];
-        let categories = {};
+        let categories = {
+            renhold: { name: 'Renhold', emoji: '🧹', desc: 'Hold lokalet rent og fint', color: 'renhold' },
+            vedlikehold: { name: 'Vedlikehold', emoji: '🔧', desc: 'Fiks og vedlikehold utstyr', color: 'vedlikehold' },
+            salg: { name: 'Salg', emoji: '⭐', desc: 'Mersalg og kundeservice', color: 'salg' },
+            some: { name: 'Sosiale Medier', emoji: '📱', desc: 'Del og skap engasjement', color: 'some' }
+        };
         let currentTask = null;
+        let currentCategory = null;
 
         async function fetchWithAuth(url, options = {}) {
             const headers = {
@@ -452,85 +618,118 @@
             return response.json();
         }
 
-        async function loadTasks() {
-            const data = await fetchWithAuth('/api/tasks');
-            tasks = data.tasks || [];
-            categories = data.categories || {
-                renhold: { name: 'Renhold', emoji: '🧹' },
-                vedlikehold: { name: 'Vedlikehold', emoji: '🔧' },
-                salg: { name: 'Salg', emoji: '⭐' }
-            };
-            
-            renderTasksByCategory();
-            renderRecent(data.recentCompletions || []);
-            
-            // Update my XP
-            const profile = await fetchWithAuth('/api/profile');
-            document.getElementById('my-xp').textContent = (profile.xp?.today || 0) + ' XP';
+        async function loadData() {
+            try {
+                const data = await fetchWithAuth('/api/tasks');
+                tasks = data.tasks || [];
+                
+                // Merge server categories with our defaults
+                if (data.categories) {
+                    Object.keys(data.categories).forEach(key => {
+                        if (categories[key]) {
+                            categories[key] = { ...categories[key], ...data.categories[key] };
+                        } else {
+                            categories[key] = data.categories[key];
+                        }
+                    });
+                }
+                
+                renderCategories();
+                renderRecent(data.recentCompletions || []);
+                
+                // Update my XP
+                const profile = await fetchWithAuth('/api/profile');
+                document.getElementById('my-xp').textContent = (profile.xp?.today || 0) + ' XP';
+            } catch (err) {
+                console.error('Failed to load data:', err);
+            }
         }
 
-        function renderTasksByCategory() {
-            const container = document.getElementById('tasks-container');
+        function renderCategories() {
+            const grid = document.getElementById('categories-grid');
             
-            // Group tasks by category
-            const grouped = {};
-            tasks.forEach(task => {
-                const cat = task.category || 'annet';
-                if (!grouped[cat]) grouped[cat] = [];
-                grouped[cat].push(task);
+            // Count tasks per category
+            const counts = {};
+            Object.keys(categories).forEach(cat => {
+                const catTasks = tasks.filter(t => t.category === cat);
+                counts[cat] = {
+                    total: catTasks.length,
+                    available: catTasks.filter(t => !t.onCooldown).length
+                };
             });
 
-            // Render each category
-            let html = '';
-            for (const [catId, catTasks] of Object.entries(grouped)) {
-                const catInfo = categories[catId] || { name: catId, emoji: '📋' };
-                const availableCount = catTasks.filter(t => !t.onCooldown).length;
-                
-                html += `
-                    <div class="category-section">
-                        <div class="category-header">
-                            <span class="emoji">${catInfo.emoji}</span>
-                            <span class="name">${catInfo.name}</span>
-                            <span class="count">${availableCount} av ${catTasks.length} tilgjengelig</span>
-                        </div>
-                        <div class="tasks-grid">
-                            ${catTasks.map(task => `
-                                <div class="task-card ${task.onCooldown ? 'done' : ''}" 
-                                     onclick="${task.onCooldown ? '' : `openTask('${task.id}')`}">
-                                    <div class="task-emoji">${task.emoji}</div>
-                                    <div class="task-info">
-                                        <div class="task-name">${task.name}</div>
-                                        <div class="task-meta">
-                                            <span class="task-xp">+${task.xp} XP</span>
-                                            ${task.minutes > 0 ? `<span>~${task.minutes} min</span>` : ''}
-                                        </div>
-                                    </div>
-                                    ${task.onCooldown ? '' : '<button class="task-action">Gjør</button>'}
-                                </div>
-                            `).join('')}
-                        </div>
+            grid.innerHTML = Object.entries(categories).map(([id, cat]) => `
+                <div class="category-tile ${cat.color || id}" onclick="showTasks('${id}')">
+                    <div class="category-emoji">${cat.emoji}</div>
+                    <div class="category-name">${cat.name}</div>
+                    <div class="category-count">
+                        <span class="available">${counts[id]?.available || 0}</span> av ${counts[id]?.total || 0}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showTasks(categoryId) {
+            currentCategory = categoryId;
+            const cat = categories[categoryId];
+            
+            document.getElementById('tasks-cat-emoji').textContent = cat.emoji;
+            document.getElementById('tasks-cat-name').textContent = cat.name;
+            document.getElementById('tasks-cat-desc').textContent = cat.desc || '';
+            
+            const catTasks = tasks.filter(t => t.category === categoryId);
+            const taskList = document.getElementById('task-list');
+            
+            if (catTasks.length === 0) {
+                taskList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="emoji">🎉</div>
+                        <p>Ingen oppgaver i denne kategorien ennå!</p>
                     </div>
                 `;
+            } else {
+                taskList.innerHTML = catTasks.map(task => `
+                    <div class="task-card ${task.onCooldown ? 'done' : ''}" 
+                         onclick="${task.onCooldown ? '' : `openTask('${task.id}')`}">
+                        <div class="task-emoji">${task.emoji}</div>
+                        <div class="task-info">
+                            <div class="task-name">${task.name}</div>
+                            <div class="task-meta">
+                                <span class="task-xp">+${task.xp} XP</span>
+                                ${task.minutes > 0 ? `<span>~${task.minutes} min</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="task-status">✓</div>
+                        ${task.onCooldown ? '' : '<div class="task-arrow">›</div>'}
+                    </div>
+                `).join('');
             }
             
-            container.innerHTML = html || '<div class="empty-state"><div class="emoji">🎉</div><p>Alle oppgaver er gjort i dag!</p></div>';
+            document.getElementById('categories-view').style.display = 'none';
+            document.getElementById('tasks-view').classList.add('active');
+        }
+
+        function showCategories() {
+            document.getElementById('tasks-view').classList.remove('active');
+            document.getElementById('categories-view').style.display = 'block';
+            currentCategory = null;
         }
 
         function renderRecent(completions) {
             const list = document.getElementById('recent-list');
             if (completions.length === 0) {
-                list.innerHTML = '<div style="color: var(--text-muted); padding: 20px; text-align: center;">Ingen fullførte oppgaver ennå i dag</div>';
+                list.innerHTML = '<div style="color: rgba(255,255,255,0.4); padding: 15px; text-align: center; font-size: 0.9rem;">Ingen fullførte oppgaver ennå i dag</div>';
                 return;
             }
             
-            list.innerHTML = completions.slice(0, 10).map(c => `
+            list.innerHTML = completions.slice(0, 5).map(c => `
                 <div class="recent-item">
-                    <div class="task-emoji">${c.emoji || '✓'}</div>
+                    <div class="recent-emoji">${c.emoji || '✓'}</div>
                     <div class="recent-info">
                         <div class="recent-name">${c.taskName}</div>
                         <div class="recent-meta">${c.userName} · ${formatTime(c.completedAt)}</div>
                     </div>
-                    <div class="recent-xp">+${c.xp} XP</div>
+                    <div class="recent-xp">+${c.xp}</div>
                 </div>
             `).join('');
         }
@@ -586,7 +785,11 @@
                     const earnedXp = result.xp || currentTask.xp;
                     closeModal();
                     showSuccess(earnedXp);
-                    loadTasks(); // Reload to update cooldowns
+                    // Reload and stay on current category
+                    await loadData();
+                    if (currentCategory) {
+                        setTimeout(() => showTasks(currentCategory), 100);
+                    }
                 } else {
                     alert('Feil: ' + (result.error || 'Kunne ikke fullføre oppgave'));
                 }
@@ -615,7 +818,7 @@
         });
 
         // Init
-        loadTasks();
+        loadData();
     </script>
 </body>
 </html>

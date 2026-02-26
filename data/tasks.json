@@ -216,6 +216,86 @@
       "category": "salg",
       "requiresPhoto": false,
       "autoTracked": true
+    },
+    {
+      "id": "some-instagram-post",
+      "name": "Legg ut på Bear House Instagram",
+      "emoji": "📸",
+      "xp": 25,
+      "minutes": 10,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Legg ut bilde/story på @bearhousebakery"
+    },
+    {
+      "id": "some-instagram-story",
+      "name": "Del en story fra jobben",
+      "emoji": "📲",
+      "xp": 15,
+      "minutes": 5,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Del noe hyggelig fra arbeidsdagen"
+    },
+    {
+      "id": "some-personal-share",
+      "name": "Del Bear House på egen profil",
+      "emoji": "💝",
+      "xp": 30,
+      "minutes": 5,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Del et innlegg eller tag oss på din private profil"
+    },
+    {
+      "id": "some-review-respond",
+      "name": "Svar på en Google-anmeldelse",
+      "emoji": "⭐",
+      "xp": 20,
+      "minutes": 10,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Svar hyggelig på en kundevurdering"
+    },
+    {
+      "id": "some-content-idea",
+      "name": "Foreslå innholdsidé",
+      "emoji": "💡",
+      "xp": 15,
+      "minutes": 5,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Send en god idé til SoMe-innhold til leder"
+    },
+    {
+      "id": "some-behind-scenes",
+      "name": "Film behind-the-scenes",
+      "emoji": "🎬",
+      "xp": 35,
+      "minutes": 15,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Lag en kort video fra produksjonen"
+    },
+    {
+      "id": "some-customer-photo",
+      "name": "Ta bilde med fornøyd kunde",
+      "emoji": "🤳",
+      "xp": 25,
+      "minutes": 5,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Spør en kunde om bilde (med tillatelse!)"
+    },
+    {
+      "id": "some-product-photo",
+      "name": "Ta flott produktbilde",
+      "emoji": "🥐",
+      "xp": 20,
+      "minutes": 10,
+      "category": "some",
+      "requiresPhoto": false,
+      "description": "Ta et innbydende bilde av bakervarer"
     }
   ],
   "categories": {
@@ -233,6 +313,10 @@
       "name": "Salg",
       "emoji": "⭐",
       "color": "#ff6b6b"
+    },
+    "some": {
+      "name": "Sosiale Medier",
+      "emoji": "📱"
     }
   },
   "completions": [
