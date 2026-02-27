@@ -1,5 +1,26 @@
 [
   {
+    "userId": 0,
+    "type": "quest_complete",
+    "data": {
+      "questId": "check-in",
+      "category": "daily",
+      "xp": 5
+    },
+    "timestamp": "2026-02-27T09:19:25.572Z"
+  },
+  {
+    "userId": 0,
+    "type": "xp",
+    "data": {
+      "amount": 5,
+      "reason": "Quest: Sjekk inn",
+      "newTotal": 424,
+      "level": 3
+    },
+    "timestamp": "2026-02-27T09:19:25.566Z"
+  },
+  {
     "userId": 99001,
     "type": "quest_complete",
     "data": {

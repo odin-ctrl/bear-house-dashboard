@@ -54,5 +54,23 @@
         "goal": 225
       }
     ]
+  },
+  {
+    "date": "2026-02-26",
+    "runAt": "2026-02-27T05:00:02.381Z",
+    "results": [
+      {
+        "location": "nesbyen",
+        "goalMet": false,
+        "avgTicket": 172,
+        "goal": 210
+      },
+      {
+        "location": "hemsedal",
+        "goalMet": false,
+        "avgTicket": 222,
+        "goal": 225
+      }
+    ]
   }
 ]
