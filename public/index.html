@@ -832,11 +832,32 @@
                 return;
             }
             
+            // DEBUG: Log container dimensions
+            console.log('[Weekly Vibes DEBUG] Container:', {
+                element: container,
+                offsetWidth: container.offsetWidth,
+                offsetHeight: container.offsetHeight,
+                clientWidth: container.clientWidth,
+                clientHeight: container.clientHeight,
+                display: window.getComputedStyle(container).display,
+                visibility: window.getComputedStyle(container).visibility,
+                opacity: window.getComputedStyle(container).opacity
+            });
+            
             if (!weekData || weekData.length === 0) {
                 console.warn('[Weekly Vibes] updateWeeklyChart called with empty data, skipping update');
                 // Don't overwrite existing data with "Loading..." - keep what we have
                 return;
             }
+            
+            // DEBUG: Log incoming data
+            console.log('[Weekly Vibes DEBUG] Data:', weekData.map(d => ({
+                day: d.day,
+                date: d.date,
+                sales: d.sales,
+                budget: d.budget,
+                isToday: d.isToday
+            })));
             
             // Check if data actually changed (more precise comparison)
             const dataHash = JSON.stringify(weekData.map(d => ({ s: Math.round(d.sales || 0), b: Math.round(d.budget || 0), d: d.day })));
@@ -857,6 +878,7 @@
             console.log('[Weekly Vibes] Rendering chart with', weekData.length, 'days');
             
             const maxVal = Math.max(...weekData.map(d => Math.max(d.sales || 0, d.budget || 0)), 1);
+            console.log('[Weekly Vibes DEBUG] maxVal:', maxVal);
             
             // Direct update without setTimeout to avoid race conditions
             const newHTML = weekData.map(d => {
@@ -868,6 +890,8 @@
                 const today = new Date().toISOString().split('T')[0];
                 const isFuture = d.date > today;
                 const statusClass = isFuture ? 'future' : (hit ? 'hit' : (d.sales > 0 ? 'miss' : ''));
+                
+                console.log(`[Weekly Vibes DEBUG] ${d.day}: budgetPct=${budgetPct}%, salesPct=${salesPct}%, statusClass=${statusClass}`);
                 
                 return `
                     <div class="week-bar-day ${d.isToday ? 'today' : ''} ${statusClass}">
@@ -887,7 +911,20 @@
                 `;
             }).join('');
             
+            console.log('[Weekly Vibes DEBUG] HTML length:', newHTML.length, 'chars');
             container.innerHTML = newHTML;
+            
+            // DEBUG: Check rendered elements
+            const renderedBars = container.querySelectorAll('.week-bar');
+            console.log('[Weekly Vibes DEBUG] Rendered bars count:', renderedBars.length);
+            renderedBars.forEach((bar, i) => {
+                console.log(`[Weekly Vibes DEBUG] Bar ${i}:`, {
+                    height: bar.style.height,
+                    offsetHeight: bar.offsetHeight,
+                    className: bar.className
+                });
+            });
+            
             isUpdatingWeeklyChart = false;
             console.log('[Weekly Vibes] Chart rendered successfully');
         }
