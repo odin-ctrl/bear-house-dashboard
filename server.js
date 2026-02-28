@@ -1565,7 +1565,9 @@ async function getSalesForDate(location, dateStr) {
         if (dateStr === today) {
             // Live data for today
             const data = await favrit.getTodaySales(location);
-            return data.summary.totalSales;
+            const sales = data.summary.totalSales;
+            console.log(`[getSalesForDate] ${location} ${dateStr}: ${Math.round(sales)} kr (TODAY/live)`);
+            return sales;
         } else {
             // Historical data from Favrit API directly
             const locationId = favrit.LOCATIONS[location];
@@ -1577,8 +1579,13 @@ async function getSalesForDate(location, dateStr) {
             const fromDate = `${dateStr}T00:00:00`;
             const toDate = `${dateStr}T23:59:59`;
             
+            console.log(`[getSalesForDate] Fetching ${location} ${dateStr} (${fromDate} to ${toDate})`);
             const orderLines = await favrit.getOrderLines(locationId, fromDate, toDate);
+            console.log(`[getSalesForDate] Got ${orderLines.length} raw order lines`);
+            
             const mainOrders = orderLines.filter(o => o.order_line_type === 'ORDER_LINE');
+            console.log(`[getSalesForDate] Filtered to ${mainOrders.length} main orders`);
+            
             const totalSales = mainOrders.reduce((sum, o) => {
                 const amount = parseFloat(o.amount_with_vat);
                 const quantity = parseInt(o.quantity);
@@ -1586,10 +1593,11 @@ async function getSalesForDate(location, dateStr) {
                 return sum + (amount * quantity);
             }, 0);
             
+            console.log(`[getSalesForDate] ${location} ${dateStr}: ${Math.round(totalSales)} kr (${mainOrders.length} orders)`);
             return totalSales;
         }
     } catch (error) {
-        console.error(`[getSalesForDate] ${location} ${dateStr}:`, error.message);
+        console.error(`[getSalesForDate] ERROR ${location} ${dateStr}:`, error.message, error.stack);
         return 0;
     }
 }
