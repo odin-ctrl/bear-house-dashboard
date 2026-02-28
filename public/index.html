@@ -474,6 +474,7 @@
                     currentLocation = btn.dataset.location;
                     currentRecordsData = null; // Reset records cache
                     loadDashboardData();
+                    loadWeeklyChart(); // Load weekly chart separately (not part of auto-refresh)
                 });
             });
             
@@ -497,6 +498,7 @@
                 updateGamificationUI();
                 await loadDashboardData();
                 await loadLeaderboard();
+                await loadWeeklyChart(); // Load weekly chart once on page load
                 
             } catch (error) {
                 console.error('Init error:', error);
@@ -578,16 +580,6 @@
                     updateBudgetStreakUI(streak);
                 }
                 
-                // Get weekly chart data
-                const weekly = await api(`/api/weekly/${currentLocation}`);
-                console.log('[Weekly Vibes refresh]', weekly);
-                if (weekly && weekly.week) {
-                    console.log('[Weekly Vibes] Updating chart with', weekly.week.length, 'days');
-                    updateWeeklyChart(weekly.week);
-                } else {
-                    console.warn('[Weekly Vibes] No data received or invalid format:', weekly);
-                }
-                
                 // Get Year-over-Year week-to-date comparison
                 const yoy = await api(`/api/yoy-wtd/${currentLocation}`);
                 if (yoy) {
@@ -599,6 +591,18 @@
                 
             } catch (error) {
                 console.error('Load data error:', error);
+            }
+        }
+        
+        // Load weekly chart data (only on page load, not auto-refresh)
+        async function loadWeeklyChart() {
+            try {
+                const weekly = await api(`/api/weekly/${currentLocation}`);
+                if (weekly && weekly.week) {
+                    updateWeeklyChart(weekly.week);
+                }
+            } catch (error) {
+                console.error('Load weekly chart error:', error);
             }
         }
         
