@@ -823,10 +823,14 @@
         // Update weekly chart with cool bars
         // Cache last weekly data to avoid unnecessary re-renders
         let lastWeeklyDataHash = '';
+        let isUpdatingWeeklyChart = false;
         
         function updateWeeklyChart(weekData) {
             const container = document.getElementById('week-bars');
-            if (!container) return;
+            if (!container) {
+                console.warn('[Weekly Vibes] Container #week-bars not found');
+                return;
+            }
             
             if (!weekData || weekData.length === 0) {
                 console.warn('[Weekly Vibes] updateWeeklyChart called with empty data, skipping update');
@@ -835,20 +839,35 @@
             }
             
             // Check if data actually changed (more precise comparison)
-            const dataHash = JSON.stringify(weekData.map(d => ({ s: Math.round(d.sales || 0), b: Math.round(d.budget || 0) })));
-            if (dataHash === lastWeeklyDataHash) return; // No change, skip re-render
+            const dataHash = JSON.stringify(weekData.map(d => ({ s: Math.round(d.sales || 0), b: Math.round(d.budget || 0), d: d.day })));
+            if (dataHash === lastWeeklyDataHash) {
+                console.log('[Weekly Vibes] Data unchanged, skipping re-render');
+                return; // No change, skip re-render
+            }
+            
+            // Prevent overlapping updates
+            if (isUpdatingWeeklyChart) {
+                console.warn('[Weekly Vibes] Update already in progress, skipping');
+                return;
+            }
+            
+            isUpdatingWeeklyChart = true;
             lastWeeklyDataHash = dataHash;
+            
+            console.log('[Weekly Vibes] Rendering chart with', weekData.length, 'days');
             
             const maxVal = Math.max(...weekData.map(d => Math.max(d.sales || 0, d.budget || 0)), 1);
             
-            // Smooth update: fade out, update, fade in
-            container.style.opacity = '0.7';
-            setTimeout(() => {
-                container.innerHTML = weekData.map(d => {
+            // Direct update without setTimeout to avoid race conditions
+            const newHTML = weekData.map(d => {
                 const budgetPct = Math.min(100, Math.round(((d.budget || 0) / maxVal) * 100));
                 const salesPct = Math.min(100, Math.round(((d.sales || 0) / maxVal) * 100));
                 const hit = d.sales >= d.budget && d.sales > 0;
-                const statusClass = d.isFuture ? 'future' : (hit ? 'hit' : (d.sales > 0 ? 'miss' : ''));
+                
+                // Check if this is a future date
+                const today = new Date().toISOString().split('T')[0];
+                const isFuture = d.date > today;
+                const statusClass = isFuture ? 'future' : (hit ? 'hit' : (d.sales > 0 ? 'miss' : ''));
                 
                 return `
                     <div class="week-bar-day ${d.isToday ? 'today' : ''} ${statusClass}">
@@ -866,9 +885,11 @@
                         </div>
                     </div>
                 `;
-                }).join('');
-                container.style.opacity = '1';
-            }, 50);
+            }).join('');
+            
+            container.innerHTML = newHTML;
+            isUpdatingWeeklyChart = false;
+            console.log('[Weekly Vibes] Chart rendered successfully');
         }
         
         // Update records UI
