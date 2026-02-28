@@ -1144,6 +1144,9 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
         const diff = thisYearTotal - lastYearTotal;
         const diffPct = lastYearTotal > 0 ? Math.round((diff / lastYearTotal) * 100) : 0;
         
+        // Check if we have no historical data
+        const noHistoricalData = lastYearTotal === 0 && thisYearTotal > 0;
+        
         res.json({
             location,
             currentWeek,
@@ -1156,6 +1159,8 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
             diff: Math.round(diff),
             diffPct,
             breakdown,
+            noHistoricalData,
+            note: noHistoricalData ? 'Historiske data fra testmiljø ikke tilgjengelig' : null,
             timestamp: Date.now()
         });
         

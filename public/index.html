@@ -711,6 +711,16 @@
             const labelEl = document.getElementById('yoy-label');
             const trendEl = document.getElementById('yoy-trend');
             
+            // Check if historical data is available
+            if (data.noHistoricalData) {
+                diffEl.textContent = '–';
+                labelEl.textContent = 'vs i fjor (ingen data)';
+                trendEl.textContent = '—';
+                trendEl.className = 'quick-trend';
+                diffEl.style.color = 'var(--text-secondary)';
+                return;
+            }
+            
             const diff = data.diff || 0;
             const isPositive = diff >= 0;
             
