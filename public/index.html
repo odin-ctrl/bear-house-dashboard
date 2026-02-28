@@ -447,6 +447,11 @@
                 return null;
             }
             
+            if (!response.ok) {
+                console.error(`[API Error] ${endpoint}: ${response.status} ${response.statusText}`);
+                return null;
+            }
+            
             return response.json();
         }
 
@@ -575,8 +580,12 @@
                 
                 // Get weekly chart data
                 const weekly = await api(`/api/weekly/${currentLocation}`);
+                console.log('[Weekly Vibes refresh]', weekly);
                 if (weekly && weekly.week) {
+                    console.log('[Weekly Vibes] Updating chart with', weekly.week.length, 'days');
                     updateWeeklyChart(weekly.week);
+                } else {
+                    console.warn('[Weekly Vibes] No data received or invalid format:', weekly);
                 }
                 
                 // Get Year-over-Year week-to-date comparison
@@ -820,9 +829,8 @@
             if (!container) return;
             
             if (!weekData || weekData.length === 0) {
-                if (!container.innerHTML.includes('week-bar-day')) {
-                    container.innerHTML = '<div class="week-empty">Loading... 📊</div>';
-                }
+                console.warn('[Weekly Vibes] updateWeeklyChart called with empty data, skipping update');
+                // Don't overwrite existing data with "Loading..." - keep what we have
                 return;
             }
             
