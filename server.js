@@ -1189,14 +1189,21 @@ app.get('/api/weekly/:location', requireAuth, async (req, res) => {
         const weekData = [];
         const days = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'];
         
-        // Fetch all days in parallel for speed
+        // Calculate Monday of current week (Norwegian standard: week starts Monday)
+        const currentDay = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
+        const daysFromMonday = currentDay === 0 ? 6 : currentDay - 1; // If Sunday, go back 6 days
+        const monday = new Date(today);
+        monday.setDate(today.getDate() - daysFromMonday);
+        
+        // Fetch all days in parallel for speed (Monday to Sunday)
         const dayPromises = [];
-        for (let i = 6; i >= 0; i--) {
-            const date = new Date(today);
-            date.setDate(date.getDate() - i);
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(monday);
+            date.setDate(monday.getDate() + i);
             const dateStr = date.toISOString().split('T')[0];
             const dayName = days[date.getDay()];
-            const isToday = i === 0;
+            const todayStr = today.toISOString().split('T')[0];
+            const isToday = dateStr === todayStr;
             
             dayPromises.push((async () => {
                 try {
@@ -1557,7 +1564,7 @@ async function getSalesForDate(location, dateStr) {
         } else {
             // Historical data from data-service
             const data = await favrit.getDaySales(location, dateStr);
-            return data.totalSales || 0;
+            return data.sales || 0;  // data-service returns "sales", not "totalSales"
         }
     } catch (error) {
         console.error(`[getSalesForDate] ${location} ${dateStr}:`, error.message);
