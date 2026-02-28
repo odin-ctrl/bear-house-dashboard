@@ -1567,9 +1567,16 @@ async function getSalesForDate(location, dateStr) {
             const data = await favrit.getTodaySales(location);
             return data.summary.totalSales;
         } else {
-            // Historical data from data-service
-            const data = await favrit.getDaySales(location, dateStr);
-            return data.sales || 0;  // data-service returns "sales", not "totalSales"
+            // Historical data from Favrit API directly
+            const locationId = favrit.LOCATIONS[location];
+            const fromDate = `${dateStr}T00:00:00`;
+            const toDate = `${dateStr}T23:59:59`;
+            
+            const orderLines = await favrit.getOrderLines(locationId, fromDate, toDate);
+            const mainOrders = orderLines.filter(o => o.order_line_type === 'ORDER_LINE');
+            const totalSales = mainOrders.reduce((sum, o) => sum + (parseFloat(o.amount_with_vat) * parseInt(o.quantity)), 0);
+            
+            return totalSales;
         }
     } catch (error) {
         console.error(`[getSalesForDate] ${location} ${dateStr}:`, error.message);
