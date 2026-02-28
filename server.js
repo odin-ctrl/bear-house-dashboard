@@ -1182,9 +1182,9 @@ const WEEKLY_CACHE_TTL = 2 * 60 * 1000; // 2 minutes
 app.get('/api/weekly/:location', requireAuth, async (req, res) => {
     const { location } = req.params;
     
-    // Check cache first
+    // Check cache first (disabled for debugging)
     const cacheKey = `weekly_${location}`;
-    const cached = weeklyCache.get(cacheKey);
+    const cached = null; // weeklyCache.get(cacheKey);
     if (cached && Date.now() - cached.timestamp < WEEKLY_CACHE_TTL) {
         return res.json(cached.data);
     }
