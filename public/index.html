@@ -991,34 +991,6 @@
                     avgTicketTrend.classList.toggle('up', pctOfGoal >= 90);
                 }
             }
-            
-            // Week bars (simulated for now)
-            updateWeekBars(budget);
-        }
-
-        // Update week bars
-        function updateWeekBars(todayBudget) {
-            const days = ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn'];
-            const today = new Date().getDay();
-            const todayIndex = today === 0 ? 6 : today - 1;
-            
-            const container = document.getElementById('week-bars');
-            container.innerHTML = days.map((day, i) => {
-                const isToday = i === todayIndex;
-                const isPast = i < todayIndex;
-                const percent = isPast ? 70 + Math.random() * 40 : (isToday ? Math.random() * 80 : 0);
-                const color = percent >= 100 ? 'var(--neon-green)' : 
-                              percent >= 75 ? 'var(--gold)' : 
-                              percent >= 50 ? 'var(--orange)' : 'var(--pink)';
-                
-                return `
-                    <div class="day-bar ${isToday ? 'today' : ''} ${isPast ? 'past' : ''}">
-                        <div class="bar-fill" style="height: ${Math.min(100, percent)}%; background: ${color}"></div>
-                        <span class="bar-day">${day}</span>
-                        ${isToday ? '<span class="bar-today-marker">📍</span>' : ''}
-                    </div>
-                `;
-            }).join('');
         }
 
         // Update staff UI
