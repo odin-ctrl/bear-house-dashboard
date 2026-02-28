@@ -107,6 +107,12 @@
         </a>
 
         <!-- Quick Stats -->
+        <!-- KPI Date Selector -->
+        <div class="kpi-date-selector" style="text-align: right; margin-bottom: 10px; padding-right: 20px;">
+            <label for="kpi-date" style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-right: 8px;">KPI dato:</label>
+            <input type="date" id="kpi-date" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;" onchange="loadKPIs()">
+        </div>
+
         <div class="quick-stats">
             <div class="quick-stat">
                 <div class="quick-icon">⏰</div>
@@ -140,6 +146,45 @@
                 </div>
                 <div class="quick-trend up" id="avg-ticket-trend">↗</div>
             </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="quick-stats" style="margin-top: 15px;">
+            <div class="quick-stat" id="kpi-avgticket-card">
+                <div class="quick-icon">💵</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="kpi-avgTicket">–</span>
+                    <span class="quick-label">Snittkurv (mål: 200 kr)</span>
+                </div>
+                <div class="quick-trend" id="kpi-avgticket-trend">—</div>
+            </div>
+            <div class="quick-stat" id="kpi-items-card">
+                <div class="quick-icon">🛍️</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="kpi-itemsPerOrder">–</span>
+                    <span class="quick-label">Varer/ordre (mål: 3.1)</span>
+                </div>
+                <div class="quick-trend" id="kpi-items-trend">—</div>
+            </div>
+            <div class="quick-stat" id="kpi-coffee-card" title="Estimert basert på produkttotaler">
+                <div class="quick-icon">☕</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="kpi-coffeeAttach">–</span>
+                    <span class="quick-label">Kaffe attach* (mål: 35%)</span>
+                </div>
+                <div class="quick-trend" id="kpi-coffee-trend">—</div>
+            </div>
+            <div class="quick-stat" id="kpi-bun-card" title="Estimert basert på produkttotaler">
+                <div class="quick-icon">🥐</div>
+                <div class="quick-info">
+                    <span class="quick-value" id="kpi-bunAttach">–</span>
+                    <span class="quick-label">Bakevare attach* (mål: 100%)</span>
+                </div>
+                <div class="quick-trend" id="kpi-bun-trend">—</div>
+            </div>
+        </div>
+        <div style="text-align: right; padding-right: 20px; margin-top: 5px; font-size: 0.7rem; color: rgba(255,255,255,0.4);">
+            * Attach rates er estimert basert på produkttotaler, ikke faktiske ordre-kombinasjoner
         </div>
 
         <!-- Main Grid -->
@@ -540,8 +585,105 @@
                     updateYoYUI(yoy);
                 }
                 
+                // Get KPIs
+                await loadKPIs();
+                
             } catch (error) {
                 console.error('Load data error:', error);
+            }
+        }
+        
+        // Load KPIs with optional date
+        async function loadKPIs() {
+            try {
+                const dateInput = document.getElementById('kpi-date');
+                const dateParam = dateInput && dateInput.value ? `?date=${dateInput.value}` : '';
+                
+                const kpi = await api(`/api/kpi/${currentLocation}${dateParam}`);
+                if (kpi) {
+                    updateKPIUI(kpi);
+                }
+            } catch (error) {
+                // Fallback: keep old values, show "–" if first load
+                const avgTicketEl = document.getElementById('kpi-avgTicket');
+                if (avgTicketEl && avgTicketEl.textContent === '–') {
+                    // Silent fail on first load
+                }
+            }
+        }
+        
+        // Update KPI UI
+        function updateKPIUI(kpi) {
+            // Avg Ticket
+            const avgTicketEl = document.getElementById('kpi-avgTicket');
+            if (avgTicketEl) {
+                avgTicketEl.textContent = kpi.avgTicket + ' kr';
+                const avgTicketCard = document.getElementById('kpi-avgticket-card');
+                const avgTicketTrend = document.getElementById('kpi-avgticket-trend');
+                if (kpi.avgTicket >= 200) {
+                    avgTicketCard.classList.add('goal-met');
+                    avgTicketTrend.textContent = '✓';
+                    avgTicketTrend.classList.add('up');
+                } else {
+                    avgTicketCard.classList.remove('goal-met');
+                    avgTicketTrend.textContent = '○';
+                    avgTicketTrend.classList.remove('up');
+                }
+            }
+            
+            // Items Per Order
+            const itemsEl = document.getElementById('kpi-itemsPerOrder');
+            if (itemsEl) {
+                itemsEl.textContent = kpi.itemsPerOrder.toFixed(1);
+                const itemsCard = document.getElementById('kpi-items-card');
+                const itemsTrend = document.getElementById('kpi-items-trend');
+                if (kpi.itemsPerOrder >= 3.1) {
+                    itemsCard.classList.add('goal-met');
+                    itemsTrend.textContent = '✓';
+                    itemsTrend.classList.add('up');
+                } else {
+                    itemsCard.classList.remove('goal-met');
+                    itemsTrend.textContent = '○';
+                    itemsTrend.classList.remove('up');
+                }
+            }
+            
+            // Coffee Attach
+            const coffeeEl = document.getElementById('kpi-coffeeAttach');
+            if (coffeeEl && kpi.coffeeAttachRate !== null) {
+                coffeeEl.textContent = kpi.coffeeAttachRate + '%';
+                const coffeeCard = document.getElementById('kpi-coffee-card');
+                const coffeeTrend = document.getElementById('kpi-coffee-trend');
+                if (kpi.coffeeAttachRate >= 35) {
+                    coffeeCard.classList.add('goal-met');
+                    coffeeTrend.textContent = '✓';
+                    coffeeTrend.classList.add('up');
+                } else {
+                    coffeeCard.classList.remove('goal-met');
+                    coffeeTrend.textContent = '○';
+                    coffeeTrend.classList.remove('up');
+                }
+            } else if (coffeeEl) {
+                coffeeEl.textContent = '–';
+            }
+            
+            // Bun Attach
+            const bunEl = document.getElementById('kpi-bunAttach');
+            if (bunEl && kpi.bunAttachRate !== null) {
+                bunEl.textContent = kpi.bunAttachRate + '%';
+                const bunCard = document.getElementById('kpi-bun-card');
+                const bunTrend = document.getElementById('kpi-bun-trend');
+                if (kpi.bunAttachRate >= 100) {
+                    bunCard.classList.add('goal-met');
+                    bunTrend.textContent = '✓';
+                    bunTrend.classList.add('up');
+                } else {
+                    bunCard.classList.remove('goal-met');
+                    bunTrend.textContent = '○';
+                    bunTrend.classList.remove('up');
+                }
+            } else if (bunEl) {
+                bunEl.textContent = '–';
             }
         }
         
@@ -678,18 +820,23 @@
             if (!container) return;
             
             if (!weekData || weekData.length === 0) {
-                container.innerHTML = '<div class="week-empty">Loading... 📊</div>';
+                if (!container.innerHTML.includes('week-bar-day')) {
+                    container.innerHTML = '<div class="week-empty">Loading... 📊</div>';
+                }
                 return;
             }
             
-            // Check if data actually changed
-            const dataHash = JSON.stringify(weekData.map(d => ({ s: d.sales, b: d.budget })));
+            // Check if data actually changed (more precise comparison)
+            const dataHash = JSON.stringify(weekData.map(d => ({ s: Math.round(d.sales || 0), b: Math.round(d.budget || 0) })));
             if (dataHash === lastWeeklyDataHash) return; // No change, skip re-render
             lastWeeklyDataHash = dataHash;
             
             const maxVal = Math.max(...weekData.map(d => Math.max(d.sales || 0, d.budget || 0)), 1);
             
-            container.innerHTML = weekData.map(d => {
+            // Smooth update: fade out, update, fade in
+            container.style.opacity = '0.7';
+            setTimeout(() => {
+                container.innerHTML = weekData.map(d => {
                 const budgetPct = Math.min(100, Math.round(((d.budget || 0) / maxVal) * 100));
                 const salesPct = Math.min(100, Math.round(((d.sales || 0) / maxVal) * 100));
                 const hit = d.sales >= d.budget && d.sales > 0;
@@ -711,7 +858,9 @@
                         </div>
                     </div>
                 `;
-            }).join('');
+                }).join('');
+                container.style.opacity = '1';
+            }, 50);
         }
         
         // Update records UI
@@ -1107,10 +1256,22 @@
             loadDashboardData();
         }, 30000);
         
+        // KPI refresh every 60 seconds
+        setInterval(() => {
+            loadKPIs();
+        }, 60000);
+        
         // Leaderboard refresh every 2 minutes
         setInterval(() => {
             loadLeaderboard();
         }, 120000);
+        
+        // Set today's date in KPI date picker on load
+        const kpiDateInput = document.getElementById('kpi-date');
+        if (kpiDateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            kpiDateInput.value = today;
+        }
         
         console.log('🔄 Live updates aktiv - oppdaterer hvert 30. sekund');
     </script>

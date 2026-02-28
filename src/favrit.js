@@ -7,6 +7,8 @@ const fs = require('fs');
 const path = require('path');
 
 // Favrit API Config
+const FAVRIT_DATA_API_BASE = process.env.FAVRIT_DATA_API_BASE || "https://favrit-data-service.fly.dev";
+
 const FAVRIT_CONFIG = {
     clientId: '41rs3j3jpsvu6sn1lrdqo9ba1o',
     secretId: 'ma2ea8mkngesknm1lcehhu0mgh8okl29e6cjeleebrrncd580de',
@@ -249,10 +251,31 @@ async function getSettlements(locationId) {
     return response.json();
 }
 
+
+/**
+ * Get day sales from favrit-data-service (historical cache)
+ * @param {string} locationName - key in LOCATIONS, e.g. "nesbyen"
+ * @param {string} date - YYYY-MM-DD in Oslo date
+ */
+async function getDaySales(locationName, date) {
+    const locationId = LOCATIONS[locationName];
+    if (!locationId) throw new Error(`Unknown location: ${locationName}`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error(`Invalid date: ${date}`);
+
+    const url = `${FAVRIT_DATA_API_BASE}/api/daysales?locationId=${locationId}&date=${date}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+        const txt = await res.text();
+        throw new Error(`daysales failed ${res.status}: ${txt.slice(0,200)}`);
+    }
+    return await res.json();
+}
+
 module.exports = {
     getAccessToken,
     getLocations,
     getOrderLines,
+    getDaySales,
     getTodaySales,
     getAllLocationsSales,
     getSettlements,

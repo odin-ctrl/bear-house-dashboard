@@ -222,19 +222,10 @@ async function initializeFromHistory(location, favrit, budget, planday) {
         
         try {
             const dayBudget = await budget.getBudget(location, date);
-            const fromDate = `${dateStr}T00:00:00`;
-            const toDate = `${dateStr}T23:59:59`;
-            
-            const orders = await favrit.getOrderLines(
-                favrit.LOCATIONS[location], 
-                fromDate, 
-                toDate
-            );
-            
-            const sales = orders
-                .filter(o => o.order_line_type === 'ORDER_LINE')
-                .reduce((sum, o) => sum + (o.amount_with_vat * o.quantity), 0);
-            
+
+            const day = await favrit.getDaySales(location, dateStr);
+            const sales = Number(day.sales || 0);
+
             results.push({
                 date: dateStr,
                 sales: Math.round(sales),

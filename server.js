@@ -968,75 +968,6 @@ app.get('/api/bestsellers/:location', requireAuth, async (req, res) => {
 });
 
 /**
- * GET /api/weekly/:location - Get weekly budget vs actual data
- */
-app.get('/api/weekly/:location', requireAuth, async (req, res) => {
-    const { location } = req.params;
-    
-    try {
-        const today = new Date();
-        const dayOfWeek = today.getDay(); // 0 = Sunday
-        const weekData = [];
-        const dayNames = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'];
-        
-        // Get data for each day this week (Monday to today)
-        for (let i = 1; i <= 7; i++) { // Monday = 1
-            const date = new Date(today);
-            const daysFromMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-            date.setDate(today.getDate() - daysFromMonday + (i - 1));
-            
-            const dateStr = date.toISOString().split('T')[0];
-            const dayName = dayNames[date.getDay()];
-            const isFuture = date > today;
-            const isToday = dateStr === today.toISOString().split('T')[0];
-            
-            try {
-                const budget = await budgetModule.getBudget(location, date);
-                let sales = 0;
-                
-                if (!isFuture) {
-                    const fromDate = `${dateStr}T00:00:00`;
-                    const toDate = `${dateStr}T23:59:59`;
-                    const orders = await favrit.getOrderLines(favrit.LOCATIONS[location], fromDate, toDate);
-                    sales = orders
-                        .filter(o => o.order_line_type === 'ORDER_LINE')
-                        .reduce((sum, o) => sum + (o.amount_with_vat * o.quantity), 0);
-                }
-                
-                weekData.push({
-                    day: dayName,
-                    date: dateStr,
-                    budget: budget,
-                    sales: Math.round(sales),
-                    percent: budget > 0 ? Math.round((sales / budget) * 100) : 0,
-                    isToday,
-                    isFuture
-                });
-            } catch (err) {
-                weekData.push({
-                    day: dayName,
-                    date: dateStr,
-                    budget: 0,
-                    sales: 0,
-                    percent: 0,
-                    isToday,
-                    isFuture,
-                    error: true
-                });
-            }
-        }
-        
-        res.json({
-            location,
-            week: weekData,
-            timestamp: Date.now()
-        });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
-
-/**
  * GET /api/favrit/locations - Get all Favrit locations
  */
 app.get('/api/favrit/locations', requireAdmin, async (req, res) => {
@@ -1170,7 +1101,8 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
         let lastYearTotal = 0;
         const breakdown = [];
         
-        const locationId = favrit.LOCATIONS[location];
+        // Fetch all days in parallel for speed
+        const dayPromises = [];
         
         for (let i = 0; i < daysToCompare; i++) {
             // This year
@@ -1183,38 +1115,31 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
             lastDate.setDate(lastDate.getDate() + i);
             const lastDateStr = formatLocalDate(lastDate);
             
-            let thisSales = 0;
-            let lastSales = 0;
-            
-            // Get this year's sales
-            try {
-                const orders = await favrit.getOrderLines(locationId, `${thisDateStr}T00:00:00`, `${thisDateStr}T23:59:59`);
-                thisSales = orders
-                    .filter(o => o.order_line_type === 'ORDER_LINE')
-                    .reduce((sum, o) => sum + (o.amount_with_vat * o.quantity), 0);
-            } catch (e) {
-                console.log(`[YoY] Could not get this year data for ${thisDateStr}`);
-            }
-            
-            // Get last year's sales
-            try {
-                const orders = await favrit.getOrderLines(locationId, `${lastDateStr}T00:00:00`, `${lastDateStr}T23:59:59`);
-                lastSales = orders
-                    .filter(o => o.order_line_type === 'ORDER_LINE')
-                    .reduce((sum, o) => sum + (o.amount_with_vat * o.quantity), 0);
-            } catch (e) {
-                console.log(`[YoY] Could not get last year data for ${lastDateStr}`);
-            }
-            
-            thisYearTotal += thisSales;
-            lastYearTotal += lastSales;
-            
-            breakdown.push({
-                dayIndex: i,
-                thisYear: { date: thisDateStr, sales: Math.round(thisSales) },
-                lastYear: { date: lastDateStr, sales: Math.round(lastSales) }
-            });
+            dayPromises.push((async () => {
+                const thisSales = await getSalesForDate(location, thisDateStr);
+                const lastSales = await getSalesForDate(location, lastDateStr);
+                
+                return {
+                    dayIndex: i,
+                    thisYear: { date: thisDateStr, sales: Math.round(thisSales) },
+                    lastYear: { date: lastDateStr, sales: Math.round(lastSales) },
+                    thisSales,
+                    lastSales
+                };
+            })());
         }
+        
+        const results = await Promise.all(dayPromises);
+        
+        results.forEach(r => {
+            thisYearTotal += r.thisSales;
+            lastYearTotal += r.lastSales;
+            breakdown.push({
+                dayIndex: r.dayIndex,
+                thisYear: r.thisYear,
+                lastYear: r.lastYear
+            });
+        });
         
         const diff = thisYearTotal - lastYearTotal;
         const diffPct = lastYearTotal > 0 ? Math.round((diff / lastYearTotal) * 100) : 0;
@@ -1244,60 +1169,151 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
 
 /**
  * GET /api/weekly/:location - Get weekly chart data (last 7 days)
+ * CACHED for 2 minutes to avoid slow Favrit API calls
  */
+const weeklyCache = new Map();
+const WEEKLY_CACHE_TTL = 2 * 60 * 1000; // 2 minutes
+
 app.get('/api/weekly/:location', requireAuth, async (req, res) => {
     const { location } = req.params;
+    
+    // Check cache first
+    const cacheKey = `weekly_${location}`;
+    const cached = weeklyCache.get(cacheKey);
+    if (cached && Date.now() - cached.timestamp < WEEKLY_CACHE_TTL) {
+        return res.json(cached.data);
+    }
     
     try {
         const today = new Date();
         const weekData = [];
         const days = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'];
         
+        // Fetch all days in parallel for speed
+        const dayPromises = [];
         for (let i = 6; i >= 0; i--) {
             const date = new Date(today);
             date.setDate(date.getDate() - i);
             const dateStr = date.toISOString().split('T')[0];
             const dayName = days[date.getDay()];
+            const isToday = i === 0;
             
-            try {
-                const dayBudget = await budgetModule.getBudget(location, date);
-                
-                const fromDate = `${dateStr}T00:00:00`;
-                const toDate = `${dateStr}T23:59:59`;
-                
-                const locationId = favrit.LOCATIONS[location];
-                if (locationId) {
-                    const orders = await favrit.getOrderLines(locationId, fromDate, toDate);
-                    const sales = orders
-                        .filter(o => o.order_line_type === 'ORDER_LINE')
-                        .reduce((sum, o) => sum + (o.amount_with_vat * o.quantity), 0);
+            dayPromises.push((async () => {
+                try {
+                    const dayBudget = await budgetModule.getBudget(location, date);
+                    const sales = await getSalesForDate(location, dateStr);
                     
-                    weekData.push({
-                        day: dayName,
-                        date: dateStr,
-                        sales: Math.round(sales),
-                        budget: dayBudget,
-                        hit: sales >= dayBudget,
-                        isToday: i === 0
-                    });
-                } else {
-                    weekData.push({ day: dayName, date: dateStr, sales: 0, budget: dayBudget, hit: false, isToday: i === 0 });
+                    return { 
+                        day: dayName, 
+                        date: dateStr, 
+                        sales: Math.round(sales), 
+                        budget: dayBudget, 
+                        hit: sales >= dayBudget, 
+                        isToday 
+                    };
+                } catch (err) {
+                    return { day: dayName, date: dateStr, sales: 0, budget: 0, hit: false, isToday, error: true };
                 }
-            } catch (err) {
-                weekData.push({ day: dayName, date: dateStr, sales: 0, budget: 0, hit: false, isToday: i === 0, error: true });
-            }
+            })());
         }
         
-        res.json({
+        const results = await Promise.all(dayPromises);
+        
+        const responseData = {
             location,
-            weekData,
+            week: results,
             timestamp: Date.now()
-        });
+        };
+        
+        // Cache the result
+        weeklyCache.set(cacheKey, { data: responseData, timestamp: Date.now() });
+        
+        res.json(responseData);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
+/**
+/**
+ * GET /api/kpi/:location - Get KPIs for a specific date
+ * Query params: ?date=YYYY-MM-DD (optional, defaults to today)
+ */
+app.get('/api/kpi/:location', requireAuth, async (req, res) => {
+    try {
+        const location = req.params.location;
+        const today = new Date().toISOString().split('T')[0];
+        const dateStr = (req.query.date || today).trim();
+        const isToday = dateStr === today;
+
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+            return res.status(400).json({ error: 'Invalid date format. Use YYYY-MM-DD' });
+        }
+
+        let sales = 0;
+        let orders = 0;
+        let items = 0;
+        let avgTicket = 0;
+        let itemsPerOrder = 0;
+        let coffeeAttachRate = null;
+        let bunAttachRate = null;
+        let note = null;
+
+        if (isToday) {
+            const liveData = await favrit.getTodaySales(location);
+
+            sales = Number(liveData?.summary?.totalSales || 0);
+            orders = Number(liveData?.summary?.uniqueOrders || 0);
+            items = Number(liveData?.summary?.totalItems || 0);
+
+            avgTicket = orders > 0 ? Math.round((sales / orders) * 100) / 100 : 0;
+            itemsPerOrder = orders > 0 ? Math.round((items / orders) * 100) / 100 : 0;
+
+            const bestsellers = liveData.bestsellers || [];
+            const coffeeProducts = bestsellers.filter(p =>
+                /kaffe|coffee|cappuccino|latte|espresso/i.test(p.name)
+            );
+            const bunProducts = bestsellers.filter(p =>
+                /bolle|rundstykke|croissant/i.test(p.name)
+            );
+
+            const totalCoffeeQty = coffeeProducts.reduce((sum, p) => sum + p.quantity, 0);
+            const totalBunQty = bunProducts.reduce((sum, p) => sum + p.quantity, 0);
+
+            coffeeAttachRate = orders > 0 ? Math.round((totalCoffeeQty / orders) * 100) : 0;
+            bunAttachRate = orders > 0 ? Math.round((totalBunQty / orders) * 100) : 0;
+            note = 'Attach rates are approximations based on product totals, not actual order composition';
+        } else {
+            const historicalData = await favrit.getDaySales(location, dateStr);
+
+            sales = Number(historicalData?.sales || 0);
+            orders = Number(historicalData?.orders || 0);
+            items = Number(historicalData?.items || 0);
+            avgTicket = Number(historicalData?.avg_ticket || 0);
+
+            itemsPerOrder = orders > 0 ? Math.round((items / orders) * 100) / 100 : 0;
+            note = 'Attach rates require extended data-service implementation';
+        }
+
+        res.json({
+            location,
+            date: dateStr,
+            isLive: isToday,
+            sales,
+            orders,
+            items,
+            avgTicket,
+            itemsPerOrder,
+            coffeeAttachRate,
+            bunAttachRate,
+            note
+        });
+
+    } catch (error) {
+        console.error('[KPI] Error for ' + location + ':', error.message);
+        res.status(500).json({ error: error.message });
+    }
+});
 /**
  * GET /api/streak/:location - Get current streak info
  */
@@ -1518,6 +1534,108 @@ app.get('/api/health', (req, res) => {
         }
     });
 });
+
+// ============================================
+// HELPER: Get sales for a specific date
+// ============================================
+
+/**
+ * Get total sales for a location on a specific date
+ * Uses favrit-data-service (historical) or live API (today)
+ * @param {string} location - Location name (nesbyen, hemsedal)
+ * @param {string} dateStr - Date in YYYY-MM-DD format
+ * @returns {Promise<number>} Total sales amount
+ */
+async function getSalesForDate(location, dateStr) {
+    const today = new Date().toISOString().split('T')[0];
+    
+    try {
+        if (dateStr === today) {
+            // Live data for today
+            const data = await favrit.getTodaySales(location);
+            return data.summary.totalSales;
+        } else {
+            // Historical data from data-service
+            const data = await favrit.getDaySales(location, dateStr);
+            return data.totalSales || 0;
+        }
+    } catch (error) {
+        console.error(`[getSalesForDate] ${location} ${dateStr}:`, error.message);
+        return 0;
+    }
+}
+
+// ============================================
+// AUTOMATIC STREAK UPDATE
+// ============================================
+
+/**
+ * Automatically update streak based on yesterday's Favrit sales vs budget
+ * Runs on startup and every hour
+ */
+async function autoUpdateStreak() {
+    const locations = ['nesbyen', 'hemsedal'];
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    
+    console.log(`[AutoStreak] Checking streak for ${yesterdayStr}...`);
+    
+    for (const location of locations) {
+        try {
+            // Check if we already processed this date
+            const streakInfo = streakModule.getStreakInfo(location);
+            if (streakInfo.lastHitDate === yesterdayStr) {
+                console.log(`[AutoStreak] ${location}: Already processed ${yesterdayStr}`);
+                continue;
+            }
+            
+            // Skip if lastHitDate is today (already up to date)
+            const today = new Date().toISOString().split('T')[0];
+            if (streakInfo.lastHitDate === today) {
+                console.log(`[AutoStreak] ${location}: Already current (${today})`);
+                continue;
+            }
+            
+            // Get yesterday's budget (pass Date object)
+            const budget = await budgetModule.getBudget(location, yesterday);
+            if (!budget || budget === 0) {
+                console.log(`[AutoStreak] ${location}: No budget for ${yesterdayStr}`);
+                continue;
+            }
+            
+            // Get yesterday's sales
+            const sales = await getSalesForDate(location, yesterdayStr);
+            
+            if (sales > 0) {
+                console.log(`[AutoStreak] ${location}: ${yesterdayStr} - Sales: ${sales} kr, Budget: ${budget} kr`);
+            }
+            
+            if (sales >= budget) {
+                // Record the budget hit
+                const result = streakModule.recordBudgetHit(location, yesterdayStr, sales, budget, []);
+                console.log(`[AutoStreak] ${location}: 🔥 Budget HIT! Streak: ${result.currentStreak}`);
+            } else if (sales > 0) {
+                // Had sales but missed budget - streak resets
+                console.log(`[AutoStreak] ${location}: Budget missed (${Math.round(sales/budget*100)}%)`);
+            }
+        } catch (error) {
+            console.error(`[AutoStreak] ${location} error:`, error.message);
+        }
+    }
+}
+
+// Run auto-streak on startup (after 10 seconds to let everything initialize)
+setTimeout(() => {
+    autoUpdateStreak().catch(e => console.error('[AutoStreak] Startup error:', e.message));
+}, 10000);
+
+// Run auto-streak every hour
+setInterval(() => {
+    autoUpdateStreak().catch(e => console.error('[AutoStreak] Hourly error:', e.message));
+}, 60 * 60 * 1000);
+
+// ============================================
 
 // Start server
 app.listen(PORT, () => {
