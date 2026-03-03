@@ -138,14 +138,6 @@
                 </div>
                 <div class="quick-trend up">↗</div>
             </div>
-            <div class="quick-stat clickable" id="avg-ticket-stat" onclick="showAvgTicketInfo()">
-                <div class="quick-icon">💰</div>
-                <div class="quick-info">
-                    <span class="quick-value" id="avg-ticket">0 kr</span>
-                    <span class="quick-label">Snitt <span id="avg-ticket-goal-label"></span></span>
-                </div>
-                <div class="quick-trend up" id="avg-ticket-trend">↗</div>
-            </div>
         </div>
 
         <!-- KPI Cards -->
@@ -810,29 +802,7 @@
             document.getElementById('yoy-modal').style.display = 'none';
         }
         
-        // Show avg ticket info toast
-        function showAvgTicketInfo() {
-            const stat = document.getElementById('avg-ticket-stat');
-            const goal = parseInt(stat.dataset.goal) || 0;
-            const actual = parseInt(stat.dataset.actual) || 0;
-            const met = stat.dataset.met === 'true';
-            
-            if (goal === 0) {
-                showToast('💰 Snittsalg per kunde: ' + actual + ' kr', 'info');
-                return;
-            }
-            
-            const diff = actual - goal;
-            const pct = Math.round((actual / goal) * 100);
-            
-            if (met) {
-                showToast(`🎯 MÅL NÅDD! ${actual} kr snitt (mål: ${goal} kr) — +10 XP!`, 'success');
-            } else if (diff >= -10) {
-                showToast(`💪 Nesten! ${actual} kr (mål: ${goal} kr) — ${Math.abs(diff)} kr igjen!`, 'warning');
-            } else {
-                showToast(`💰 Snitt: ${actual} kr (mål: ${goal} kr) — ${pct}% av mål`, 'info');
-            }
-        }
+
         
         // Update weekly chart with cool bars
         // Cache last weekly data to avoid unnecessary re-renders
@@ -968,39 +938,7 @@
             
             // Transactions and avg ticket from API
             const transactions = data.transactions || Math.round(sales / 85);
-            const avgTicket = data.avgTicket || 85;
-            const avgTicketGoal = data.avgTicketGoal || 0;
-            const avgTicketMet = data.avgTicketMet || false;
-            
             document.getElementById('transactions-today').textContent = transactions;
-            
-            // Avg ticket with goal indicator
-            const avgTicketEl = document.getElementById('avg-ticket');
-            avgTicketEl.textContent = avgTicket + ' kr';
-            
-            // Update avg ticket stat styling based on goal
-            const avgTicketStat = avgTicketEl.closest('.quick-stat');
-            const goalLabelEl = document.getElementById('avg-ticket-goal-label');
-            
-            // Store goal in data attribute for modal
-            avgTicketStat.dataset.goal = avgTicketGoal;
-            avgTicketStat.dataset.actual = avgTicket;
-            avgTicketStat.dataset.met = avgTicketMet;
-            
-            if (avgTicketGoal > 0) {
-                goalLabelEl.textContent = `(mål: ${avgTicketGoal} kr)`;
-                const avgTicketTrend = document.getElementById('avg-ticket-trend');
-                if (avgTicketMet) {
-                    avgTicketStat.classList.add('goal-met');
-                    avgTicketTrend.textContent = '🎯';
-                    avgTicketTrend.classList.add('up');
-                } else {
-                    avgTicketStat.classList.remove('goal-met');
-                    const pctOfGoal = Math.round((avgTicket / avgTicketGoal) * 100);
-                    avgTicketTrend.textContent = pctOfGoal + '%';
-                    avgTicketTrend.classList.toggle('up', pctOfGoal >= 90);
-                }
-            }
         }
 
         // Update staff UI

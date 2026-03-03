@@ -1,0 +1,80 @@
+{
+  "period": "2025-01-01 to 2025-12-31",
+  "generatedAt": "2026-02-27T12:23:35.168Z",
+  "summary": {
+    "Nesbyen": {
+      "gruppe1_ol_liter": 0,
+      "gruppe2_vin_liter": 0,
+      "gruppe3_brennevin_liter": 0
+    },
+    "Ål": {
+      "gruppe1_ol_liter": 0,
+      "gruppe2_vin_liter": 0,
+      "gruppe3_brennevin_liter": 0
+    },
+    "Hemsedal": {
+      "gruppe1_ol_liter": 0,
+      "gruppe2_vin_liter": 0,
+      "gruppe3_brennevin_liter": 0
+    }
+  },
+  "totals": {
+    "group1": 0,
+    "group2": 0,
+    "group3": 0
+  },
+  "detailedResults": {
+    "Nesbyen": {
+      "group1": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group2": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group3": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      }
+    },
+    "Ål": {
+      "group1": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group2": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group3": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      }
+    },
+    "Hemsedal": {
+      "group1": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group2": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      },
+      "group3": {
+        "liters": 0,
+        "count": 0,
+        "products": {}
+      }
+    }
+  },
+  "identifiedProducts": {}
+}

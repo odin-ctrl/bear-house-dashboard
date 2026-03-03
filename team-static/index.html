@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear House Team ☕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0c;
+            --card: #121215;
+            --orange: #ff6b35;
+            --green: #22c55e;
+            --yellow: #fbbf24;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --text: #ffffff;
+            --muted: #888;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .login-box {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo { font-size: 3rem; margin-bottom: 1rem; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.9rem; }
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #2a2a2f;
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        input:focus { outline: none; border-color: var(--orange); }
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--orange);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover { background: #e55a2b; }
+        .error { color: #ff4444; margin-top: 1rem; display: none; }
+        
+        .dashboard { display: none; padding: 1.5rem; max-width: 900px; margin: 0 auto; }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .header h1 { font-size: 1.3rem; }
+        .logout {
+            background: transparent;
+            border: 1px solid #333;
+            color: var(--muted);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            width: auto;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: var(--card);
+            padding: 1.25rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-label { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.3rem; }
+        .stat-value { font-size: 1.6rem; font-weight: 700; color: var(--orange); }
+        .stat-value.green { color: var(--green); }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card {
+            background: var(--card);
+            padding: 1.25rem;
+            border-radius: 12px;
+        }
+        .info-card h3 { 
+            margin-bottom: 0.75rem; 
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .info-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+        .info-card a { color: var(--orange); }
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--bg);
+            padding: 0.7rem 0.9rem;
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .quick-link:hover { background: #1a1a1f; }
+        .time { color: var(--muted); font-size: 0.75rem; margin-top: 0.5rem; }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 0.4rem 0;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .checklist-item input { margin-right: 0.6rem; width: 16px; height: 16px; cursor: pointer; accent-color: var(--green); }
+        .checklist-item.done { color: var(--green); text-decoration: line-through; opacity: 0.7; }
+        
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tab {
+            padding: 0.5rem 1rem;
+            background: var(--bg);
+            border: none;
+            border-radius: 8px;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: var(--orange);
+            color: white;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .notes-area {
+            width: 100%;
+            min-height: 100px;
+            background: var(--bg);
+            border: 2px solid #2a2a2f;
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+        .notes-area:focus { outline: none; border-color: var(--orange); }
+        
+        .save-btn {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--green);
+            font-size: 0.85rem;
+        }
+        .save-btn:hover { background: #1eb354; }
+        
+        .special-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg);
+            border: 2px solid #2a2a2f;
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        .special-input:focus { outline: none; border-color: var(--yellow); }
+        
+        .special-display {
+            background: linear-gradient(135deg, #1a1a1f 0%, #121215 100%);
+            border: 2px solid var(--yellow);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+        .special-display .label { color: var(--yellow); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.3rem; }
+        .special-display .value { font-size: 1.1rem; }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        .status-open { background: var(--green); }
+        .status-closed { background: var(--red); }
+        
+        #adminPanel { display: none; }
+        
+        .motivation-card {
+            background: linear-gradient(135deg, var(--orange) 0%, #e55a2b 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .motivation-card .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .motivation-card .author {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .streak-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--yellow);
+            color: #000;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .weather-forecast {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .forecast-item {
+            background: var(--bg);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 70px;
+        }
+        .forecast-time { font-size: 0.7rem; color: var(--muted); }
+        .forecast-icon { font-size: 1.2rem; margin: 0.2rem 0; }
+        .forecast-temp { font-size: 0.85rem; font-weight: 600; }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--bg);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--green);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        .keyboard-hint {
+            color: var(--muted);
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+        }
+        .kbd {
+            background: var(--bg);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        @media (max-width: 600px) {
+            .dashboard { padding: 1rem; }
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+    
+        .goals-card { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid #2a2a4a; }
+        .goals-card h3 { color: var(--blue); }
+        .goal-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0; }
+        .goal-item input { width: 18px; height: 18px; accent-color: var(--blue); }
+        .goal-item.done { text-decoration: line-through; opacity: 0.6; }
+        .goal-progress { height: 6px; background: #2a2a3f; border-radius: 3px; margin-top: 1rem; overflow: hidden; }
+        .goal-progress-bar { height: 100%; background: var(--blue); border-radius: 3px; transition: width 0.3s; }
+        .print-btn { background: transparent; border: 1px solid #444; color: var(--muted); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer; margin-left: 0.5rem; }
+        .print-btn:hover { background: #222; }
+        @media print { .dashboard { display: block !important; } .login-container, .logout, .print-btn, nav, .admin-panel { display: none !important; } body { background: white; color: black; } .info-card, .stat-card { background: #f5f5f5 !important; border: 1px solid #ddd; } }
+        .loading-skeleton { background: linear-gradient(90deg, #1a1a1f 25%, #2a2a2f 50%, #1a1a1f 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; height: 20px; }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <div class="logo">🐻</div>
+            <h1>Bear House</h1>
+            <p class="subtitle">Team Dashboard</p>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Brukernavn (fornavn)" required autocomplete="username">
+                <input type="password" id="password" placeholder="Passord (DDMM)" required autocomplete="current-password">
+                <button type="submit">Logg inn</button>
+            </form>
+            <p class="error" id="error">Feil brukernavn eller passord</p>
+        </div>
+    </div>
+
+    <div class="dashboard" id="dashboard">
+        <div class="header">
+            <h1>🐻 God dag, <span id="userName">kollega</span>!<span class="streak-badge" id="streakBadge" style="display:none">🔥 <span id="streakCount">0</span> dager</span></h1>
+            <button class="logout" onclick="logout()">Logg ut</button>
+        </div>
+        
+        <div class="motivation-card" id="motivationCard">
+            <div class="quote" id="quoteText">"Hver dag er en ny mulighet til å gjøre noe bra."</div>
+            <div class="author">— Bear House Team</div>
+        </div>
+        
+        <div style="background:linear-gradient(135deg,#1a472a 0,#2d5a3e 100%);border-radius:10px;padding:1rem;margin-bottom:1rem;text-align:center;font-size:0.9rem;" id="dailyTip">💡 Husk å smile til kundene - det smitter!</div>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">📅 Dato</div>
+                <div class="stat-value" id="currentDate" style="font-size:1rem;">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🕐 Klokke</div>
+                <div class="stat-value green" id="currentTime">--:--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" id="weatherLabel">🌡️ Nesbyen</div>
+                <div class="stat-value" id="weather">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">📍 Status</div>
+                <div class="stat-value" id="storeStatus" style="font-size:0.9rem;">--</div>
+            </div>
+        </div>
+        
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>📋 Sjekklister <span id="checklistProgress" style="color:var(--muted);font-size:0.8rem;font-weight:normal"></span></h3>
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('morgen')">☀️ Morgen</button>
+                    <button class="tab" onclick="switchTab('kveld')">🌙 Kveld</button>
+                </div>
+                
+                <div id="morgen-checklist" class="tab-content active">
+                    <div id="morgenChecklist">
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Åpne kassen</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Sjekk lagerbeholdning</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Fyll på kaffe/melk</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Rydd monter</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Sett fram skilter</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="morgen" onchange="toggleCheck(this)"> Start kaffemaskin</label>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="morgenProgress" style="width:0%"></div></div>
+                    <p class="time">Nullstilles automatisk hver morgen</p>
+                </div>
+                
+                <div id="kveld-checklist" class="tab-content">
+                    <div id="kveldChecklist">
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Tøm søppel</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Rengjør kaffemaskin</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Rydd disk og monter</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Vask gulv</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Lukk kassen</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Skru av lys</label>
+                        <label class="checklist-item"><input type="checkbox" data-list="kveld" onchange="toggleCheck(this)"> Lås døren</label>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="kveldProgress" style="width:0%"></div></div>
+                    <p class="time">Nullstilles automatisk hver dag</p>
+                </div>
+                <p class="keyboard-hint">💡 Hurtigtast: <span class="kbd">M</span> morgen, <span class="kbd">K</span> kveld</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>⭐ Dagens spesial</h3>
+                <div id="specialAdmin" style="display:none;">
+                    <input type="text" class="special-input" id="specialInput" placeholder="Skriv inn dagens spesial...">
+                    <button class="save-btn" onclick="saveSpecial()">Lagre</button>
+                </div>
+                <div class="special-display" id="specialDisplay">
+                    <div class="label">I dag serverer vi</div>
+                    <div class="value" id="specialText">Ingen spesial i dag</div>
+                </div>
+                
+                <h3 style="margin-top: 1.5rem;">📝 Beskjeder</h3>
+                <div id="notesAdmin" style="display:none;">
+                    <textarea class="notes-area" id="notesInput" placeholder="Skriv beskjeder til teamet..."></textarea>
+                    <button class="save-btn" onclick="saveNotes()">Lagre beskjed</button>
+                </div>
+                <div id="notesDisplay" style="margin-top: 0.5rem;">
+                    <p id="notesText" style="white-space: pre-wrap;">Ingen beskjeder</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-card" style="margin-bottom: 1rem;">
+            <h3>🌤️ Værvarsel i dag</h3>
+            <div class="weather-forecast" id="weatherForecast">
+                <div class="forecast-item"><div class="forecast-time">--</div><div class="forecast-icon">⏳</div><div class="forecast-temp">--</div></div>
+            </div>
+        </div>
+        
+        <div class="info-card" style="margin-bottom: 1rem;">
+            <h3>📊 Full Dashboard</h3>
+            <p>For sanntidsdata, salgsstatistikk, quests og gamification:</p>
+            <div class="quick-links">
+                <a href="https://bearhouse-dashboard.loca.lt" target="_blank" class="quick-link">🚀 Åpne Dashboard</a>
+            </div>
+            <p class="time">Tunnel-passord: din eksterne IP-adresse</p>
+        </div>
+        
+        <div class="grid-2">
+            <div class="info-card">
+                <h3>🔗 Nyttige lenker</h3>
+                <div class="quick-links">
+                    <a href="https://www.bearhouse.no" target="_blank" class="quick-link">🌐 bearhouse.no</a>
+                    <a href="https://favrit.com" target="_blank" class="quick-link">💳 Favrit</a>
+                    <a href="https://app.planday.com" target="_blank" class="quick-link">📆 Planday</a>
+                    <a href="mailto:hei@bearhouse.no" class="quick-link">📧 E-post</a>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h3>📞 Kontaktinfo</h3>
+                <p><strong>Nesbyen:</strong> <a href="tel:+4741155977">411 55 977</a><br>
+                <strong>Hemsedal:</strong> <a href="tel:+4732071660">32 07 16 60</a><br>
+                <strong>E-post:</strong> <a href="mailto:hei@bearhouse.no">hei@bearhouse.no</a></p>
+            </div>
+        </div>
+        
+        <div class="info-card" id="adminPanel">
+            <h3>👑 Admin</h3>
+            <div class="quick-links">
+                <a href="https://bearhouse-dashboard.loca.lt/admin.html" target="_blank" class="quick-link">⚙️ Admin Panel</a>
+                <a href="https://www.domeneshop.no/admin/" target="_blank" class="quick-link">🌐 Domeneshop</a>
+                <a href="https://tripletex.no" target="_blank" class="quick-link">📊 Tripletex</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const users = {
+            'martin': { pass: '2308', admin: true, name: 'Martin', location: 'all' },
+            'agnieszka': { pass: '1301', admin: false, name: 'Agnieszka', location: 'nesbyen' },
+            'akvile': { pass: '1210', admin: false, name: 'Akvile', location: 'hemsedal' },
+            'albert': { pass: '1802', admin: false, name: 'Albert', location: 'nesbyen' },
+            'elhana': { pass: '1706', admin: false, name: 'Elhana', location: 'nesbyen' },
+            'eline': { pass: '1509', admin: false, name: 'Eline', location: 'hemsedal' },
+            'ella': { pass: '2106', admin: false, name: 'Ella', location: 'hemsedal' },
+            'frances': { pass: '3006', admin: false, name: 'Frances', location: 'nesbyen' },
+            'geralyn': { pass: '2012', admin: false, name: 'Geralyn', location: 'nesbyen' },
+            'henny': { pass: '2810', admin: false, name: 'Henny', location: 'hemsedal' },
+            'ilija': { pass: '1107', admin: false, name: 'Ilija', location: 'nesbyen' },
+            'iryna': { pass: '2008', admin: false, name: 'Iryna', location: 'nesbyen' },
+            'julie': { pass: '2504', admin: false, name: 'Julie', location: 'nesbyen' },
+            'lihaim': { pass: '0502', admin: false, name: 'Lihaim', location: 'nesbyen' },
+            'maneewan': { pass: '1207', admin: false, name: 'Maneewan', location: 'nesbyen' },
+            'martinz': { pass: '1807', admin: false, name: 'Martin Z', location: 'nesbyen' },
+            'mats': { pass: '0406', admin: false, name: 'Mats', location: 'nesbyen' },
+            'oliver': { pass: '2611', admin: false, name: 'Oliver', location: 'nesbyen' },
+            'oscar': { pass: '2412', admin: false, name: 'Oscar', location: 'nesbyen' },
+            'oskar': { pass: '1212', admin: false, name: 'Oskar', location: 'nesbyen' },
+            'pavlina': { pass: '2706', admin: false, name: 'Pavlína', location: 'hemsedal' },
+            'ranveig': { pass: '1304', admin: false, name: 'Ranveig', location: 'hemsedal' },
+            'rebecca': { pass: '2208', admin: false, name: 'Rebecca', location: 'hemsedal' },
+            'sara': { pass: '1707', admin: false, name: 'Sara', location: 'nesbyen' },
+            'sarah': { pass: '1612', admin: false, name: 'Sarah', location: 'hemsedal' },
+            'tilde': { pass: '2611', admin: false, name: 'Tilde', location: 'hemsedal' },
+            'torstein': { pass: '2605', admin: false, name: 'Torstein', location: 'hemsedal' },
+            'william': { pass: '2409', admin: false, name: 'William', location: 'hemsedal' },
+            'michail': { pass: '1308', admin: false, name: 'Michail', location: 'nesbyen' }
+        };
+        
+        let currentUser = null;
+        
+        const savedUser = localStorage.getItem('bearhouse_user');
+        if (savedUser && users[savedUser]) {
+            currentUser = savedUser;
+            showDashboard(savedUser);
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.toLowerCase().trim();
+            const password = document.getElementById('password').value;
+            
+            if (users[username] && users[username].pass === password) {
+                localStorage.setItem('bearhouse_user', username);
+                currentUser = username;
+                showDashboard(username);
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        });
+        
+        function showDashboard(username) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            document.getElementById('userName').textContent = users[username].name;
+            
+            if (users[username].admin) {
+                document.getElementById('adminPanel').style.display = 'block';
+                document.getElementById('specialAdmin').style.display = 'block';
+                document.getElementById('notesAdmin').style.display = 'block';
+            }
+            
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            updateStoreStatus();
+            setInterval(updateStoreStatus, 60000);
+            fetchWeather();
+            fetchForecast();
+            loadChecklists();
+            loadSpecial();
+            loadNotes();
+            setDailyQuote();
+            setRandomTip();
+            updateStreak();
+            updateProgress();
+        }
+        
+        function updateDateTime() {
+            const now = new Date();
+            const days = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
+            const months = ['jan', 'feb', 'mar', 'apr', 'mai', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'des'];
+            document.getElementById('currentDate').textContent = `${days[now.getDay()]} ${now.getDate()}. ${months[now.getMonth()]}`;
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('no-NO', {hour: '2-digit', minute: '2-digit'});
+        }
+        
+        function updateStoreStatus() {
+            const now = new Date();
+            const hour = now.getHours();
+            const day = now.getDay();
+            
+            let isOpen = false;
+            let statusText = '';
+            
+            if (day === 0) {
+                isOpen = hour >= 7 && hour < 18;
+                statusText = isOpen ? 'Hemsedal åpent' : 'Stengt';
+            } else {
+                isOpen = hour >= 7 && hour < 18;
+                if (hour >= 8 && hour < 17) {
+                    statusText = 'Begge åpne';
+                } else if (hour >= 7 && hour < 8) {
+                    statusText = 'Hemsedal åpent';
+                } else if (hour >= 17 && hour < 18) {
+                    statusText = 'Hemsedal åpent';
+                } else {
+                    statusText = 'Stengt';
+                }
+            }
+            
+            const statusEl = document.getElementById('storeStatus');
+            statusEl.innerHTML = `<span class="status-indicator ${isOpen ? 'status-open' : 'status-closed'}"></span>${statusText}`;
+        }
+        
+        async function fetchWeather() {
+            try {
+                const res = await fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.5667&lon=9.1000', {
+                    headers: { 'User-Agent': 'BearHouseDashboard/1.0' }
+                });
+                const data = await res.json();
+                const temp = data.properties.timeseries[0].data.instant.details.air_temperature;
+                const symbol = data.properties.timeseries[0].data.next_1_hours?.summary?.symbol_code || 'cloudy';
+                
+                let weatherIcon = '☁️';
+                if (symbol.includes('sun') || symbol.includes('clear')) weatherIcon = '☀️';
+                else if (symbol.includes('rain')) weatherIcon = '🌧️';
+                else if (symbol.includes('snow')) weatherIcon = '❄️';
+                else if (symbol.includes('sleet')) weatherIcon = '🌨️';
+                else if (symbol.includes('fog')) weatherIcon = '🌫️';
+                
+                const tempIcon = temp <= -10 ? '🥶' : temp <= 0 ? '❄️' : temp <= 10 ? '🌤️' : temp <= 20 ? '☀️' : '🔥';
+                document.getElementById('weather').textContent = tempIcon + ' ' + Math.round(temp) + '°C';
+                document.getElementById('weatherLabel').textContent = weatherIcon + ' Nesbyen';
+            } catch (e) {
+                document.getElementById('weather').textContent = '--';
+            }
+        }
+        
+        async function fetchForecast() {
+            try {
+                const res = await fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.5667&lon=9.1000', {
+                    headers: { 'User-Agent': 'BearHouseDashboard/1.0' }
+                });
+                const data = await res.json();
+                const timeseries = data.properties.timeseries.slice(0, 6);
+                
+                const container = document.getElementById('weatherForecast');
+                container.innerHTML = timeseries.map(ts => {
+                    const time = new Date(ts.time);
+                    const temp = Math.round(ts.data.instant.details.air_temperature);
+                    const symbol = ts.data.next_1_hours?.summary?.symbol_code || 'cloudy';
+                    
+                    let icon = '☁️';
+                    if (symbol.includes('sun') || symbol.includes('clear')) icon = '☀️';
+                    else if (symbol.includes('rain')) icon = '🌧️';
+                    else if (symbol.includes('snow')) icon = '❄️';
+                    else if (symbol.includes('sleet')) icon = '🌨️';
+                    
+                    return `<div class="forecast-item">
+                        <div class="forecast-time">${time.getHours().toString().padStart(2,'0')}:00</div>
+                        <div class="forecast-icon">${icon}</div>
+                        <div class="forecast-temp">${temp}°</div>
+                    </div>`;
+                }).join('');
+            } catch (e) {
+                // Keep loading state
+            }
+        }
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tab + '-checklist').classList.add('active');
+        }
+        
+        function toggleCheck(cb) {
+            cb.parentElement.classList.toggle('done', cb.checked);
+            saveChecklists();
+            updateProgress();
+            checkStreakCompletion();
+        }
+        
+        function updateProgress() {
+            const morgenChecks = document.querySelectorAll('#morgenChecklist input');
+            const kveldChecks = document.querySelectorAll('#kveldChecklist input');
+            
+            const morgenDone = Array.from(morgenChecks).filter(c => c.checked).length;
+            const kveldDone = Array.from(kveldChecks).filter(c => c.checked).length;
+            
+            document.getElementById('morgenProgress').style.width = (morgenDone / morgenChecks.length * 100) + '%';
+            document.getElementById('kveldProgress').style.width = (kveldDone / kveldChecks.length * 100) + '%';
+            
+            const totalDone = morgenDone + kveldDone;
+            const totalTotal = morgenChecks.length + kveldChecks.length;
+            document.getElementById('checklistProgress').textContent = `(${totalDone}/${totalTotal})`;
+        }
+        
+        function checkStreakCompletion() {
+            const morgenChecks = document.querySelectorAll('#morgenChecklist input');
+            const kveldChecks = document.querySelectorAll('#kveldChecklist input');
+            
+            const morgenDone = Array.from(morgenChecks).every(c => c.checked);
+            const kveldDone = Array.from(kveldChecks).every(c => c.checked);
+            
+            if (morgenDone && kveldDone) {
+                const today = new Date().toDateString();
+                const streakData = JSON.parse(localStorage.getItem('bearhouse_streak') || '{"dates":[],"count":0}');
+                
+                if (!streakData.dates.includes(today)) {
+                    streakData.dates.push(today);
+                    streakData.count = calculateStreak(streakData.dates);
+                    localStorage.setItem('bearhouse_streak', JSON.stringify(streakData));
+                    updateStreak();
+                }
+            }
+        }
+        
+        function calculateStreak(dates) {
+            if (dates.length === 0) return 0;
+            
+            const sorted = dates.map(d => new Date(d)).sort((a, b) => b - a);
+            let streak = 1;
+            
+            for (let i = 0; i < sorted.length - 1; i++) {
+                const diff = (sorted[i] - sorted[i + 1]) / (1000 * 60 * 60 * 24);
+                if (diff === 1) streak++;
+                else break;
+            }
+            
+            return streak;
+        }
+        
+        function updateStreak() {
+            const streakData = JSON.parse(localStorage.getItem('bearhouse_streak') || '{"dates":[],"count":0}');
+            const badge = document.getElementById('streakBadge');
+            const count = document.getElementById('streakCount');
+            
+            if (streakData.count > 0) {
+                badge.style.display = 'inline-flex';
+                count.textContent = streakData.count;
+            }
+        }
+        
+        function saveChecklists() {
+            const morgenChecks = document.querySelectorAll('#morgenChecklist input');
+            const kveldChecks = document.querySelectorAll('#kveldChecklist input');
+            const today = new Date().toDateString();
+            
+            const state = {
+                date: today,
+                morgen: Array.from(morgenChecks).map(c => c.checked),
+                kveld: Array.from(kveldChecks).map(c => c.checked)
+            };
+            localStorage.setItem('bearhouse_checklists', JSON.stringify(state));
+        }
+        
+        function loadChecklists() {
+            const saved = localStorage.getItem('bearhouse_checklists');
+            if (saved) {
+                const state = JSON.parse(saved);
+                if (state.date === new Date().toDateString()) {
+                    const morgenChecks = document.querySelectorAll('#morgenChecklist input');
+                    const kveldChecks = document.querySelectorAll('#kveldChecklist input');
+                    
+                    morgenChecks.forEach((c, i) => {
+                        c.checked = state.morgen[i] || false;
+                        c.parentElement.classList.toggle('done', c.checked);
+                    });
+                    kveldChecks.forEach((c, i) => {
+                        c.checked = state.kveld[i] || false;
+                        c.parentElement.classList.toggle('done', c.checked);
+                    });
+                }
+            }
+        }
+        
+        function saveSpecial() {
+            const text = document.getElementById('specialInput').value.trim();
+            if (text) {
+                localStorage.setItem('bearhouse_special', JSON.stringify({
+                    date: new Date().toDateString(),
+                    text: text
+                }));
+                loadSpecial();
+            }
+        }
+        
+        function loadSpecial() {
+            const saved = localStorage.getItem('bearhouse_special');
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.date === new Date().toDateString()) {
+                    document.getElementById('specialText').textContent = data.text;
+                    document.getElementById('specialInput').value = data.text;
+                } else {
+                    document.getElementById('specialText').textContent = 'Ingen spesial i dag';
+                }
+            }
+        }
+        
+        function saveNotes() {
+            const text = document.getElementById('notesInput').value.trim();
+            localStorage.setItem('bearhouse_notes', JSON.stringify({
+                date: new Date().toISOString(),
+                text: text || 'Ingen beskjeder'
+            }));
+            loadNotes();
+        }
+        
+        function loadNotes() {
+            const saved = localStorage.getItem('bearhouse_notes');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('notesText').textContent = data.text;
+                document.getElementById('notesInput').value = data.text === 'Ingen beskjeder' ? '' : data.text;
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('bearhouse_user');
+            currentUser = null;
+            location.reload();
+        }
+        
+        const tips = [
+            "💡 Husk å smile til kundene - det smitter!",
+            "💡 Tilby alltid noe ekstra: en prøvesmak, et tips om dagens spesial",
+            "💡 Hold arbeidsstasjonen ryddig - det viser profesjonalitet",
+            "💡 Spør om kunden vil ha kaffe til bollen",
+            "💡 Ferske varer selger best - roter lageret jevnlig",
+            "💡 Et varmt kjøkken = fornøyde kunder"
+        ];
+        const quotes = [
+            { text: "Hver dag er en ny mulighet til å gjøre noe bra.", author: "Bear House Team" },
+            { text: "Kvalitet er ikke en handling, men en vane.", author: "Aristoteles" },
+            { text: "Et smil koster ingenting, men gir så mye.", author: "Ukjent" },
+            { text: "Den beste tiden å plante et tre var for 20 år siden. Den nest beste tiden er nå.", author: "Kinesisk ordtak" },
+            { text: "Små ting gjort med kjærlighet gjør en stor forskjell.", author: "Mor Teresa" },
+            { text: "Ferske boller og gode smil - det er Bear House!", author: "Nes Bakeri" },
+            { text: "Kunden kommer ikke for å kjøpe brød. De kommer for en opplevelse.", author: "Bear House" },
+            { text: "Sammen baker vi bedre.", author: "Bear House Team" },
+            { text: "Hver bolle vi baker er en mulighet til å gjøre noens dag bedre.", author: "Bear House" },
+            { text: "Stolthet i arbeidet gir kvalitet i produktet.", author: "Bear House Team" }
+        ];
+        
+        function setRandomTip() {
+            const tipEl = document.getElementById("dailyTip");
+            if (tipEl) {
+                const tip = tips[Math.floor(Math.random() * tips.length)];
+                tipEl.textContent = tip;
+            }
+        }
+        
+        function setDailyQuote() {
+            const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+            const quote = quotes[dayOfYear % quotes.length];
+            document.getElementById('quoteText').textContent = '"' + quote.text + '"';
+            document.querySelector('.motivation-card .author').textContent = '— ' + quote.author;
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+            
+            if (e.key.toLowerCase() === 'm') {
+                document.querySelectorAll('.tab')[0].click();
+            } else if (e.key.toLowerCase() === 'k') {
+                document.querySelectorAll('.tab')[1].click();
+            }
+        });
+        
+        if (document.getElementById('dashboard').style.display === 'block' || savedUser) {
+            setDailyQuote();
+            setRandomTip();
+        }
+    
+        // Weekly goals
+        function toggleGoal(cb) {
+            cb.parentElement.classList.toggle('done', cb.checked);
+            saveGoals();
+            updateGoalProgress();
+        }
+        
+        function saveGoals() {
+            const goals = Array.from(document.querySelectorAll('#weeklyGoals input')).map(c => c.checked);
+            const week = getWeekNumber(new Date());
+            localStorage.setItem('bearhouse_goals', JSON.stringify({ week, goals }));
+        }
+        
+        function loadGoals() {
+            const saved = localStorage.getItem('bearhouse_goals');
+            if (saved) {
+                const data = JSON.parse(saved);
+                const currentWeek = getWeekNumber(new Date());
+                if (data.week === currentWeek) {
+                    const inputs = document.querySelectorAll('#weeklyGoals input');
+                    inputs.forEach((input, i) => {
+                        input.checked = data.goals[i] || false;
+                        input.parentElement.classList.toggle('done', input.checked);
+                    });
+                }
+            }
+            updateGoalProgress();
+        }
+        
+        function updateGoalProgress() {
+            const inputs = document.querySelectorAll('#weeklyGoals input');
+            const done = Array.from(inputs).filter(c => c.checked).length;
+            const total = inputs.length;
+            document.getElementById('goalProgress').style.width = (done / total * 100) + '%';
+            document.getElementById('goalStatus').textContent = done + '/' + total + ' mål oppnådd';
+        }
+        
+        function getWeekNumber(d) {
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+            const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+            return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        }
+        
+        // Load goals on dashboard login
+        const origLogin = login;
+        login = function() {
+            origLogin();
+            if (currentUser) {
+                loadGoals();
+            }
+        };
+        
+        // 🎉 Konfetti når alle sjekklister er fullført!
+        function checkAllDone() {
+            const morgenDone = Array.from(document.querySelectorAll('#morgenChecklist input')).every(c => c.checked);
+            const kveldDone = Array.from(document.querySelectorAll('#kveldChecklist input')).every(c => c.checked);
+            
+            if (morgenDone && kveldDone) {
+                confetti();
+            }
+        }
+        
+        function confetti() {
+            const colors = ['#ff6b35', '#22c55e', '#fbbf24', '#3b82f6', '#ec4899'];
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    top: -10px;
+                    left: ${Math.random() * 100}%;
+                    opacity: 1;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                    pointer-events: none;
+                    z-index: 9999;
+                    animation: confetti-fall ${2 + Math.random() * 2}s ease-out forwards;
+                `;
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 4000);
+            }
+        }
+        
+        // Add confetti animation
+        const confettiStyle = document.createElement('style');
+        confettiStyle.textContent = `
+            @keyframes confetti-fall {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(confettiStyle);
+        
+        // Hook into checkbox toggle
+        const origToggle = window.toggleCheck || function(){};
+        window.toggleCheck = function(cb) {
+            if (typeof origToggle === 'function') origToggle(cb);
+            cb.parentElement.classList.toggle('done', cb.checked);
+            saveChecklists();
+            updateProgress();
+            checkAllDone();
+        };
+
+    </script>
+</body>
+</html>

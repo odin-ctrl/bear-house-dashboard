@@ -1144,9 +1144,6 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
         const diff = thisYearTotal - lastYearTotal;
         const diffPct = lastYearTotal > 0 ? Math.round((diff / lastYearTotal) * 100) : 0;
         
-        // Check if we have no historical data
-        const noHistoricalData = lastYearTotal === 0 && thisYearTotal > 0;
-        
         res.json({
             location,
             currentWeek,
@@ -1159,8 +1156,6 @@ app.get('/api/yoy-wtd/:location', requireAuth, async (req, res) => {
             diff: Math.round(diff),
             diffPct,
             breakdown,
-            noHistoricalData,
-            note: noHistoricalData ? 'Historiske data fra testmiljø ikke tilgjengelig' : null,
             timestamp: Date.now()
         });
         
@@ -1182,9 +1177,9 @@ const WEEKLY_CACHE_TTL = 2 * 60 * 1000; // 2 minutes
 app.get('/api/weekly/:location', requireAuth, async (req, res) => {
     const { location } = req.params;
     
-    // Check cache first (disabled for debugging)
+    // Check cache first
     const cacheKey = `weekly_${location}`;
-    const cached = null; // weeklyCache.get(cacheKey);
+    const cached = weeklyCache.get(cacheKey);
     if (cached && Date.now() - cached.timestamp < WEEKLY_CACHE_TTL) {
         return res.json(cached.data);
     }
@@ -1194,21 +1189,14 @@ app.get('/api/weekly/:location', requireAuth, async (req, res) => {
         const weekData = [];
         const days = ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør'];
         
-        // Calculate Monday of current week (Norwegian standard: week starts Monday)
-        const currentDay = today.getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
-        const daysFromMonday = currentDay === 0 ? 6 : currentDay - 1; // If Sunday, go back 6 days
-        const monday = new Date(today);
-        monday.setDate(today.getDate() - daysFromMonday);
-        
-        // Fetch all days in parallel for speed (Monday to Sunday)
+        // Fetch all days in parallel for speed
         const dayPromises = [];
-        for (let i = 0; i < 7; i++) {
-            const date = new Date(monday);
-            date.setDate(monday.getDate() + i);
+        for (let i = 6; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(date.getDate() - i);
             const dateStr = date.toISOString().split('T')[0];
             const dayName = days[date.getDay()];
-            const todayStr = today.toISOString().split('T')[0];
-            const isToday = dateStr === todayStr;
+            const isToday = i === 0;
             
             dayPromises.push((async () => {
                 try {
@@ -1247,69 +1235,84 @@ app.get('/api/weekly/:location', requireAuth, async (req, res) => {
 });
 
 /**
-/**
  * GET /api/kpi/:location - Get KPIs for a specific date
  * Query params: ?date=YYYY-MM-DD (optional, defaults to today)
  */
 app.get('/api/kpi/:location', requireAuth, async (req, res) => {
+    const { location } = req.params;
+    const dateParam = req.query.date;
+    
     try {
-        const location = req.params.location;
         const today = new Date().toISOString().split('T')[0];
-        const dateStr = (req.query.date || today).trim();
-        const isToday = dateStr === today;
-
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+        const targetDate = dateParam || today;
+        
+        // Validate date format
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(targetDate)) {
             return res.status(400).json({ error: 'Invalid date format. Use YYYY-MM-DD' });
         }
-
-        let sales = 0;
-        let orders = 0;
-        let items = 0;
-        let avgTicket = 0;
-        let itemsPerOrder = 0;
-        let coffeeAttachRate = null;
-        let bunAttachRate = null;
-        let note = null;
-
+        
+        const isToday = targetDate === today;
+        let kpiData;
+        
         if (isToday) {
+            // Today: Use live data
             const liveData = await favrit.getTodaySales(location);
-
-            sales = Number(liveData?.summary?.totalSales || 0);
-            orders = Number(liveData?.summary?.uniqueOrders || 0);
-            items = Number(liveData?.summary?.totalItems || 0);
-
-            avgTicket = orders > 0 ? Math.round((sales / orders) * 100) / 100 : 0;
-            itemsPerOrder = orders > 0 ? Math.round((items / orders) * 100) / 100 : 0;
+            const { totalSales, totalItems, uniqueOrders, averageTicket } = liveData.summary;
+            
+            // Calculate attach rates from bestsellers
+            const bestsellers = liveData.bestsellers || [];
+            const coffeeProducts = bestsellers.filter(p => 
+                /kaffe|coffee|cappuccino|latte|espresso/i.test(p.name)
+            );
+            const bunProducts = bestsellers.filter(p => 
+                /bolle|rundstykke|croissant/i.test(p.name)
+            );
+            
+            const totalCoffeeQty = coffeeProducts.reduce((sum, p) => sum + p.quantity, 0);
+            const totalBunQty = bunProducts.reduce((sum, p) => sum + p.quantity, 0);
+            
+            // Attach rate approximation: assumes 1 product per order (not accurate but best we have)
+            const coffeeAttachRate = uniqueOrders > 0 ? Math.round((totalCoffeeQty / uniqueOrders) * 100) : 0;
+            const bunAttachRate = uniqueOrders > 0 ? Math.round((totalBunQty / uniqueOrders) * 100) : 0;
+            
+            kpiData = {
+                date: targetDate,
+                location,
+                isLive: true,
+                sales: totalSales,
+                orders: uniqueOrders,
+                avgTicket: averageTicket,
+                itemsPerOrder: uniqueOrders > 0 ? parseFloat((totalItems / uniqueOrders).toFixed(2)) : 0,
+                coffeeAttachRate,
+                bunAttachRate,
+                note: 'Attach rates are approximations based on product totals, not actual order composition'
+            };
         } else {
-            const historicalData = await favrit.getDaySales(location, dateStr);
-
-            sales = Number(historicalData?.sales || 0);
-            orders = Number(historicalData?.orders || 0);
-            items = Number(historicalData?.items || 0);
-            avgTicket = Number(historicalData?.avg_ticket || 0);
-
-            itemsPerOrder = orders > 0 ? Math.round((items / orders) * 100) / 100 : 0;
+            // Historical: Use data-service
+            const historicalData = await favrit.getDaySales(location, targetDate);
+            
+            kpiData = {
+                date: targetDate,
+                location,
+                isLive: false,
+                sales: historicalData.totalSales || 0,
+                orders: historicalData.orders || 0,
+                avgTicket: historicalData.avgTicket || 0,
+                itemsPerOrder: historicalData.itemsPerOrder || 0,
+                coffeeAttachRate: historicalData.coffeeAttachRate || null,
+                bunAttachRate: historicalData.bunAttachRate || null,
+                note: 'Attach rates require extended data-service implementation'
+            };
         }
-
-        res.json({
-            location,
-            date: dateStr,
-            isLive: isToday,
-            sales,
-            orders,
-            items,
-            avgTicket,
-            itemsPerOrder,
-            coffeeAttachRate,
-            bunAttachRate,
-            note
-        });
-
+        
+        res.json(kpiData);
+        
     } catch (error) {
-        console.error('[KPI] Error for ' + location + ':', error.message);
+        console.error(`[KPI] Error for ${location}:`, error.message);
         res.status(500).json({ error: error.message });
     }
 });
+
 /**
  * GET /api/streak/:location - Get current streak info
  */
@@ -1549,39 +1552,14 @@ async function getSalesForDate(location, dateStr) {
         if (dateStr === today) {
             // Live data for today
             const data = await favrit.getTodaySales(location);
-            const sales = data.summary.totalSales;
-            console.log(`[getSalesForDate] ${location} ${dateStr}: ${Math.round(sales)} kr (TODAY/live)`);
-            return sales;
+            return data.summary.totalSales;
         } else {
-            // Historical data from Favrit API directly
-            const locationId = favrit.LOCATIONS[location];
-            if (!locationId) {
-                console.error(`[getSalesForDate] Unknown location: ${location}`);
-                return 0;
-            }
-            
-            const fromDate = `${dateStr}T00:00:00`;
-            const toDate = `${dateStr}T23:59:59`;
-            
-            console.log(`[getSalesForDate] Fetching ${location} ${dateStr} (${fromDate} to ${toDate})`);
-            const orderLines = await favrit.getOrderLines(locationId, fromDate, toDate);
-            console.log(`[getSalesForDate] Got ${orderLines.length} raw order lines`);
-            
-            const mainOrders = orderLines.filter(o => o.order_line_type === 'ORDER_LINE');
-            console.log(`[getSalesForDate] Filtered to ${mainOrders.length} main orders`);
-            
-            const totalSales = mainOrders.reduce((sum, o) => {
-                const amount = parseFloat(o.amount_with_vat);
-                const quantity = parseInt(o.quantity);
-                if (isNaN(amount) || isNaN(quantity)) return sum;
-                return sum + (amount * quantity);
-            }, 0);
-            
-            console.log(`[getSalesForDate] ${location} ${dateStr}: ${Math.round(totalSales)} kr (${mainOrders.length} orders)`);
-            return totalSales;
+            // Historical data from data-service
+            const data = await favrit.getDaySales(location, dateStr);
+            return data.totalSales || 0;
         }
     } catch (error) {
-        console.error(`[getSalesForDate] ERROR ${location} ${dateStr}:`, error.message, error.stack);
+        console.error(`[getSalesForDate] ${location} ${dateStr}:`, error.message);
         return 0;
     }
 }

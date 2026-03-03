@@ -1,0 +1,156 @@
+{
+  "Nesbyen": {
+    "g1": 1249.3999999999996,
+    "g2": 107.85000000000058,
+    "g3": 3.480000000000002,
+    "products": {
+      "Vinterbolle (Vinterbolle)": {
+        "group": 2,
+        "count": 313,
+        "liters": 46.94999999999984
+      },
+      "Husets hvitvin (Glass)": {
+        "group": 2,
+        "count": 135,
+        "liters": 20.249999999999993
+      },
+      "Husets rødvin (Glass)": {
+        "group": 2,
+        "count": 76,
+        "liters": 11.40000000000001
+      },
+      "Hansa Pilsner - Tap (Tap Beer 0,6)": {
+        "group": 1,
+        "count": 1304,
+        "liters": 782.4000000000115
+      },
+      "Aperol spritz": {
+        "group": 3,
+        "count": 26,
+        "liters": 1.0400000000000005
+      },
+      "Hansa Pilsner - Tap (Tap beer 0,4)": {
+        "group": 1,
+        "count": 1140,
+        "liters": 455.99999999999636
+      },
+      "Mud House Sauvingon Blanc Rosè (Glass)": {
+        "group": 2,
+        "count": 4,
+        "liters": 0.6
+      },
+      "Gin & Tonic (Gordon’s gin)": {
+        "group": 3,
+        "count": 49,
+        "liters": 1.9600000000000006
+      },
+      "Husets rødvin (Flaske)": {
+        "group": 2,
+        "count": 5,
+        "liters": 3.75
+      },
+      "Gin & Tonic (Bareksten gin)": {
+        "group": 3,
+        "count": 9,
+        "liters": 0.36
+      },
+      "Vodka & cola": {
+        "group": 3,
+        "count": 3,
+        "liters": 0.12
+      },
+      "Hansa Mango IPA - Can": {
+        "group": 1,
+        "count": 11,
+        "liters": 5.5
+      },
+      "Te (Vinterkos - løsvekt)": {
+        "group": 2,
+        "count": 3,
+        "liters": 0.44999999999999996
+      },
+      "Coffee Bag - 250g (Whole Bean) (Vinterkaffe)": {
+        "group": 2,
+        "count": 5,
+        "liters": 0.75
+      },
+      "Mud House Sauvingon Blanc Rosè (Bottle )": {
+        "group": 2,
+        "count": 5,
+        "liters": 0.75
+      },
+      "Husets hvitvin (Flaske)": {
+        "group": 2,
+        "count": 5,
+        "liters": 3.75
+      },
+      "Te (Vinterte - løsvekt)": {
+        "group": 2,
+        "count": 1,
+        "liters": 0.15
+      },
+      "Mud House Rosè (glass) Sauvingon Blanc (Bottle )": {
+        "group": 2,
+        "count": 1,
+        "liters": 0.15
+      },
+      "Mud House Rosè (glass) Sauvingon Blanc (Glass)": {
+        "group": 2,
+        "count": 33,
+        "liters": 4.949999999999999
+      },
+      "(Husets rødvin)Valpolicella Righetti (Glass)": {
+        "group": 2,
+        "count": 74,
+        "liters": 11.100000000000012
+      },
+      "(Husets rødvin)Valpolicella Righetti (Bottle)": {
+        "group": 2,
+        "count": 1,
+        "liters": 0.15
+      },
+      "Te (Vinterkos)": {
+        "group": 2,
+        "count": 6,
+        "liters": 0.9
+      },
+      "Te (Vinter-te)": {
+        "group": 2,
+        "count": 12,
+        "liters": 1.7999999999999996
+      },
+      "Hansa Lite": {
+        "group": 1,
+        "count": 11,
+        "liters": 5.5
+      }
+    }
+  },
+  "Hemsedal": {
+    "g1": 1,
+    "g2": 3.5999999999999988,
+    "g3": 0,
+    "products": {
+      "Housers rødvin": {
+        "group": 2,
+        "count": 14,
+        "liters": 2.1
+      },
+      "Husets hvitvin": {
+        "group": 2,
+        "count": 7,
+        "liters": 1.05
+      },
+      "Stølsrock (Stølsrock offer)": {
+        "group": 1,
+        "count": 2,
+        "liters": 1
+      },
+      "Te (Vinter-te løsvekt )": {
+        "group": 2,
+        "count": 3,
+        "liters": 0.44999999999999996
+      }
+    }
+  }
+}

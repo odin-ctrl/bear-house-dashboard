@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear House HEMSEDAL - Juni 2025</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .demo-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .kpi-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        .kpi-value {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 50px;
+            border-left: 4px solid #e67e22;
+            padding-left: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        .rank {
+            font-weight: bold;
+            color: #e67e22;
+            font-size: 18px;
+        }
+        .rank-1 { color: #f39c12; }
+        .rank-2 { color: #bdc3c7; }
+        .rank-3 { color: #cd7f32; }
+        .footer {
+            text-align: center;
+            color: #95a5a6;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+        }
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🐻</div>
+            <h1>Bear House HEMSEDAL</h1>
+            <p class="subtitle">Juni 2025 - Sesongrapport for franchise-vurdering</p>
+            <span class="demo-badge">DEMO DATA</span>
+        </div>
+        
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Omsetning</div>
+                <div class="kpi-value">950 000 kr</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Antall Ordrer</div>
+                <div class="kpi-value">6 500</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Snittkurv</div>
+                <div class="kpi-value">146 kr</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Varer per Ordre</div>
+                <div class="kpi-value">3.1</div>
+            </div>
+        </div>
+        
+        <h2>🏆 Topp 20 Bestsellere</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Produkt</th>
+                    <th>Antall Solgt</th>
+                    <th>Omsetning</th>
+                    <th>Gj.snitt Pris</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td class="rank rank-1">1</td>
+                    <td><strong>Kaffe latte</strong></td>
+                    <td>2 200</td>
+                    <td>88 000 kr</td>
+                    <td>40 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-2">2</td>
+                    <td><strong>Kanelbolle</strong></td>
+                    <td>1 900</td>
+                    <td>66 500 kr</td>
+                    <td>35 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-3">3</td>
+                    <td><strong>Croissant</strong></td>
+                    <td>1 500</td>
+                    <td>60 000 kr</td>
+                    <td>40 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-4">4</td>
+                    <td><strong>Cappuccino</strong></td>
+                    <td>1 300</td>
+                    <td>52 000 kr</td>
+                    <td>40 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-5">5</td>
+                    <td><strong>Americano</strong></td>
+                    <td>1 100</td>
+                    <td>35 200 kr</td>
+                    <td>32 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-6">6</td>
+                    <td><strong>Sjokolademuffins</strong></td>
+                    <td>950</td>
+                    <td>38 000 kr</td>
+                    <td>40 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-7">7</td>
+                    <td><strong>Focaccia</strong></td>
+                    <td>800</td>
+                    <td>48 000 kr</td>
+                    <td>60 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-8">8</td>
+                    <td><strong>Iste</strong></td>
+                    <td>750</td>
+                    <td>26 250 kr</td>
+                    <td>35 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-9">9</td>
+                    <td><strong>Smoothie</strong></td>
+                    <td>680</td>
+                    <td>40 800 kr</td>
+                    <td>60 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-10">10</td>
+                    <td><strong>Espresso</strong></td>
+                    <td>620</td>
+                    <td>18 600 kr</td>
+                    <td>30 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-11">11</td>
+                    <td><strong>Baguett m/ost</strong></td>
+                    <td>580</td>
+                    <td>43 500 kr</td>
+                    <td>75 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-12">12</td>
+                    <td><strong>Grovbrød</strong></td>
+                    <td>520</td>
+                    <td>41 600 kr</td>
+                    <td>80 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-13">13</td>
+                    <td><strong>Brownie</strong></td>
+                    <td>480</td>
+                    <td>19 200 kr</td>
+                    <td>40 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-14">14</td>
+                    <td><strong>Vaffel m/syltetøy</strong></td>
+                    <td>420</td>
+                    <td>20 580 kr</td>
+                    <td>49 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-15">15</td>
+                    <td><strong>Melkesjokolade</strong></td>
+                    <td>390</td>
+                    <td>11 700 kr</td>
+                    <td>30 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-16">16</td>
+                    <td><strong>Eplekake</strong></td>
+                    <td>360</td>
+                    <td>18 000 kr</td>
+                    <td>50 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-17">17</td>
+                    <td><strong>Matpakke barn</strong></td>
+                    <td>320</td>
+                    <td>22 400 kr</td>
+                    <td>70 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-18">18</td>
+                    <td><strong>Juice appelsin</strong></td>
+                    <td>290</td>
+                    <td>10 150 kr</td>
+                    <td>35 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-19">19</td>
+                    <td><strong>Bolle m/rosiner</strong></td>
+                    <td>260</td>
+                    <td>9 100 kr</td>
+                    <td>35 kr</td>
+                </tr>
+                
+                <tr>
+                    <td class="rank rank-20">20</td>
+                    <td><strong>Te Earl Grey</strong></td>
+                    <td>230</td>
+                    <td>6 900 kr</td>
+                    <td>30 kr</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        
+        <div class="footer">
+            <p><strong>Bear House</strong> - Premium bakverk og kaffe</p>
+            <p>Demo-rapport basert på faktiske driftsmønstre</p>
+            <p>Kontakt: <a href="mailto:martin@bearhouse.no">martin@bearhouse.no</a></p>
+        </div>
+    </div>
+</body>
+</html>

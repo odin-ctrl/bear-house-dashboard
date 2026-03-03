@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-02-27T09:19:30.381Z",
+    "lastUpdated": "2026-03-01T10:07:29.936Z",
     "resetReason": "February XP - excluded production dept"
   },
   "users": {
@@ -9,13 +9,13 @@
       "username": "martin",
       "fullName": "Martin Gaze",
       "location": "all",
-      "totalXp": 424,
+      "totalXp": 434,
       "level": 3,
-      "xpToNextLevel": 26,
-      "currentStreak": 3,
-      "longestStreak": 3,
-      "lastLoginDate": "2026-02-27",
-      "questsCompleted": 7,
+      "xpToNextLevel": 16,
+      "currentStreak": 5,
+      "longestStreak": 5,
+      "lastLoginDate": "2026-03-01",
+      "questsCompleted": 9,
       "questHistory": [
         {
           "questId": "opening-routine",
@@ -52,6 +52,18 @@
           "category": "daily",
           "xp": 5,
           "completedAt": "2026-02-27T09:19:25.558Z"
+        },
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-02-28T07:17:31.261Z"
+        },
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-03-01T09:37:26.378Z"
         }
       ],
       "achievements": [
@@ -75,7 +87,7 @@
       "haccpStreak": 0,
       "zeroWasteDays": 0,
       "categoryStats": {
-        "basis": 3,
+        "basis": 5,
         "drift": 1,
         "renhold": 1,
         "utstyr": 0,
@@ -98,18 +110,18 @@
         "check-in"
       ],
       "dailyXpToday": 5,
-      "lastDailyReset": "2026-02-27",
+      "lastDailyReset": "2026-03-01",
       "weeklyQuestsThisWeek": [],
-      "weeklyXpThisWeek": 280,
+      "weeklyXpThisWeek": 290,
       "lastWeeklyReset": "2026-02-23",
       "monthlyQuestsThisMonth": [],
-      "monthlyXpThisMonth": 424,
-      "lastMonthlyReset": "2026-02",
+      "monthlyXpThisMonth": 5,
+      "lastMonthlyReset": "2026-03",
       "quarterlyQuestsThisQuarter": [],
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
       "createdAt": "2026-02-25T20:21:22.770Z",
-      "updatedAt": "2026-02-27T09:19:27.271Z"
+      "updatedAt": "2026-03-01T09:37:26.393Z"
     },
     "1": {
       "odatUserId": 1,
@@ -387,7 +399,7 @@
       "quarterlyQuestsThisQuarter": [],
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
-      "updatedAt": "2026-02-27T09:19:30.358Z"
+      "updatedAt": "2026-02-27T11:37:59.882Z"
     },
     "48099": {
       "odingaze": 48099,
@@ -432,7 +444,7 @@
       "currentStreak": 0,
       "questsCompleted": 0,
       "dailyQuestsToday": [],
-      "lastDailyReset": "2026-02-27",
+      "lastDailyReset": "2026-02-28",
       "weeklyQuestsThisWeek": [],
       "lastWeeklyReset": "2026-02-23",
       "monthlyQuestsThisMonth": [],
@@ -441,7 +453,7 @@
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
       "xpToNextLevel": 114,
-      "updatedAt": "2026-02-27T09:19:30.366Z",
+      "updatedAt": "2026-02-28T20:20:02.076Z",
       "questHistory": [],
       "avgTicketDays": 1
     },
@@ -500,7 +512,7 @@
       },
       "dailyQuestsToday": [],
       "dailyXpToday": 0,
-      "lastDailyReset": "2026-02-27",
+      "lastDailyReset": "2026-02-28",
       "weeklyQuestsThisWeek": [],
       "weeklyXpThisWeek": 12,
       "lastWeeklyReset": "2026-02-23",
@@ -511,7 +523,7 @@
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
       "createdAt": "2026-02-25T20:25:56.618Z",
-      "updatedAt": "2026-02-27T09:19:30.381Z"
+      "updatedAt": "2026-02-28T20:20:02.070Z"
     },
     "49774": {
       "odatUserId": 49774,
@@ -617,21 +629,21 @@
       "totalXp": 76,
       "weeklyXpThisWeek": 0,
       "monthlyXpThisMonth": 76,
-      "dailyXpToday": 10,
+      "dailyXpToday": 0,
       "level": 1,
       "currentStreak": 0,
       "questsCompleted": 0,
       "dailyQuestsToday": [],
-      "lastDailyReset": "2026-02-25",
+      "lastDailyReset": "2026-02-28",
       "weeklyQuestsThisWeek": [],
-      "lastWeeklyReset": "2026-02-22",
+      "lastWeeklyReset": "2026-02-23",
       "monthlyQuestsThisMonth": [],
       "lastMonthlyReset": "2026-02",
       "quarterlyQuestsThisQuarter": [],
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
       "xpToNextLevel": 24,
-      "updatedAt": "2026-02-25T23:59:45.569Z",
+      "updatedAt": "2026-02-28T20:20:02.059Z",
       "questHistory": [],
       "avgTicketDays": 1
     },
@@ -656,7 +668,7 @@
       "quarterlyQuestsThisQuarter": [],
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
-      "updatedAt": "2026-02-27T09:19:30.348Z",
+      "updatedAt": "2026-02-27T11:37:59.873Z",
       "questHistory": [],
       "xpToNextLevel": 136,
       "avgTicketDays": 1
@@ -872,7 +884,7 @@
       },
       "dailyQuestsToday": [],
       "dailyXpToday": 0,
-      "lastDailyReset": "2026-02-27",
+      "lastDailyReset": "2026-02-28",
       "weeklyQuestsThisWeek": [],
       "weeklyXpThisWeek": 0,
       "lastWeeklyReset": "2026-02-23",
@@ -883,7 +895,7 @@
       "quarterlyXpThisQuarter": 0,
       "lastQuarterlyReset": "2026-Q1",
       "createdAt": "2026-02-25T20:25:56.636Z",
-      "updatedAt": "2026-02-27T09:19:30.373Z",
+      "updatedAt": "2026-02-28T20:20:02.065Z",
       "avgTicketDays": 1
     },
     "49972": {
@@ -907,8 +919,8 @@
       "username": "lihaim",
       "location": "nesbyen",
       "totalXp": 15,
-      "weeklyXpThisWeek": 15,
-      "monthlyXpThisMonth": 15,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
       "dailyXpToday": 0,
       "level": 1,
       "xpToNextLevel": 85,
@@ -916,7 +928,17 @@
       "achievements": [
         "first-login"
       ],
-      "currentStreak": 0
+      "currentStreak": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-28",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-28T07:17:35.492Z"
     },
     "49978": {
       "odatUserId": 49978,
@@ -940,28 +962,34 @@
       "username": "torstein",
       "fullName": "Torstein Johnsen",
       "location": "hemsedal",
-      "totalXp": 5,
-      "weeklyXpThisWeek": 5,
-      "monthlyXpThisMonth": 5,
+      "totalXp": 10,
+      "weeklyXpThisWeek": 10,
+      "monthlyXpThisMonth": 10,
       "dailyXpToday": 5,
       "level": 1,
-      "currentStreak": 1,
-      "questsCompleted": 1,
+      "currentStreak": 2,
+      "questsCompleted": 2,
       "questHistory": [
         {
           "questId": "check-in",
           "category": "daily",
           "xp": 5,
           "completedAt": "2026-02-26T07:54:35.197Z"
+        },
+        {
+          "questId": "check-in",
+          "category": "daily",
+          "xp": 5,
+          "completedAt": "2026-02-27T11:33:57.598Z"
         }
       ],
-      "xpToNextLevel": 95,
-      "lastLoginDate": "2026-02-26",
-      "updatedAt": "2026-02-26T08:38:51.359Z",
+      "xpToNextLevel": 90,
+      "lastLoginDate": "2026-02-27",
+      "updatedAt": "2026-02-27T13:08:53.326Z",
       "dailyQuestsToday": [
         "check-in"
       ],
-      "lastDailyReset": "2026-02-26",
+      "lastDailyReset": "2026-02-27",
       "weeklyQuestsThisWeek": [],
       "lastWeeklyReset": "2026-02-23",
       "monthlyQuestsThisMonth": [],
@@ -976,8 +1004,8 @@
       "username": "ilija",
       "location": "nesbyen",
       "totalXp": 31,
-      "weeklyXpThisWeek": 19,
-      "monthlyXpThisMonth": 31,
+      "weeklyXpThisWeek": 0,
+      "monthlyXpThisMonth": 0,
       "dailyXpToday": 0,
       "level": 1,
       "xpToNextLevel": 69,
@@ -985,7 +1013,17 @@
       "achievements": [
         "first-login"
       ],
-      "currentStreak": 0
+      "currentStreak": 0,
+      "dailyQuestsToday": [],
+      "lastDailyReset": "2026-02-28",
+      "weeklyQuestsThisWeek": [],
+      "lastWeeklyReset": "2026-02-23",
+      "monthlyQuestsThisMonth": [],
+      "lastMonthlyReset": "2026-02",
+      "quarterlyQuestsThisQuarter": [],
+      "quarterlyXpThisQuarter": 0,
+      "lastQuarterlyReset": "2026-Q1",
+      "updatedAt": "2026-02-28T20:20:02.083Z"
     },
     "50099": {
       "odatUserId": 50099,
@@ -3058,19 +3096,6 @@
   "leaderboard": {
     "daily": [
       {
-        "userId": 0,
-        "username": "martin",
-        "fullName": "Martin Gaze",
-        "location": "all",
-        "totalXp": 419,
-        "level": 3,
-        "dailyXp": 275,
-        "weeklyXp": 275,
-        "monthlyXp": 419,
-        "streak": 2,
-        "questsCompleted": 6
-      },
-      {
         "userId": 49774,
         "username": "ranveig",
         "fullName": "Ranveig Haugen",
@@ -3084,30 +3109,30 @@
         "questsCompleted": 0
       },
       {
-        "userId": 49881,
-        "username": "albert",
-        "fullName": "Albert Morallos Villanueva",
-        "location": "nesbyen",
-        "totalXp": 76,
-        "level": 1,
-        "dailyXp": 10,
-        "weeklyXp": 0,
-        "monthlyXp": 76,
-        "streak": 0,
-        "questsCompleted": 0
+        "userId": 0,
+        "username": "martin",
+        "fullName": "Martin Gaze",
+        "location": "all",
+        "totalXp": 434,
+        "level": 3,
+        "dailyXp": 5,
+        "weeklyXp": 290,
+        "monthlyXp": 5,
+        "streak": 5,
+        "questsCompleted": 9
       },
       {
         "userId": 50044,
         "username": "torstein",
         "fullName": "Torstein Johnsen",
         "location": "hemsedal",
-        "totalXp": 5,
+        "totalXp": 10,
         "level": 1,
         "dailyXp": 5,
-        "weeklyXp": 5,
-        "monthlyXp": 5,
-        "streak": 1,
-        "questsCompleted": 1
+        "weeklyXp": 10,
+        "monthlyXp": 10,
+        "streak": 2,
+        "questsCompleted": 2
       },
       {
         "userId": 99001,
@@ -3169,8 +3194,8 @@
         "totalXp": 33,
         "level": 1,
         "dailyXp": 0,
-        "weeklyXp": 33,
-        "monthlyXp": 33,
+        "weeklyXp": 0,
+        "monthlyXp": 0,
         "streak": 0,
         "questsCompleted": 0
       },
@@ -3186,6 +3211,19 @@
         "monthlyXp": 12,
         "streak": 0,
         "questsCompleted": 0
+      },
+      {
+        "userId": 48102,
+        "username": "maneewan",
+        "fullName": "Maneewan Gaze",
+        "location": "nesbyen",
+        "totalXp": 0,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 0,
+        "monthlyXp": 0,
+        "streak": 0,
+        "questsCompleted": 0
       }
     ],
     "weekly": [
@@ -3194,13 +3232,13 @@
         "username": "martin",
         "fullName": "Martin Gaze",
         "location": "all",
-        "totalXp": 419,
+        "totalXp": 434,
         "level": 3,
-        "dailyXp": 275,
-        "weeklyXp": 275,
-        "monthlyXp": 419,
-        "streak": 2,
-        "questsCompleted": 6
+        "dailyXp": 5,
+        "weeklyXp": 290,
+        "monthlyXp": 5,
+        "streak": 5,
+        "questsCompleted": 9
       },
       {
         "userId": 48104,
@@ -3212,19 +3250,6 @@
         "dailyXp": 0,
         "weeklyXp": 36,
         "monthlyXp": 136,
-        "streak": 0,
-        "questsCompleted": 0
-      },
-      {
-        "userId": 47727,
-        "username": "oskar",
-        "fullName": "Oskar Tomasz Jachym",
-        "location": "nesbyen",
-        "totalXp": 33,
-        "level": 1,
-        "dailyXp": 0,
-        "weeklyXp": 33,
-        "monthlyXp": 33,
         "streak": 0,
         "questsCompleted": 0
       },
@@ -3268,32 +3293,6 @@
         "questsCompleted": 0
       },
       {
-        "userId": 50075,
-        "username": "ilija",
-        "fullName": "Ilija Boskovic",
-        "location": "nesbyen",
-        "totalXp": 31,
-        "level": 1,
-        "dailyXp": 0,
-        "weeklyXp": 19,
-        "monthlyXp": 31,
-        "streak": 0,
-        "questsCompleted": 0
-      },
-      {
-        "userId": 49974,
-        "username": "lihaim",
-        "fullName": "Lihaim Kifle",
-        "location": "nesbyen",
-        "totalXp": 15,
-        "level": 1,
-        "dailyXp": 0,
-        "weeklyXp": 15,
-        "monthlyXp": 15,
-        "streak": 0,
-        "questsCompleted": 0
-      },
-      {
         "userId": 48263,
         "username": "elhana",
         "fullName": "Elhana Kifle",
@@ -3318,22 +3317,48 @@
         "monthlyXp": 10,
         "streak": 0,
         "questsCompleted": 0
+      },
+      {
+        "userId": 49913,
+        "username": "tilde",
+        "fullName": "Tilde Plejdrup-Skillestad",
+        "location": "hemsedal",
+        "totalXp": 20,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 10,
+        "monthlyXp": 20,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 50044,
+        "username": "torstein",
+        "fullName": "Torstein Johnsen",
+        "location": "hemsedal",
+        "totalXp": 10,
+        "level": 1,
+        "dailyXp": 5,
+        "weeklyXp": 10,
+        "monthlyXp": 10,
+        "streak": 2,
+        "questsCompleted": 2
+      },
+      {
+        "userId": 99001,
+        "username": "michail",
+        "fullName": "Michail",
+        "location": "nesbyen",
+        "totalXp": 5,
+        "level": 1,
+        "dailyXp": 5,
+        "weeklyXp": 5,
+        "monthlyXp": 5,
+        "streak": 1,
+        "questsCompleted": 1
       }
     ],
     "monthly": [
-      {
-        "userId": 0,
-        "username": "martin",
-        "fullName": "Martin Gaze",
-        "location": "all",
-        "totalXp": 419,
-        "level": 3,
-        "dailyXp": 275,
-        "weeklyXp": 275,
-        "monthlyXp": 419,
-        "streak": 2,
-        "questsCompleted": 6
-      },
       {
         "userId": 48104,
         "username": "geralyn",
@@ -3406,7 +3431,7 @@
         "location": "nesbyen",
         "totalXp": 76,
         "level": 1,
-        "dailyXp": 10,
+        "dailyXp": 0,
         "weeklyXp": 0,
         "monthlyXp": 76,
         "streak": 0,
@@ -3426,28 +3451,41 @@
         "questsCompleted": 0
       },
       {
-        "userId": 47727,
-        "username": "oskar",
-        "fullName": "Oskar Tomasz Jachym",
-        "location": "nesbyen",
-        "totalXp": 33,
+        "userId": 49893,
+        "username": "ella",
+        "fullName": "Ella Ryno Petersson",
+        "location": "hemsedal",
+        "totalXp": 30,
         "level": 1,
         "dailyXp": 0,
-        "weeklyXp": 33,
-        "monthlyXp": 33,
+        "weeklyXp": 20,
+        "monthlyXp": 30,
         "streak": 0,
         "questsCompleted": 0
       },
       {
-        "userId": 50075,
-        "username": "ilija",
-        "fullName": "Ilija Boskovic",
-        "location": "nesbyen",
-        "totalXp": 31,
+        "userId": 49913,
+        "username": "tilde",
+        "fullName": "Tilde Plejdrup-Skillestad",
+        "location": "hemsedal",
+        "totalXp": 20,
         "level": 1,
         "dailyXp": 0,
-        "weeklyXp": 19,
-        "monthlyXp": 31,
+        "weeklyXp": 10,
+        "monthlyXp": 20,
+        "streak": 0,
+        "questsCompleted": 0
+      },
+      {
+        "userId": 49978,
+        "username": "sarah",
+        "fullName": "Sarah Løkken",
+        "location": "hemsedal",
+        "totalXp": 20,
+        "level": 1,
+        "dailyXp": 0,
+        "weeklyXp": 20,
+        "monthlyXp": 20,
         "streak": 0,
         "questsCompleted": 0
       }
@@ -3458,13 +3496,13 @@
         "username": "martin",
         "fullName": "Martin Gaze",
         "location": "all",
-        "totalXp": 419,
+        "totalXp": 434,
         "level": 3,
-        "dailyXp": 275,
-        "weeklyXp": 275,
-        "monthlyXp": 419,
-        "streak": 2,
-        "questsCompleted": 6
+        "dailyXp": 5,
+        "weeklyXp": 290,
+        "monthlyXp": 5,
+        "streak": 5,
+        "questsCompleted": 9
       },
       {
         "userId": 48104,
@@ -3551,7 +3589,7 @@
         "location": "nesbyen",
         "totalXp": 76,
         "level": 1,
-        "dailyXp": 10,
+        "dailyXp": 0,
         "weeklyXp": 0,
         "monthlyXp": 76,
         "streak": 0,
@@ -3578,8 +3616,8 @@
         "totalXp": 33,
         "level": 1,
         "dailyXp": 0,
-        "weeklyXp": 33,
-        "monthlyXp": 33,
+        "weeklyXp": 0,
+        "monthlyXp": 0,
         "streak": 0,
         "questsCompleted": 0
       }

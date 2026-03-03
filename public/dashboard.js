@@ -33,7 +33,6 @@ class BearHouseDashboard {
         this.loadBudgetData();
         this.loadSalesData();
         this.loadWeather();
-        this.updateWeekOverview();
         this.rotateFunFacts();
         this.loadCelebrations();
         
@@ -254,44 +253,7 @@ class BearHouseDashboard {
         document.getElementById('competition-winner').textContent = `🏆 ${winner} leder!`;
     }
 
-    updateWeekOverview() {
-        const days = ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn'];
-        const today = new Date().getDay();
-        const todayIndex = today === 0 ? 6 : today - 1;
-        
-        // Mock week data
-        const weekData = [
-            { actual: 28000, budget: 25000 },
-            { actual: 0, budget: 25000 }, // Today
-            { actual: 0, budget: 30000 },
-            { actual: 0, budget: 30000 },
-            { actual: 0, budget: 45000 },
-            { actual: 0, budget: 50000 },
-            { actual: 0, budget: 40000 }
-        ];
-        
-        // Update today with current data
-        weekData[todayIndex].actual = this.data[this.currentLocation].sales;
-        weekData[todayIndex].budget = this.data[this.currentLocation].budget;
-        
-        const weekBarsEl = document.getElementById('week-bars');
-        weekBarsEl.innerHTML = days.map((day, i) => {
-            const data = weekData[i];
-            const percent = data.budget > 0 ? Math.round((data.actual / data.budget) * 100) : 0;
-            const isToday = i === todayIndex;
-            const isPast = i < todayIndex;
-            
-            return `
-                <div class="week-day ${isToday ? 'today' : ''}">
-                    <div class="week-bar-container">
-                        <div class="week-bar-fill budget" style="height: 100%"></div>
-                        ${isPast || isToday ? `<div class="week-bar-fill" style="height: ${Math.min(percent, 100)}%; background: ${percent >= 100 ? 'var(--accent-green)' : 'var(--accent-blue)'}"></div>` : ''}
-                    </div>
-                    <span class="week-day-label">${day}</span>
-                </div>
-            `;
-        }).join('');
-    }
+
 
     rotateFunFacts() {
         const fact = this.funFacts[Math.floor(Math.random() * this.funFacts.length)];
@@ -347,7 +309,6 @@ class BearHouseDashboard {
     async refresh() {
         await this.loadSalesData();
         await this.loadWeather();
-        this.updateWeekOverview();
     }
 }
 
