@@ -87,7 +87,7 @@
         </section>
 
         <!-- XP/Level Bar - Gamification -->
-        <a href="/tasks.html" class="xp-bar-container" style="text-decoration: none; color: inherit;">
+        <a href="/tasks.html" class="xp-bar-container" id="xp-bar-container" style="text-decoration: none; color: inherit;">
             <div class="xp-level">
                 <div class="level-badge" id="level-badge">1</div>
                 <div class="level-info">
@@ -478,6 +478,21 @@
                 currentUser = meData.user;
                 profile = meData.gamification;
                 currentLocation = meData.location || 'nesbyen';
+                
+                // Check if kiosk user
+                const isKiosk = currentUser.kiosk === true || currentUser.role === 'kiosk';
+                
+                // Hide XP bar for kiosk users
+                if (isKiosk) {
+                    const xpBar = document.getElementById('xp-bar-container');
+                    if (xpBar) xpBar.style.display = 'none';
+                    
+                    // Set up hourly full page reload for kiosk displays
+                    setInterval(() => {
+                        console.log('[Kiosk] Full page reload');
+                        window.location.reload();
+                    }, 60 * 60 * 1000); // 1 hour
+                }
                 
                 // Update greeting
                 document.getElementById('user-greeting').textContent = `Hei ${currentUser.fullName.split(' ')[0]}! 👋`;

@@ -575,31 +575,5 @@
     "active": true,
     "manuallyAdded": true,
     "syncedAt": "2026-02-24T14:29:50.003Z"
-  },
-  {
-    "id": 99002,
-    "username": "nesbyen",
-    "firstName": "Infoskjerm",
-    "lastName": "Nesbyen",
-    "fullName": "Infoskjerm Nesbyen",
-    "password": "nesbyen",
-    "role": "kiosk",
-    "location": "nesbyen",
-    "active": true,
-    "kiosk": true,
-    "manuallyAdded": true
-  },
-  {
-    "id": 99003,
-    "username": "hemsedal",
-    "firstName": "Infoskjerm",
-    "lastName": "Hemsedal",
-    "fullName": "Infoskjerm Hemsedal",
-    "password": "hemsedal",
-    "role": "kiosk",
-    "location": "hemsedal",
-    "active": true,
-    "kiosk": true,
-    "manuallyAdded": true
   }
 ]

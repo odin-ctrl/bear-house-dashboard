@@ -532,6 +532,13 @@
                     </div>
                 </div>
 
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label style="display: flex; align-items: center; cursor: pointer; text-transform: none; letter-spacing: normal; color: var(--text-secondary); font-size: 0.95rem;">
+                        <input type="checkbox" id="remember-me" style="width: auto; margin-right: 0.5rem; cursor: pointer;">
+                        <span>🔒 Husk meg (for infoskjermer)</span>
+                    </label>
+                </div>
+
                 <button type="submit" class="login-btn">LET'S GO! 🚀</button>
             </form>
 
@@ -565,6 +572,7 @@
 
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
+            const rememberMe = document.getElementById('remember-me').checked;
             const errorEl = document.getElementById('error-message');
 
             if (!username) {
@@ -591,7 +599,7 @@
                 const response = await fetch('/api/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password, location: selectedLocation })
+                    body: JSON.stringify({ username, password, location: selectedLocation, rememberMe })
                 });
 
                 const data = await response.json();

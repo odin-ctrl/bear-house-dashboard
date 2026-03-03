@@ -154,13 +154,16 @@ function saveSessions() {
 // Load on startup
 loadSessions();
 
-function createSession(user, location) {
+function createSession(user, location, rememberMe = false) {
     const token = Math.random().toString(36).substring(2) + Date.now().toString(36);
+    const expiryMs = rememberMe ? (365 * 24 * 60 * 60 * 1000) : (7 * 24 * 60 * 60 * 1000); // 365 days or 7 days
     sessions.set(token, {
         user,
         location,
         createdAt: Date.now(),
-        lastActivity: Date.now()
+        lastActivity: Date.now(),
+        expiresAt: Date.now() + expiryMs,
+        rememberMe
     });
     saveSessions();
     return token;
@@ -169,6 +172,12 @@ function createSession(user, location) {
 function getSession(token) {
     const session = sessions.get(token);
     if (session) {
+        // Check if session has expired
+        if (session.expiresAt && Date.now() > session.expiresAt) {
+            sessions.delete(token);
+            saveSessions();
+            return null;
+        }
         session.lastActivity = Date.now();
         // Save periodically (every 5 min of activity)
         if (Date.now() - session.lastSaved > 300000 || !session.lastSaved) {
@@ -204,10 +213,10 @@ function requireAdmin(req, res, next) {
 // ============ AUTH ENDPOINTS ============
 
 app.post('/api/login', (req, res) => {
-    const { username, password, location } = req.body;
+    const { username, password, location, rememberMe } = req.body;
     
-    if (!username || !password || !location) {
-        return res.status(400).json({ error: 'Brukernavn, passord og lokasjon kreves' });
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Brukernavn og passord kreves' });
     }
 
     const users = loadJSON(USERS_FILE, []);
@@ -223,42 +232,55 @@ app.post('/api/login', (req, res) => {
         return res.status(401).json({ error: 'Feil passord' });
     }
 
+    // For kiosk users: use their default location if not specified
+    const finalLocation = location || user.location || 'nesbyen';
+    const isKiosk = user.kiosk === true || user.role === 'kiosk';
+
     // Log login
     const loginLog = loadJSON(LOGIN_LOG_FILE, []);
     loginLog.unshift({
         userId: user.id,
         username: user.username,
         fullName: user.fullName,
-        location,
+        location: finalLocation,
         timestamp: new Date().toISOString(),
-        ip: req.ip
+        ip: req.ip,
+        kiosk: isKiosk
     });
     saveJSON(LOGIN_LOG_FILE, loginLog.slice(0, 1000));
 
-    // Create session
-    const token = createSession(user, location);
+    // Create session (kiosk users always get long-lived sessions)
+    const shouldRemember = rememberMe === true || isKiosk;
+    const token = createSession(user, finalLocation, shouldRemember);
     
-    // Update streak on login
-    const streakResult = gamification.updateStreak(user.id);
-    
-    // Auto-complete check-in quest
-    const checkInResult = gamification.completeQuest(user.id, 'check-in', 'daily');
-    
-    // Check for early bird (before 07:00)
-    const hour = new Date().getHours();
-    if (hour < 7) {
-        const stats = gamification.getUserStats(user.id);
-        stats.earlyLogins = (stats.earlyLogins || 0) + 1;
-        gamification.updateUserStats(user.id, stats);
-        
-        // Check early bird achievement
-        if (stats.earlyLogins >= 10) {
-            gamification.unlockAchievement(user.id, 'early-bird');
-        }
-    }
+    // Skip gamification for kiosk users
+    let streakResult = null;
+    let checkInResult = null;
+    let profile = null;
 
-    // Get full profile
-    const profile = gamification.getFullProfile(user.id);
+    if (!isKiosk) {
+        // Update streak on login
+        streakResult = gamification.updateStreak(user.id);
+        
+        // Auto-complete check-in quest
+        checkInResult = gamification.completeQuest(user.id, 'check-in', 'daily');
+        
+        // Check for early bird (before 07:00)
+        const hour = new Date().getHours();
+        if (hour < 7) {
+            const stats = gamification.getUserStats(user.id);
+            stats.earlyLogins = (stats.earlyLogins || 0) + 1;
+            gamification.updateUserStats(user.id, stats);
+            
+            // Check early bird achievement
+            if (stats.earlyLogins >= 10) {
+                gamification.unlockAchievement(user.id, 'early-bird');
+            }
+        }
+
+        // Get full profile
+        profile = gamification.getFullProfile(user.id);
+    }
 
     res.json({
         success: true,
@@ -268,11 +290,12 @@ app.post('/api/login', (req, res) => {
             username: user.username,
             fullName: user.fullName,
             role: user.role || 'employee',
-            location
+            location: finalLocation,
+            kiosk: isKiosk
         },
-        gamification: {
+        gamification: isKiosk ? null : {
             streak: streakResult,
-            checkIn: checkInResult.error ? null : checkInResult,
+            checkIn: checkInResult?.error ? null : checkInResult,
             profile
         }
     });
@@ -285,14 +308,16 @@ app.post('/api/logout', (req, res) => {
 });
 
 app.get('/api/me', requireAuth, (req, res) => {
-    const profile = gamification.getFullProfile(req.session.user.id);
+    const isKiosk = req.session.user.kiosk === true || req.session.user.role === 'kiosk';
+    const profile = isKiosk ? null : gamification.getFullProfile(req.session.user.id);
     
     res.json({
         user: {
             id: req.session.user.id,
             username: req.session.user.username,
             fullName: req.session.user.fullName,
-            role: req.session.user.role || 'employee'
+            role: req.session.user.role || 'employee',
+            kiosk: isKiosk
         },
         location: req.session.location,
         gamification: profile
