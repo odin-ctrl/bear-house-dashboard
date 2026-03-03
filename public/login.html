@@ -515,7 +515,7 @@
 
                 <div class="form-group">
                     <label>🔐 PIN-kode</label>
-                    <input type="password" id="password" placeholder="Bursdag (DDMM)" inputmode="numeric" pattern="[0-9]*" maxlength="4">
+                    <input type="password" id="password" placeholder="Bursdag (DDMM)" maxlength="4">
                 </div>
 
                 <div class="form-group">
@@ -545,8 +545,8 @@
             <div class="hint">
                 <div class="hint-icon">💡</div>
                 <p class="hint-text">
-                    Brukernavn = <strong>ditt fornavn</strong><br>
-                    PIN = <strong>bursdag</strong> (f.eks. 2403 for 24. mars)
+                    <strong>Ansatte:</strong> Fornavn + bursdag (DDMM)<br>
+                    <strong>Infoskjerm:</strong> nesbyen/0000 eller hemsedal/0000
                 </p>
             </div>
         </div>
@@ -564,6 +564,31 @@
                 btn.classList.add('active');
                 selectedLocation = btn.dataset.location;
             });
+        });
+
+        // Auto-select location for kiosk users
+        const usernameInput = document.getElementById('username');
+        const locationGroup = usernameInput.closest('form').querySelector('[data-location="nesbyen"]').closest('.form-group');
+        
+        usernameInput.addEventListener('input', (e) => {
+            const username = e.target.value.trim().toLowerCase();
+            
+            if (username === 'nesbyen' || username === 'hemsedal') {
+                // Hide location selection
+                locationGroup.style.display = 'none';
+                // Auto-select location
+                selectedLocation = username;
+                // Auto-check "remember me"
+                document.getElementById('remember-me').checked = true;
+            } else {
+                // Show location selection for normal users
+                locationGroup.style.display = 'block';
+                // Reset location if it was auto-selected
+                if (selectedLocation === 'nesbyen' || selectedLocation === 'hemsedal') {
+                    selectedLocation = null;
+                    document.querySelectorAll('.location-btn').forEach(b => b.classList.remove('active'));
+                }
+            }
         });
 
         // Form submit
@@ -587,7 +612,10 @@
                 return;
             }
 
-            if (!selectedLocation) {
+            // For kiosk users, location is auto-selected (username = location name)
+            const isKioskUser = username.toLowerCase() === 'nesbyen' || username.toLowerCase() === 'hemsedal';
+            
+            if (!selectedLocation && !isKioskUser) {
                 errorEl.textContent = '📍 Hvilken lokasjon jobber du på i dag?';
                 errorEl.classList.add('show');
                 return;
