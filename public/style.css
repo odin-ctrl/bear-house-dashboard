@@ -51,7 +51,7 @@ html {
 }
 
 body {
-    font-family: 'Outfit', 'Space Grotesk', sans-serif;
+    font-family: 'Outfit', 'Space Grotesk', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
     background: var(--bg-dark);
     color: var(--text-primary);
     min-height: 100vh;
@@ -591,6 +591,7 @@ body {
     background: rgba(255, 200, 87, 0.1);
     border-radius: 14px;
     transition: transform 0.3s ease;
+    font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
 }
 
 .quick-stat:hover .quick-icon {

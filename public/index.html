@@ -196,7 +196,7 @@
             </section>
 
             <!-- Competition -->
-            <section class="card competition-card">
+            <section class="card competition-card" id="competition-card">
                 <div class="card-header">
                     <h2>⚔️ Dagens kamp</h2>
                     <span class="card-badge" id="competition-badge">🏆</span>
@@ -219,6 +219,17 @@
                             <div class="comp-fill-v hemsedal-fill" id="hemsedal-score"></div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Kiosk Leaderboard (replaces Competition for kiosk users) -->
+            <section class="card bestsellers-card" id="kiosk-leaderboard-card" style="display: none;">
+                <div class="card-header">
+                    <h2>🏅 XP Leaderboard</h2>
+                    <span class="card-subtitle">Denne uken</span>
+                </div>
+                <div class="bestsellers-list" id="kiosk-leaderboard-list">
+                    <div class="loading">Laster...</div>
                 </div>
             </section>
 
@@ -256,7 +267,7 @@
             </section>
 
             <!-- Leaderboard -->
-            <section class="card bestsellers-card">
+            <section class="card bestsellers-card" id="main-leaderboard-card">
                 <div class="card-header">
                     <h2>🏅 XP Leaderboard</h2>
                     <span class="card-subtitle">Denne uken</span>
@@ -417,6 +428,7 @@
         let currentUser = null;
         let currentLocation = 'nesbyen';
         let profile = null;
+        let isKioskUser = false;
 
         // API helper
         async function api(endpoint, options = {}) {
@@ -480,12 +492,21 @@
                 currentLocation = meData.location || 'nesbyen';
                 
                 // Check if kiosk user
-                const isKiosk = currentUser.kiosk === true || currentUser.role === 'kiosk';
+                isKioskUser = currentUser.kiosk === true || currentUser.role === 'kiosk';
                 
                 // Hide XP bar for kiosk users
-                if (isKiosk) {
+                if (isKioskUser) {
                     const xpBar = document.getElementById('xp-bar-container');
                     if (xpBar) xpBar.style.display = 'none';
+                    
+                    // Hide "Dagens kamp" and main leaderboard for kiosk
+                    const competitionCard = document.getElementById('competition-card');
+                    const mainLeaderboard = document.getElementById('main-leaderboard-card');
+                    const kioskLeaderboard = document.getElementById('kiosk-leaderboard-card');
+                    
+                    if (competitionCard) competitionCard.style.display = 'none';
+                    if (mainLeaderboard) mainLeaderboard.style.display = 'none';
+                    if (kioskLeaderboard) kioskLeaderboard.style.display = 'block';
                     
                     // Set up hourly full page reload for kiosk displays
                     setInterval(() => {
@@ -505,6 +526,12 @@
                 updateGamificationUI();
                 await loadDashboardData();
                 await loadLeaderboard();
+                
+                // Load kiosk leaderboard if kiosk user
+                if (isKioskUser) {
+                    await loadKioskLeaderboard();
+                }
+                
                 await loadWeeklyChart(); // Load weekly chart once on page load
                 
             } catch (error) {
@@ -1037,6 +1064,29 @@
             }
         }
 
+        // Load kiosk leaderboard (filtered by location)
+        async function loadKioskLeaderboard() {
+            try {
+                const leaderboard = await api(`/api/leaderboard/weekly?location=${currentLocation}`);
+                if (!leaderboard) return;
+                
+                const container = document.getElementById('kiosk-leaderboard-list');
+                const medals = ['🥇', '🥈', '🥉'];
+                const classes = ['gold', 'silver', 'bronze'];
+                
+                container.innerHTML = leaderboard.slice(0, 5).map((entry, i) => `
+                    <div class="bestseller-item">
+                        <span class="bestseller-rank ${classes[i] || ''}">${medals[i] || (i + 1)}</span>
+                        <span class="bestseller-name">${entry.fullName.split(' ')[0]}</span>
+                        <span class="bestseller-count">${entry.weeklyXp.toLocaleString()} XP</span>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Kiosk leaderboard error:', error);
+            }
+        }
+
         // Show XP breakdown modal
         async function showXpBreakdown(userId, fullName) {
             const modal = document.getElementById('xp-modal');
@@ -1226,6 +1276,9 @@
         // Leaderboard refresh every 2 minutes
         setInterval(() => {
             loadLeaderboard();
+            if (isKioskUser) {
+                loadKioskLeaderboard();
+            }
         }, 120000);
         
         // Set today's date in KPI date picker on load
