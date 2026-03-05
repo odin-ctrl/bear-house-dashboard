@@ -1578,13 +1578,26 @@ app.get('/api/sales-data', async (req, res) => {
             rank: i + 1
         }));
         
-        // Get team data
-        const users = gamification.getAllUsers();
-        const teamMembers = users.slice(0, 5).map(u => ({
-            name: u.displayName || u.name,
-            role: u.role || 'Team',
-            location: u.location || 'Nesbyen'
-        }));
+        // Get team data from users file
+        const usersFile = path.join(__dirname, 'data', 'users.json');
+        let teamMembers = [];
+        try {
+            const usersData = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+            teamMembers = usersData.slice(0, 5).map(u => ({
+                name: u.displayName || u.name,
+                role: u.role || 'Team',
+                location: u.location || 'Nesbyen'
+            }));
+        } catch (err) {
+            // Fallback team data if users file doesn't exist
+            teamMembers = [
+                {name: 'Sondre', role: 'Baker', location: 'Nesbyen'},
+                {name: 'Mia', role: 'Barista', location: 'Hemsedal'},
+                {name: 'Lars', role: 'Baker', location: 'Hemsedal'},
+                {name: 'Emma', role: 'Service', location: 'Nesbyen'},
+                {name: 'Noah', role: 'Service', location: 'Hemsedal'}
+            ];
+        }
         
         // Weather data (mock for now - could integrate wttr.in)
         const weather = {
