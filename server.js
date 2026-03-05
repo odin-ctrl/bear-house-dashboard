@@ -1563,7 +1563,7 @@ app.get('/api/sales-data', async (req, res) => {
     try {
         // Get today's sales from Favrit
         const nesbyenToday = await favrit.getTodaySales('nesbyen').catch(() => ({ summary: { totalSales: 0, transactions: 0 } }));
-        const hemsedal Today = await favrit.getTodaySales('hemsedal').catch(() => ({ summary: { totalSales: 0, transactions: 0 } }));
+        const hemsedalToday = await favrit.getTodaySales('hemsedal').catch(() => ({ summary: { totalSales: 0, transactions: 0 } }));
         
         // Get week data (simplified - just use today * 5 as estimate)
         const today = new Date().toISOString().split('T')[0];
@@ -1610,8 +1610,8 @@ app.get('/api/sales-data', async (req, res) => {
                     transactions: nesbyenToday.summary.transactions || 0
                 },
                 hemsedal: {
-                    revenue: Math.round(hemsedal Today.summary.totalSales),
-                    transactions: hemsedal Today.summary.transactions || 0
+                    revenue: Math.round(hemsedalToday.summary.totalSales),
+                    transactions: hemsedalToday.summary.transactions || 0
                 }
             },
             week: {
@@ -1621,8 +1621,8 @@ app.get('/api/sales-data', async (req, res) => {
                     budget: 85000
                 },
                 hemsedal: {
-                    revenue: Math.round(hemsedal Today.summary.totalSales * 5.5),
-                    transactions: (hemsedal Today.summary.transactions || 0) * 5,
+                    revenue: Math.round(hemsedalToday.summary.totalSales * 5.5),
+                    transactions: (hemsedalToday.summary.transactions || 0) * 5,
                     budget: 120000
                 }
             },
