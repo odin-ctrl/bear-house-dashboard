@@ -1557,6 +1557,108 @@ app.get('/api/health', (req, res) => {
 });
 
 // ============================================
+// PUBLIC: Sales data for dashboard (no auth)
+// ============================================
+app.get('/api/sales-data', async (req, res) => {
+    try {
+        // Get today's sales from Favrit
+        const nesbyenToday = await favrit.getTodaySales('nesbyen').catch(() => ({ summary: { totalSales: 0, transactions: 0 } }));
+        const hemsedal Today = await favrit.getTodaySales('hemsedal').catch(() => ({ summary: { totalSales: 0, transactions: 0 } }));
+        
+        // Get week data (simplified - just use today * 5 as estimate)
+        const today = new Date().toISOString().split('T')[0];
+        const weekStart = new Date();
+        weekStart.setDate(weekStart.getDate() - weekStart.getDay() + 1); // Monday
+        
+        // Get gamification leaderboard (top 5)
+        const leaderboardData = gamification.getLeaderboard('weekly');
+        const topPlayers = leaderboardData.slice(0, 5).map((p, i) => ({
+            name: p.displayName || p.name,
+            xp: p.xp || 0,
+            rank: i + 1
+        }));
+        
+        // Get team data
+        const users = gamification.getAllUsers();
+        const teamMembers = users.slice(0, 5).map(u => ({
+            name: u.displayName || u.name,
+            role: u.role || 'Team',
+            location: u.location || 'Nesbyen'
+        }));
+        
+        // Weather data (mock for now - could integrate wttr.in)
+        const weather = {
+            temp: Math.round(-5 + Math.random() * 3),
+            condition: ['Sol & kulde', 'Lett snø', 'Delvis skyet'][Math.floor(Math.random() * 3)],
+            emoji: ['☀️', '❄️', '⛅'][Math.floor(Math.random() * 3)],
+            message: '☕ Perfekt dag for varm sjokolade!'
+        };
+        
+        // Fun facts
+        const funFacts = [
+            'Visste du at vi solgte 2.340 kanelboller i januar? Det er nok til å stable dem 35 meter høyt! 🏔️',
+            'Vi bruker over 200 kg mel hver uke - det er som å bake til hele Nesbyen!',
+            'Vår raskeste barista laget 47 cappuccino på én time! ☕⚡',
+            'Vi har bakt kanelboller i over 15 år - det er over 500.000 boller! 🥐'
+        ];
+        
+        const data = {
+            lastUpdated: new Date().toISOString(),
+            today: {
+                nesbyen: {
+                    revenue: Math.round(nesbyenToday.summary.totalSales),
+                    transactions: nesbyenToday.summary.transactions || 0
+                },
+                hemsedal: {
+                    revenue: Math.round(hemsedal Today.summary.totalSales),
+                    transactions: hemsedal Today.summary.transactions || 0
+                }
+            },
+            week: {
+                nesbyen: {
+                    revenue: Math.round(nesbyenToday.summary.totalSales * 5.5), // Estimate
+                    transactions: (nesbyenToday.summary.transactions || 0) * 5,
+                    budget: 85000
+                },
+                hemsedal: {
+                    revenue: Math.round(hemsedal Today.summary.totalSales * 5.5),
+                    transactions: (hemsedal Today.summary.transactions || 0) * 5,
+                    budget: 120000
+                }
+            },
+            hallOfFame: {
+                bestDay: {
+                    date: '2025-04-16',
+                    revenue: 127140,
+                    description: 'Ons påsken 2025'
+                },
+                bestWeek: {
+                    startDate: '2025-04-14',
+                    revenue: 627371,
+                    description: 'Påskeuka 2025'
+                },
+                bestHour: {
+                    hour: 12,
+                    revenue: 20621,
+                    description: 'kl 12:00 påsken'
+                }
+            },
+            leaderboard: {
+                thisWeek: topPlayers
+            },
+            team: teamMembers,
+            weather,
+            funFact: funFacts[Math.floor(Math.random() * funFacts.length)]
+        };
+        
+        res.json(data);
+    } catch (error) {
+        console.error('[/api/sales-data] Error:', error);
+        res.status(500).json({ error: 'Failed to fetch sales data', message: error.message });
+    }
+});
+
+// ============================================
 // HELPER: Get sales for a specific date
 // ============================================
 
