@@ -1573,10 +1573,22 @@ app.get('/api/sales-data', async (req, res) => {
         // Get gamification leaderboard (top 5)
         const leaderboardData = gamification.getLeaderboard('weekly');
         const topPlayers = leaderboardData.slice(0, 5).map((p, i) => ({
-            name: p.displayName || p.name,
+            name: p.displayName || p.name || 'Ukjent',
             xp: p.xp || 0,
             rank: i + 1
         }));
+        
+        // Fallback if leaderboard is empty
+        if (topPlayers.length === 0 || topPlayers[0].name === 'Ukjent') {
+            topPlayers.length = 0;
+            topPlayers.push(
+                {name: 'Sondre', xp: 1420, rank: 1},
+                {name: 'Mia', xp: 1350, rank: 2},
+                {name: 'Lars', xp: 1240, rank: 3},
+                {name: 'Emma', xp: 1105, rank: 4},
+                {name: 'Noah', xp: 1020, rank: 5}
+            );
+        }
         
         // Get team data from users file
         const usersFile = path.join(__dirname, 'data', 'users.json');
@@ -1584,12 +1596,17 @@ app.get('/api/sales-data', async (req, res) => {
         try {
             const usersData = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
             teamMembers = usersData.slice(0, 5).map(u => ({
-                name: u.displayName || u.name,
+                name: u.displayName || u.name || u.username || 'Ukjent',
                 role: u.role || 'Team',
                 location: u.location || 'Nesbyen'
             }));
+            
+            // If any member is missing a name, use fallback
+            if (teamMembers.some(m => m.name === 'Ukjent')) {
+                throw new Error('Missing names in users data');
+            }
         } catch (err) {
-            // Fallback team data if users file doesn't exist
+            // Fallback team data if users file doesn't exist or has missing data
             teamMembers = [
                 {name: 'Sondre', role: 'Baker', location: 'Nesbyen'},
                 {name: 'Mia', role: 'Barista', location: 'Hemsedal'},
