@@ -8,6 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/bearhousekaffekopp.png" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ff6b35">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
     <script>
@@ -222,17 +226,6 @@
                 </div>
             </section>
 
-            <!-- Kiosk Leaderboard (replaces Competition for kiosk users) -->
-            <section class="card bestsellers-card" id="kiosk-leaderboard-card" style="display: none;">
-                <div class="card-header">
-                    <h2>🏅 XP Leaderboard</h2>
-                    <span class="card-subtitle">Denne uken</span>
-                </div>
-                <div class="bestsellers-list" id="kiosk-leaderboard-list">
-                    <div class="loading">Laster...</div>
-                </div>
-            </section>
-
             <!-- Records -->
             <section class="card records-card">
                 <div class="card-header">
@@ -271,6 +264,10 @@
                 <div class="card-header">
                     <h2>🏅 XP Leaderboard</h2>
                     <span class="card-subtitle">Denne uken</span>
+                    <div class="scope-toggle" id="leaderboard-scope-toggle">
+                        <button class="scope-btn active" data-scope="location">Lokasjon</button>
+                        <button class="scope-btn" data-scope="global">Alle</button>
+                    </div>
                 </div>
                 <div class="bestsellers-list" id="leaderboard-list">
                     <div class="bestseller-item">
@@ -429,6 +426,16 @@
         let currentLocation = 'nesbyen';
         let profile = null;
         let isKioskUser = false;
+        let leaderboardScope = 'location'; // 'location' or 'global'
+
+        // Norwegian number formatting (consistent across all users)
+        function formatNumber(num) {
+            return num.toLocaleString('nb-NO');
+        }
+
+        function formatCurrency(num) {
+            return num.toLocaleString('nb-NO') + ' kr';
+        }
 
         // API helper
         async function api(endpoint, options = {}) {
@@ -479,6 +486,21 @@
                     currentRecordsData = null; // Reset records cache
                     loadDashboardData();
                     loadWeeklyChart(); // Load weekly chart separately (not part of auto-refresh)
+                    
+                    // Reload leaderboard with new location (if scope is location)
+                    if (leaderboardScope === 'location') {
+                        loadLeaderboard();
+                    }
+                });
+            });
+            
+            // Setup leaderboard scope toggle
+            document.querySelectorAll('.scope-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.scope-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    leaderboardScope = btn.dataset.scope;
+                    loadLeaderboard();
                 });
             });
             
@@ -499,14 +521,13 @@
                     const xpBar = document.getElementById('xp-bar-container');
                     if (xpBar) xpBar.style.display = 'none';
                     
-                    // Hide "Dagens kamp" and main leaderboard for kiosk
+                    // Hide "Dagens kamp" for kiosk (keep leaderboard visible)
                     const competitionCard = document.getElementById('competition-card');
-                    const mainLeaderboard = document.getElementById('main-leaderboard-card');
-                    const kioskLeaderboard = document.getElementById('kiosk-leaderboard-card');
-                    
                     if (competitionCard) competitionCard.style.display = 'none';
-                    if (mainLeaderboard) mainLeaderboard.style.display = 'none';
-                    if (kioskLeaderboard) kioskLeaderboard.style.display = 'block';
+                    
+                    // Hide leaderboard scope toggle (kiosk always shows location)
+                    const scopeToggle = document.getElementById('leaderboard-scope-toggle');
+                    if (scopeToggle) scopeToggle.style.display = 'none';
                     
                     // Set up hourly full page reload for kiosk displays
                     setInterval(() => {
@@ -526,12 +547,6 @@
                 updateGamificationUI();
                 await loadDashboardData();
                 await loadLeaderboard();
-                
-                // Load kiosk leaderboard if kiosk user
-                if (isKioskUser) {
-                    await loadKioskLeaderboard();
-                }
-                
                 await loadWeeklyChart(); // Load weekly chart once on page load
                 
             } catch (error) {
@@ -550,8 +565,8 @@
             
             // XP bar
             document.getElementById('xp-fill').style.width = `${profile.level.progress}%`;
-            document.getElementById('xp-current').textContent = profile.level.totalXp.toLocaleString();
-            document.getElementById('xp-next').textContent = (profile.level.totalXp + profile.level.xpToNextLevel).toLocaleString();
+            document.getElementById('xp-current').textContent = formatNumber(profile.level.totalXp);
+            document.getElementById('xp-next').textContent = formatNumber(profile.level.totalXp + profile.level.xpToNextLevel);
             
             // Personal streak (login streak) - will be overwritten by budget streak
             document.getElementById('streak-count').textContent = profile.streak.current;
@@ -664,7 +679,7 @@
             // Avg Ticket
             const avgTicketEl = document.getElementById('kpi-avgTicket');
             if (avgTicketEl) {
-                avgTicketEl.textContent = kpi.avgTicket + ' kr';
+                avgTicketEl.textContent = formatCurrency(kpi.avgTicket);
                 const avgTicketCard = document.getElementById('kpi-avgticket-card');
                 const avgTicketTrend = document.getElementById('kpi-avgticket-trend');
                 if (kpi.avgTicket >= 200) {
@@ -759,7 +774,7 @@
             const isPositive = diff >= 0;
             
             // Format difference
-            const diffStr = (isPositive ? '+' : '') + diff.toLocaleString() + ' kr';
+            const diffStr = (isPositive ? '+' : '') + formatCurrency(diff);
             diffEl.textContent = diffStr;
             
             // Update trend indicator
@@ -798,7 +813,7 @@
             // Update header
             const diff = data.diff || 0;
             const isPositive = diff >= 0;
-            document.getElementById('yoy-modal-diff').textContent = (isPositive ? '+' : '') + diff.toLocaleString() + ' kr';
+            document.getElementById('yoy-modal-diff').textContent = (isPositive ? '+' : '') + formatCurrency(diff);
             document.getElementById('yoy-modal-diff').style.color = isPositive ? 'var(--neon-green)' : 'var(--neon-pink)';
             document.getElementById('yoy-modal-pct').textContent = (isPositive ? '+' : '') + data.diffPct + '%';
             
@@ -809,8 +824,8 @@
                 : 'Uke ' + data.comparisonWeek + ' ' + data.comparisonYear;
             
             // Update totals
-            document.getElementById('yoy-this-total').textContent = data.thisYear.toLocaleString() + ' kr';
-            document.getElementById('yoy-last-total').textContent = data.lastYear.toLocaleString() + ' kr';
+            document.getElementById('yoy-this-total').textContent = formatCurrency(data.thisYear);
+            document.getElementById('yoy-last-total').textContent = formatCurrency(data.lastYear);
             
             // Build day-by-day breakdown
             const thisDaysEl = document.getElementById('yoy-this-days');
@@ -826,14 +841,14 @@
                 thisDaysEl.innerHTML += `
                     <div class="yoy-day ${thisWon ? 'winner' : 'loser'}">
                         <span class="yoy-day-name">${dayName}</span>
-                        <span class="yoy-day-amount">${day.thisYear.sales.toLocaleString()} kr</span>
+                        <span class="yoy-day-amount">${formatCurrency(day.thisYear.sales)}</span>
                     </div>
                 `;
                 
                 lastDaysEl.innerHTML += `
                     <div class="yoy-day ${!thisWon ? 'winner' : 'loser'}">
                         <span class="yoy-day-name">${dayName}</span>
-                        <span class="yoy-day-amount">${day.lastYear.sales.toLocaleString()} kr</span>
+                        <span class="yoy-day-amount">${formatCurrency(day.lastYear.sales)}</span>
                     </div>
                 `;
             });
@@ -915,15 +930,15 @@
         // Update records UI
         function updateRecordsUI(records) {
             if (records.bestDay) {
-                document.getElementById('record-day').textContent = records.bestDay.amount.toLocaleString() + ' kr';
+                document.getElementById('record-day').textContent = formatCurrency(records.bestDay.amount);
                 document.getElementById('record-day-date').textContent = records.bestDay.description.split('(')[0].trim();
             }
             if (records.bestWeek) {
-                document.getElementById('record-week').textContent = records.bestWeek.amount.toLocaleString() + ' kr';
+                document.getElementById('record-week').textContent = formatCurrency(records.bestWeek.amount);
                 document.getElementById('record-week-date').textContent = records.bestWeek.description;
             }
             if (records.bestHour) {
-                document.getElementById('record-hour').textContent = records.bestHour.amount.toLocaleString() + ' kr';
+                document.getElementById('record-hour').textContent = formatCurrency(records.bestHour.amount);
                 const hourDesc = records.bestHour.staff ? 
                     `${records.bestHour.staff.length} ansatte` : 
                     records.bestHour.description.split('(')[0].trim();
@@ -939,19 +954,19 @@
             const overBudget = sales > budget;
             
             // Hero section
-            document.getElementById('current-sales').textContent = sales.toLocaleString();
-            document.getElementById('budget-target').textContent = budget.toLocaleString();
+            document.getElementById('current-sales').textContent = formatNumber(sales);
+            document.getElementById('budget-target').textContent = formatNumber(budget);
             document.getElementById('hero-percent').textContent = percent + '%';
             
             // Update remaining text based on whether we're over budget
             const remainingEl = document.getElementById('hero-remaining');
             if (overBudget) {
                 const surplus = sales - budget;
-                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">+' + surplus.toLocaleString() + '</span><span class="remaining-label">🎉 over budsjett!</span>';
+                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">+' + formatNumber(surplus) + '</span><span class="remaining-label">🎉 over budsjett!</span>';
                 remainingEl.style.borderColor = 'rgba(57, 255, 20, 0.4)';
                 remainingEl.style.background = 'rgba(57, 255, 20, 0.15)';
             } else {
-                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">' + remaining.toLocaleString() + '</span><span class="remaining-label">igjen til mål</span>';
+                remainingEl.innerHTML = '<span id="remaining-amount" class="remaining-highlight">' + formatNumber(remaining) + '</span><span class="remaining-label">igjen til mål</span>';
                 remainingEl.style.borderColor = '';
                 remainingEl.style.background = '';
             }
@@ -976,7 +991,7 @@
             }
             
             // Hourly
-            document.getElementById('hourly-current').textContent = hourly.toLocaleString() + ' kr';
+            document.getElementById('hourly-current').textContent = formatCurrency(hourly);
             
             // Transactions and avg ticket from API
             const transactions = data.transactions || Math.round(sales / 85);
@@ -1030,8 +1045,8 @@
             const nesbyenPct = Math.round((teams.nesbyen.weeklyXp / maxXp) * 100);
             const hemsedalPct = Math.round((teams.hemsedal.weeklyXp / maxXp) * 100);
             
-            document.getElementById('nesbyen-value').textContent = teams.nesbyen.weeklyXp.toLocaleString() + ' XP';
-            document.getElementById('hemsedal-value').textContent = teams.hemsedal.weeklyXp.toLocaleString() + ' XP';
+            document.getElementById('nesbyen-value').textContent = formatNumber(teams.nesbyen.weeklyXp) + ' XP';
+            document.getElementById('hemsedal-value').textContent = formatNumber(teams.hemsedal.weeklyXp) + ' XP';
             
             document.getElementById('nesbyen-score').style.height = nesbyenPct + '%';
             document.getElementById('hemsedal-score').style.height = hemsedalPct + '%';
@@ -1041,10 +1056,16 @@
             document.querySelector('.hemsedal-side').classList.toggle('winning', leader === 'hemsedal');
         }
 
-        // Load leaderboard
+        // Load leaderboard (unified for all users)
         async function loadLeaderboard() {
             try {
-                const leaderboard = await api('/api/leaderboard/weekly');
+                // Build endpoint based on scope
+                let endpoint = '/api/leaderboard/weekly';
+                if (leaderboardScope === 'location') {
+                    endpoint += `?location=${currentLocation}`;
+                }
+                
+                const leaderboard = await api(endpoint);
                 if (!leaderboard) return;
                 
                 const container = document.getElementById('leaderboard-list');
@@ -1055,35 +1076,12 @@
                     <div class="bestseller-item" onclick="showXpBreakdown(${entry.userId}, '${entry.fullName}')" title="Klikk for å se XP-detaljer">
                         <span class="bestseller-rank ${classes[i] || ''}">${medals[i] || (i + 1)}</span>
                         <span class="bestseller-name">${entry.fullName.split(' ')[0]}</span>
-                        <span class="bestseller-count">${entry.weeklyXp.toLocaleString()} XP</span>
+                        <span class="bestseller-count">${formatNumber(entry.weeklyXp)} XP</span>
                     </div>
                 `).join('');
                 
             } catch (error) {
                 console.error('Leaderboard error:', error);
-            }
-        }
-
-        // Load kiosk leaderboard (filtered by location)
-        async function loadKioskLeaderboard() {
-            try {
-                const leaderboard = await api(`/api/leaderboard/weekly?location=${currentLocation}`);
-                if (!leaderboard) return;
-                
-                const container = document.getElementById('kiosk-leaderboard-list');
-                const medals = ['🥇', '🥈', '🥉'];
-                const classes = ['gold', 'silver', 'bronze'];
-                
-                container.innerHTML = leaderboard.slice(0, 5).map((entry, i) => `
-                    <div class="bestseller-item">
-                        <span class="bestseller-rank ${classes[i] || ''}">${medals[i] || (i + 1)}</span>
-                        <span class="bestseller-name">${entry.fullName.split(' ')[0]}</span>
-                        <span class="bestseller-count">${entry.weeklyXp.toLocaleString()} XP</span>
-                    </div>
-                `).join('');
-                
-            } catch (error) {
-                console.error('Kiosk leaderboard error:', error);
             }
         }
 
@@ -1107,8 +1105,8 @@
                 
                 // Update header
                 document.getElementById('modal-level').textContent = data.level || 1;
-                document.getElementById('modal-total-xp').textContent = (data.totalXp || 0).toLocaleString();
-                document.getElementById('modal-weekly-xp').textContent = (data.weeklyXp || 0).toLocaleString();
+                document.getElementById('modal-total-xp').textContent = formatNumber(data.totalXp || 0);
+                document.getElementById('modal-weekly-xp').textContent = formatNumber(data.weeklyXp || 0);
                 
                 // Build XP events list
                 const events = data.xpEvents || [];
@@ -1198,7 +1196,7 @@
             
             document.getElementById('record-modal-icon').textContent = icons[recordType];
             document.getElementById('record-modal-title').textContent = titles[recordType];
-            document.getElementById('record-modal-amount').textContent = record.amount.toLocaleString() + ' kr';
+            document.getElementById('record-modal-amount').textContent = formatCurrency(record.amount);
             document.getElementById('record-modal-date').textContent = record.description;
             
             // Show staff
@@ -1273,13 +1271,10 @@
             loadKPIs();
         }, 60000);
         
-        // Leaderboard refresh every 2 minutes
+        // Leaderboard refresh every 30 seconds (live updates)
         setInterval(() => {
             loadLeaderboard();
-            if (isKioskUser) {
-                loadKioskLeaderboard();
-            }
-        }, 120000);
+        }, 30000);
         
         // Set today's date in KPI date picker on load
         const kpiDateInput = document.getElementById('kpi-date');
@@ -1289,6 +1284,15 @@
         }
         
         console.log('🔄 Live updates aktiv - oppdaterer hvert 30. sekund');
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('✅ Service Worker registrert', reg))
+                .catch(err => console.log('❌ Service Worker feil', err));
+        }
     </script>
 </body>
 </html>

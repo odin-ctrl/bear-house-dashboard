@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Bear House Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Outfit', -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f0e17 0%, #1a1825 100%);
+            color: #fffffe;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .offline-container {
+            max-width: 500px;
+        }
+        .bear-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffc857, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        p {
+            color: #a7a9be;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .retry-btn {
+            background: linear-gradient(135deg, #ff6b35, #ffc857);
+            color: #0f0e17;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .retry-btn:hover {
+            transform: scale(1.05);
+        }
+        .contact {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #a7a9be;
+        }
+        .contact a {
+            color: #ff6b35;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="bear-icon">🐻☕</div>
+        <h1>Du er offline</h1>
+        <p>
+            Bear House Dashboard krever internettilkobling.
+            Sjekk nettverket ditt og prøv igjen.
+        </p>
+        <button class="retry-btn" onclick="location.reload()">
+            Prøv igjen
+        </button>
+        <div class="contact">
+            Trenger du hjelp?<br>
+            Kontakt <a href="mailto:martin@msgeiendom.no">martin@msgeiendom.no</a>
+        </div>
+    </div>
+</body>
+</html>
