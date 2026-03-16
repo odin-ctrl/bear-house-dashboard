@@ -197,6 +197,40 @@ body {
     font-size: 1rem;
 }
 
+/* Scope toggle (for leaderboard) */
+.scope-toggle {
+    display: inline-flex;
+    gap: 0.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.25rem;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+.scope-btn {
+    padding: 0.35rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.scope-btn:hover:not(.active) {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.scope-btn.active {
+    background: var(--gradient-purple);
+    color: white;
+    box-shadow: 0 0 15px rgba(179, 71, 255, 0.4);
+}
+
 .header-right {
     display: flex;
     align-items: center;
@@ -702,6 +736,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .card-header h2 {
